@@ -43,12 +43,12 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .logo-wrap {
-      width: 82px;
-      height: 82px;
+      width: 88px;
+      height: 88px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -56,8 +56,8 @@
     }
 
     .wafer-logo {
-      width: 82px;
-      height: 82px;
+      width: 88px;
+      height: 88px;
       overflow: visible;
     }
 
@@ -68,24 +68,26 @@
     }
 
     .brand-text span:first-child {
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       font-weight: bold;
       color: white;
+      letter-spacing: 0.3px;
     }
 
     .brand-text span:last-child {
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       font-weight: bold;
       color: #93c5fd;
+      letter-spacing: 0.3px;
     }
 
     .wafer-base {
-      fill: #cbd5e1;
+      fill: #96a3b3;
     }
 
     .wafer-grid line {
-      stroke: rgba(255,255,255,0.45);
-      stroke-width: 1.4;
+      stroke: rgba(255,255,255,0.20);
+      stroke-width: 1.2;
     }
 
     .wafer-outline {
@@ -94,58 +96,54 @@
       stroke-width: 3;
     }
 
+    .spectrum .stripe-1 { fill: #7f1d1d; }
+    .spectrum .stripe-2 { fill: #9a3412; }
+    .spectrum .stripe-3 { fill: #a16207; }
+    .spectrum .stripe-4 { fill: #166534; }
+    .spectrum .stripe-5 { fill: #0f766e; }
+    .spectrum .stripe-6 { fill: #1d4ed8; }
+    .spectrum .stripe-7 { fill: #581c87; }
+
     .spectrum {
-      opacity: 0;
-      animation: filmReveal 5s ease forwards;
+      opacity: 0.92;
+      animation: spectrumPulse 6s ease-in-out infinite;
     }
 
-    .stripe-1 { fill: #ef4444; }
-    .stripe-2 { fill: #f97316; }
-    .stripe-3 { fill: #facc15; }
-    .stripe-4 { fill: #22c55e; }
-    .stripe-5 { fill: #38bdf8; }
-    .stripe-6 { fill: #2563eb; }
-    .stripe-7 { fill: #7c3aed; }
+    .deposition-overlay {
+      opacity: 0.75;
+      mix-blend-mode: screen;
+      animation: overlayerGlow 6s ease-in-out infinite;
+    }
 
-    .atom {
-      fill: #ffffff;
-      opacity: 0.95;
-      transform-box: fill-box;
+    .deposition-overlay circle {
+      fill: rgba(255,255,255,0.82);
+      animation: filmShimmer 4.5s ease-in-out infinite;
       transform-origin: center;
     }
 
-    .atom1 { animation: move1 3.2s ease forwards; }
-    .atom2 { animation: move2 3.2s ease forwards; }
-    .atom3 { animation: move3 3.2s ease forwards; }
-    .atom4 { animation: move4 3.2s ease forwards; }
-    .atom5 { animation: move5 3.2s ease forwards; }
-    .atom6 { animation: move6 3.2s ease forwards; }
-    .atom7 { animation: move7 3.2s ease forwards; }
-    .atom8 { animation: move8 3.2s ease forwards; }
-    .atom9 { animation: move9 3.2s ease forwards; }
-
-    .film-network {
-      opacity: 0;
-      animation: networkShow 5s ease forwards;
+    .deposition-overlay line {
+      stroke: rgba(255,255,255,0.35);
+      stroke-width: 1.5;
+      animation: lineShimmer 4.5s ease-in-out infinite;
     }
 
-    .film-network circle {
+    .moving-atoms circle {
       fill: #ffffff;
-    }
-
-    .film-network line {
-      stroke: rgba(255,255,255,0.85);
-      stroke-width: 2;
-    }
-
-    .wafer-logo.animation-done .atoms {
       opacity: 0;
     }
 
-    .wafer-logo.animation-done .film-network,
-    .wafer-logo.animation-done .spectrum {
-      opacity: 1;
-    }
+    .a1 { animation: atom1 5.8s linear infinite; }
+    .a2 { animation: atom2 6.2s linear infinite; }
+    .a3 { animation: atom3 5.6s linear infinite; }
+    .a4 { animation: atom4 6.5s linear infinite; }
+    .a5 { animation: atom5 5.9s linear infinite; }
+    .a6 { animation: atom6 6.4s linear infinite; }
+    .a7 { animation: atom7 5.7s linear infinite; }
+    .a8 { animation: atom8 6.1s linear infinite; }
+    .a9 { animation: atom9 6.6s linear infinite; }
+    .a10 { animation: atom10 5.5s linear infinite; }
+    .a11 { animation: atom11 6.3s linear infinite; }
+    .a12 { animation: atom12 5.95s linear infinite; }
 
     .hero {
       background: linear-gradient(to right, #0f172a, #1e3a8a);
@@ -229,52 +227,97 @@
       margin-top: 40px;
     }
 
-    @keyframes move1 {
-      to { transform: translate(72px, 2px) scale(0.8); opacity: 0; }
+    @keyframes spectrumPulse {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 1; }
     }
 
-    @keyframes move2 {
-      to { transform: translate(55px, 36px) scale(0.8); opacity: 0; }
+    @keyframes overlayerGlow {
+      0%, 100% { opacity: 0.72; }
+      50% { opacity: 0.92; }
     }
 
-    @keyframes move3 {
-      to { transform: translate(48px, -34px) scale(0.8); opacity: 0; }
+    @keyframes filmShimmer {
+      0%, 100% { transform: scale(1); opacity: 0.72; }
+      50% { transform: scale(1.08); opacity: 1; }
     }
 
-    @keyframes move4 {
-      to { transform: translate(28px, 68px) scale(0.8); opacity: 0; }
+    @keyframes lineShimmer {
+      0%, 100% { opacity: 0.28; }
+      50% { opacity: 0.55; }
     }
 
-    @keyframes move5 {
-      to { transform: translate(-30px, 64px) scale(0.8); opacity: 0; }
+    @keyframes atom1 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      10% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { transform: translate(66px, 8px); opacity: 0; }
     }
 
-    @keyframes move6 {
-      to { transform: translate(-54px, 32px) scale(0.8); opacity: 0; }
+    @keyframes atom2 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translate(48px, 42px); opacity: 0; }
     }
 
-    @keyframes move7 {
-      to { transform: translate(-70px, 0px) scale(0.8); opacity: 0; }
+    @keyframes atom3 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      12% { opacity: 1; }
+      100% { transform: translate(46px, -38px); opacity: 0; }
     }
 
-    @keyframes move8 {
-      to { transform: translate(-44px, -36px) scale(0.8); opacity: 0; }
+    @keyframes atom4 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      15% { opacity: 1; }
+      100% { transform: translate(28px, 66px); opacity: 0; }
     }
 
-    @keyframes move9 {
-      to { transform: translate(28px, -50px) scale(0.8); opacity: 0; }
+    @keyframes atom5 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translate(-26px, 64px); opacity: 0; }
     }
 
-    @keyframes networkShow {
-      0%, 50% { opacity: 0; }
-      70% { opacity: 0.95; }
-      100% { opacity: 1; }
+    @keyframes atom6 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translate(-52px, 34px); opacity: 0; }
     }
 
-    @keyframes filmReveal {
-      0%, 45% { opacity: 0; }
-      70% { opacity: 0.55; }
-      100% { opacity: 0.95; }
+    @keyframes atom7 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translate(-70px, 0px); opacity: 0; }
+    }
+
+    @keyframes atom8 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translate(-42px, -36px); opacity: 0; }
+    }
+
+    @keyframes atom9 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translate(26px, -52px); opacity: 0; }
+    }
+
+    @keyframes atom10 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translate(64px, -10px); opacity: 0; }
+    }
+
+    @keyframes atom11 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      14% { opacity: 1; }
+      100% { transform: translate(-16px, 74px); opacity: 0; }
+    }
+
+    @keyframes atom12 {
+      0% { transform: translate(0px, 0px); opacity: 0; }
+      12% { opacity: 1; }
+      100% { transform: translate(-18px, -76px); opacity: 0; }
     }
 
     @media (max-width: 768px) {
@@ -298,13 +341,13 @@
       }
 
       .logo-wrap {
-        width: 72px;
-        height: 72px;
+        width: 74px;
+        height: 74px;
       }
 
       .wafer-logo {
-        width: 72px;
-        height: 72px;
+        width: 74px;
+        height: 74px;
       }
     }
   </style>
@@ -321,9 +364,13 @@
                 <clipPath id="waferClip">
                   <circle cx="110" cy="110" r="82"/>
                 </clipPath>
+                <radialGradient id="siliconGlow" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stop-color="#cbd5e1"/>
+                  <stop offset="100%" stop-color="#7b8798"/>
+                </radialGradient>
               </defs>
 
-              <circle class="wafer-base" cx="110" cy="110" r="82"/>
+              <circle cx="110" cy="110" r="82" fill="url(#siliconGlow)" class="wafer-base"/>
 
               <g class="wafer-grid" clip-path="url(#waferClip)">
                 <line x1="45" y1="50" x2="45" y2="170"/>
@@ -343,51 +390,89 @@
               </g>
 
               <g class="spectrum" clip-path="url(#waferClip)">
-                <rect class="stripe stripe-1" x="28" y="28" width="164" height="23"/>
-                <rect class="stripe stripe-2" x="28" y="51" width="164" height="23"/>
-                <rect class="stripe stripe-3" x="28" y="74" width="164" height="23"/>
-                <rect class="stripe stripe-4" x="28" y="97" width="164" height="23"/>
-                <rect class="stripe stripe-5" x="28" y="120" width="164" height="23"/>
-                <rect class="stripe stripe-6" x="28" y="143" width="164" height="23"/>
-                <rect class="stripe stripe-7" x="28" y="166" width="164" height="23"/>
+                <rect class="stripe-1" x="28" y="28" width="164" height="23"/>
+                <rect class="stripe-2" x="28" y="51" width="164" height="23"/>
+                <rect class="stripe-3" x="28" y="74" width="164" height="23"/>
+                <rect class="stripe-4" x="28" y="97" width="164" height="23"/>
+                <rect class="stripe-5" x="28" y="120" width="164" height="23"/>
+                <rect class="stripe-6" x="28" y="143" width="164" height="23"/>
+                <rect class="stripe-7" x="28" y="166" width="164" height="23"/>
               </g>
 
-              <g class="atoms">
-                <circle class="atom atom1" cx="28" cy="108" r="7"/>
-                <circle class="atom atom2" cx="48" cy="72" r="5"/>
-                <circle class="atom atom3" cx="52" cy="150" r="6"/>
-                <circle class="atom atom4" cx="85" cy="28" r="5"/>
-                <circle class="atom atom5" cx="140" cy="28" r="5"/>
-                <circle class="atom atom6" cx="175" cy="58" r="6"/>
-                <circle class="atom atom7" cx="190" cy="108" r="7"/>
-                <circle class="atom atom8" cx="170" cy="158" r="5"/>
-                <circle class="atom atom9" cx="80" cy="185" r="6"/>
+              <g class="deposition-overlay" clip-path="url(#waferClip)">
+                <line x1="56" y1="56" x2="82" y2="56"/>
+                <line x1="82" y1="56" x2="108" y2="56"/>
+                <line x1="108" y1="56" x2="134" y2="56"/>
+                <line x1="134" y1="56" x2="160" y2="56"/>
+
+                <line x1="43" y1="82" x2="69" y2="82"/>
+                <line x1="69" y1="82" x2="95" y2="82"/>
+                <line x1="95" y1="82" x2="121" y2="82"/>
+                <line x1="121" y1="82" x2="147" y2="82"/>
+                <line x1="147" y1="82" x2="173" y2="82"/>
+
+                <line x1="56" y1="108" x2="82" y2="108"/>
+                <line x1="82" y1="108" x2="108" y2="108"/>
+                <line x1="108" y1="108" x2="134" y2="108"/>
+                <line x1="134" y1="108" x2="160" y2="108"/>
+
+                <line x1="43" y1="134" x2="69" y2="134"/>
+                <line x1="69" y1="134" x2="95" y2="134"/>
+                <line x1="95" y1="134" x2="121" y2="134"/>
+                <line x1="121" y1="134" x2="147" y2="134"/>
+                <line x1="147" y1="134" x2="173" y2="134"/>
+
+                <line x1="56" y1="160" x2="82" y2="160"/>
+                <line x1="82" y1="160" x2="108" y2="160"/>
+                <line x1="108" y1="160" x2="134" y2="160"/>
+                <line x1="134" y1="160" x2="160" y2="160"/>
+
+                <circle cx="56" cy="56" r="3.4"/>
+                <circle cx="82" cy="56" r="3.4"/>
+                <circle cx="108" cy="56" r="3.4"/>
+                <circle cx="134" cy="56" r="3.4"/>
+                <circle cx="160" cy="56" r="3.4"/>
+
+                <circle cx="43" cy="82" r="3.4"/>
+                <circle cx="69" cy="82" r="3.4"/>
+                <circle cx="95" cy="82" r="3.4"/>
+                <circle cx="121" cy="82" r="3.4"/>
+                <circle cx="147" cy="82" r="3.4"/>
+                <circle cx="173" cy="82" r="3.4"/>
+
+                <circle cx="56" cy="108" r="3.4"/>
+                <circle cx="82" cy="108" r="3.4"/>
+                <circle cx="108" cy="108" r="3.4"/>
+                <circle cx="134" cy="108" r="3.4"/>
+                <circle cx="160" cy="108" r="3.4"/>
+
+                <circle cx="43" cy="134" r="3.4"/>
+                <circle cx="69" cy="134" r="3.4"/>
+                <circle cx="95" cy="134" r="3.4"/>
+                <circle cx="121" cy="134" r="3.4"/>
+                <circle cx="147" cy="134" r="3.4"/>
+                <circle cx="173" cy="134" r="3.4"/>
+
+                <circle cx="56" cy="160" r="3.4"/>
+                <circle cx="82" cy="160" r="3.4"/>
+                <circle cx="108" cy="160" r="3.4"/>
+                <circle cx="134" cy="160" r="3.4"/>
+                <circle cx="160" cy="160" r="3.4"/>
               </g>
 
-              <g class="film-network">
-                <circle cx="90" cy="90" r="5"/>
-                <circle cx="110" cy="82" r="5"/>
-                <circle cx="130" cy="90" r="5"/>
-                <circle cx="82" cy="110" r="5"/>
-                <circle cx="102" cy="102" r="5"/>
-                <circle cx="122" cy="102" r="5"/>
-                <circle cx="142" cy="110" r="5"/>
-                <circle cx="90" cy="130" r="5"/>
-                <circle cx="110" cy="122" r="5"/>
-                <circle cx="130" cy="130" r="5"/>
-
-                <line x1="90" y1="90" x2="110" y2="82"/>
-                <line x1="110" y1="82" x2="130" y2="90"/>
-                <line x1="82" y1="110" x2="102" y2="102"/>
-                <line x1="102" y1="102" x2="122" y2="102"/>
-                <line x1="122" y1="102" x2="142" y2="110"/>
-                <line x1="90" y1="130" x2="110" y2="122"/>
-                <line x1="110" y1="122" x2="130" y2="130"/>
-                <line x1="90" y1="90" x2="82" y2="110"/>
-                <line x1="110" y1="82" x2="102" y2="102"/>
-                <line x1="130" y1="90" x2="122" y2="102"/>
-                <line x1="102" y1="102" x2="90" y2="130"/>
-                <line x1="122" y1="102" x2="130" y2="130"/>
+              <g class="moving-atoms">
+                <circle class="a1" cx="30" cy="110" r="5"/>
+                <circle class="a2" cx="50" cy="72" r="4"/>
+                <circle class="a3" cx="52" cy="150" r="4.5"/>
+                <circle class="a4" cx="86" cy="30" r="4"/>
+                <circle class="a5" cx="140" cy="30" r="4"/>
+                <circle class="a6" cx="176" cy="58" r="4.5"/>
+                <circle class="a7" cx="190" cy="110" r="5"/>
+                <circle class="a8" cx="170" cy="158" r="4"/>
+                <circle class="a9" cx="82" cy="186" r="4.5"/>
+                <circle class="a10" cx="28" cy="86" r="4"/>
+                <circle class="a11" cx="126" cy="188" r="4"/>
+                <circle class="a12" cx="126" cy="22" r="4"/>
               </g>
 
               <circle class="wafer-outline" cx="110" cy="110" r="82"/>
@@ -499,7 +584,9 @@
     <div class="container cv-link">
       <h3>CV / Resume</h3>
       <p>
-        <a href="CV.pdf" download style="display:inline-block; padding:10px 18px; background:#1f4e79; color:white; text-decoration:none; border-radius:6px;">Download CV</a>
+        <a href="CV.pdf" download style="display:inline-block; padding:10px 18px; background:#1f4e79; color:white; text-decoration:none; border-radius:6px;">
+          Download CV
+        </a>
       </p>
     </div>
   </section>
@@ -518,15 +605,6 @@
       <p>© 2026 Swapnil Nalawade (PhD) | Built with GitHub Pages</p>
     </div>
   </footer>
-
-  <script>
-    window.addEventListener("load", function () {
-      const logo = document.querySelector(".wafer-logo");
-      setTimeout(() => {
-        logo.classList.add("animation-done");
-      }, 5000);
-    });
-  </script>
 
 </body>
 </html>
