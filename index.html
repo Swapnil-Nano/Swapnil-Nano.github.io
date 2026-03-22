@@ -33,51 +33,118 @@
       gap: 12px;
     }
 
-    nav h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo-circle {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: white;
-  color: #1e3a8a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.brand-text span:first-child {
-  font-size: 1.35rem;
-  font-weight: bold;
-  color: white;
-}
-
-.brand-text span:last-child {
-  font-size: 1.35rem;
-  font-weight: bold;
-  color: #93c5fd;
-}
     nav a {
       color: white;
       text-decoration: none;
       margin-left: 20px;
       font-size: 0.95rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-wrap {
+      width: 82px;
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .wafer-logo {
+      width: 82px;
+      height: 82px;
+      overflow: visible;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 0.95;
+    }
+
+    .brand-text span:first-child {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .brand-text span:last-child {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #93c5fd;
+    }
+
+    .wafer-base {
+      fill: #cbd5e1;
+    }
+
+    .wafer-grid line {
+      stroke: rgba(255,255,255,0.45);
+      stroke-width: 1.4;
+    }
+
+    .wafer-outline {
+      fill: none;
+      stroke: #dbeafe;
+      stroke-width: 3;
+    }
+
+    .spectrum {
+      opacity: 0;
+      animation: filmReveal 5s ease forwards;
+    }
+
+    .stripe-1 { fill: #ef4444; }
+    .stripe-2 { fill: #f97316; }
+    .stripe-3 { fill: #facc15; }
+    .stripe-4 { fill: #22c55e; }
+    .stripe-5 { fill: #38bdf8; }
+    .stripe-6 { fill: #2563eb; }
+    .stripe-7 { fill: #7c3aed; }
+
+    .atom {
+      fill: #ffffff;
+      opacity: 0.95;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .atom1 { animation: move1 3.2s ease forwards; }
+    .atom2 { animation: move2 3.2s ease forwards; }
+    .atom3 { animation: move3 3.2s ease forwards; }
+    .atom4 { animation: move4 3.2s ease forwards; }
+    .atom5 { animation: move5 3.2s ease forwards; }
+    .atom6 { animation: move6 3.2s ease forwards; }
+    .atom7 { animation: move7 3.2s ease forwards; }
+    .atom8 { animation: move8 3.2s ease forwards; }
+    .atom9 { animation: move9 3.2s ease forwards; }
+
+    .film-network {
+      opacity: 0;
+      animation: networkShow 5s ease forwards;
+    }
+
+    .film-network circle {
+      fill: #ffffff;
+    }
+
+    .film-network line {
+      stroke: rgba(255,255,255,0.85);
+      stroke-width: 2;
+    }
+
+    .wafer-logo.animation-done .atoms {
+      opacity: 0;
+    }
+
+    .wafer-logo.animation-done .film-network,
+    .wafer-logo.animation-done .spectrum {
+      opacity: 1;
     }
 
     .hero {
@@ -162,13 +229,82 @@
       margin-top: 40px;
     }
 
+    @keyframes move1 {
+      to { transform: translate(72px, 2px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes move2 {
+      to { transform: translate(55px, 36px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes move3 {
+      to { transform: translate(48px, -34px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes move4 {
+      to { transform: translate(28px, 68px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes move5 {
+      to { transform: translate(-30px, 64px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes move6 {
+      to { transform: translate(-54px, 32px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes move7 {
+      to { transform: translate(-70px, 0px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes move8 {
+      to { transform: translate(-44px, -36px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes move9 {
+      to { transform: translate(28px, -50px) scale(0.8); opacity: 0; }
+    }
+
+    @keyframes networkShow {
+      0%, 50% { opacity: 0; }
+      70% { opacity: 0.95; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes filmReveal {
+      0%, 45% { opacity: 0; }
+      70% { opacity: 0.55; }
+      100% { opacity: 0.95; }
+    }
+
     @media (max-width: 768px) {
       .hero h2 {
         font-size: 2rem;
       }
 
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
       nav a {
-        margin-left: 12px;
+        margin-left: 0;
+        margin-right: 12px;
+      }
+
+      .brand-text span:first-child,
+      .brand-text span:last-child {
+        font-size: 1.25rem;
+      }
+
+      .logo-wrap {
+        width: 72px;
+        height: 72px;
+      }
+
+      .wafer-logo {
+        width: 72px;
+        height: 72px;
       }
     }
   </style>
@@ -179,12 +315,91 @@
     <div class="container">
       <nav>
         <div class="brand">
-          <div class="logo-circle">S</div>
+          <div class="logo-wrap">
+            <svg class="wafer-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Swapnil Nano logo">
+              <defs>
+                <clipPath id="waferClip">
+                  <circle cx="110" cy="110" r="82"/>
+                </clipPath>
+              </defs>
+
+              <circle class="wafer-base" cx="110" cy="110" r="82"/>
+
+              <g class="wafer-grid" clip-path="url(#waferClip)">
+                <line x1="45" y1="50" x2="45" y2="170"/>
+                <line x1="65" y1="40" x2="65" y2="180"/>
+                <line x1="85" y1="35" x2="85" y2="185"/>
+                <line x1="105" y1="30" x2="105" y2="190"/>
+                <line x1="125" y1="35" x2="125" y2="185"/>
+                <line x1="145" y1="40" x2="145" y2="180"/>
+                <line x1="165" y1="50" x2="165" y2="170"/>
+
+                <line x1="35" y1="65" x2="185" y2="65"/>
+                <line x1="30" y1="85" x2="190" y2="85"/>
+                <line x1="28" y1="105" x2="192" y2="105"/>
+                <line x1="30" y1="125" x2="190" y2="125"/>
+                <line x1="35" y1="145" x2="185" y2="145"/>
+                <line x1="45" y1="165" x2="175" y2="165"/>
+              </g>
+
+              <g class="spectrum" clip-path="url(#waferClip)">
+                <rect class="stripe stripe-1" x="28" y="28" width="164" height="23"/>
+                <rect class="stripe stripe-2" x="28" y="51" width="164" height="23"/>
+                <rect class="stripe stripe-3" x="28" y="74" width="164" height="23"/>
+                <rect class="stripe stripe-4" x="28" y="97" width="164" height="23"/>
+                <rect class="stripe stripe-5" x="28" y="120" width="164" height="23"/>
+                <rect class="stripe stripe-6" x="28" y="143" width="164" height="23"/>
+                <rect class="stripe stripe-7" x="28" y="166" width="164" height="23"/>
+              </g>
+
+              <g class="atoms">
+                <circle class="atom atom1" cx="28" cy="108" r="7"/>
+                <circle class="atom atom2" cx="48" cy="72" r="5"/>
+                <circle class="atom atom3" cx="52" cy="150" r="6"/>
+                <circle class="atom atom4" cx="85" cy="28" r="5"/>
+                <circle class="atom atom5" cx="140" cy="28" r="5"/>
+                <circle class="atom atom6" cx="175" cy="58" r="6"/>
+                <circle class="atom atom7" cx="190" cy="108" r="7"/>
+                <circle class="atom atom8" cx="170" cy="158" r="5"/>
+                <circle class="atom atom9" cx="80" cy="185" r="6"/>
+              </g>
+
+              <g class="film-network">
+                <circle cx="90" cy="90" r="5"/>
+                <circle cx="110" cy="82" r="5"/>
+                <circle cx="130" cy="90" r="5"/>
+                <circle cx="82" cy="110" r="5"/>
+                <circle cx="102" cy="102" r="5"/>
+                <circle cx="122" cy="102" r="5"/>
+                <circle cx="142" cy="110" r="5"/>
+                <circle cx="90" cy="130" r="5"/>
+                <circle cx="110" cy="122" r="5"/>
+                <circle cx="130" cy="130" r="5"/>
+
+                <line x1="90" y1="90" x2="110" y2="82"/>
+                <line x1="110" y1="82" x2="130" y2="90"/>
+                <line x1="82" y1="110" x2="102" y2="102"/>
+                <line x1="102" y1="102" x2="122" y2="102"/>
+                <line x1="122" y1="102" x2="142" y2="110"/>
+                <line x1="90" y1="130" x2="110" y2="122"/>
+                <line x1="110" y1="122" x2="130" y2="130"/>
+                <line x1="90" y1="90" x2="82" y2="110"/>
+                <line x1="110" y1="82" x2="102" y2="102"/>
+                <line x1="130" y1="90" x2="122" y2="102"/>
+                <line x1="102" y1="102" x2="90" y2="130"/>
+                <line x1="122" y1="102" x2="130" y2="130"/>
+              </g>
+
+              <circle class="wafer-outline" cx="110" cy="110" r="82"/>
+            </svg>
+          </div>
+
           <div class="brand-text">
             <span>Swapnil</span>
             <span>Nano</span>
-  </div>
-</div>
+          </div>
+        </div>
+
         <div>
           <a href="#about">About</a>
           <a href="#research">Research</a>
@@ -284,8 +499,7 @@
     <div class="container cv-link">
       <h3>CV / Resume</h3>
       <p>
-        <a href="CV.pdf" download style="display:inline-block; padding:10px 18px; background:#1f4e79; color:white; text-decoration:none; border-radius:6px;"> Download CV
-</a>
+        <a href="CV.pdf" download style="display:inline-block; padding:10px 18px; background:#1f4e79; color:white; text-decoration:none; border-radius:6px;">Download CV</a>
       </p>
     </div>
   </section>
@@ -295,7 +509,7 @@
       <h3>Contact</h3>
       <p><strong>Email:</strong> <a href="mailto:snswapnil88@gmail.com">snswapnil88@gmail.com</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/Swapnil-Nano" target="_blank">github.com/Swapnil-Nano</a></p>
-      <p><strong>LinkedIn:</strong> https://www.linkedin.com/in/swapnil-nalawade-31b59265/</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/swapnil-nalawade-31b59265/" target="_blank">linkedin.com/in/swapnil-nalawade-31b59265</a></p>
     </div>
   </section>
 
@@ -304,6 +518,15 @@
       <p>© 2026 Swapnil Nalawade (PhD) | Built with GitHub Pages</p>
     </div>
   </footer>
+
+  <script>
+    window.addEventListener("load", function () {
+      const logo = document.querySelector(".wafer-logo");
+      setTimeout(() => {
+        logo.classList.add("animation-done");
+      }, 5000);
+    });
+  </script>
 
 </body>
 </html>
