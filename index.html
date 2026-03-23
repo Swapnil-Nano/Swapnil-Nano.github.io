@@ -287,81 +287,95 @@
   transform-origin: center;
 }
 
-/* bottom row to top row */
-.s1  { animation: atomCycle 9s linear infinite 0.00s; }
-.s2  { animation: atomCycle 9s linear infinite 0.10s; }
-.s3  { animation: atomCycle 9s linear infinite 0.20s; }
-.s4  { animation: atomCycle 9s linear infinite 0.30s; }
-.s5  { animation: atomCycle 9s linear infinite 0.40s; }
-.s6  { animation: atomCycle 9s linear infinite 0.50s; }
-.s7  { animation: atomCycle 9s linear infinite 0.60s; }
+/* atoms fill bottom to top, then all glow together, then all vanish together */
+.s1  { animation: atomFill 10s linear infinite 0.00s; }
+.s2  { animation: atomFill 10s linear infinite 0.12s; }
+.s3  { animation: atomFill 10s linear infinite 0.24s; }
+.s4  { animation: atomFill 10s linear infinite 0.36s; }
+.s5  { animation: atomFill 10s linear infinite 0.48s; }
+.s6  { animation: atomFill 10s linear infinite 0.60s; }
+.s7  { animation: atomFill 10s linear infinite 0.72s; }
 
-.s8  { animation: atomCycle 9s linear infinite 0.90s; }
-.s9  { animation: atomCycle 9s linear infinite 1.00s; }
-.s10 { animation: atomCycle 9s linear infinite 1.10s; }
-.s11 { animation: atomCycle 9s linear infinite 1.20s; }
-.s12 { animation: atomCycle 9s linear infinite 1.30s; }
-.s13 { animation: atomCycle 9s linear infinite 1.40s; }
-.s14 { animation: atomCycle 9s linear infinite 1.50s; }
+.s8  { animation: atomFill 10s linear infinite 1.00s; }
+.s9  { animation: atomFill 10s linear infinite 1.12s; }
+.s10 { animation: atomFill 10s linear infinite 1.24s; }
+.s11 { animation: atomFill 10s linear infinite 1.36s; }
+.s12 { animation: atomFill 10s linear infinite 1.48s; }
+.s13 { animation: atomFill 10s linear infinite 1.60s; }
+.s14 { animation: atomFill 10s linear infinite 1.72s; }
 
-.s15 { animation: atomCycle 9s linear infinite 1.80s; }
-.s16 { animation: atomCycle 9s linear infinite 1.90s; }
-.s17 { animation: atomCycle 9s linear infinite 2.00s; }
-.s18 { animation: atomCycle 9s linear infinite 2.10s; }
-.s19 { animation: atomCycle 9s linear infinite 2.20s; }
-.s20 { animation: atomCycle 9s linear infinite 2.30s; }
-.s21 { animation: atomCycle 9s linear infinite 2.40s; }
+.s15 { animation: atomFill 10s linear infinite 2.00s; }
+.s16 { animation: atomFill 10s linear infinite 2.12s; }
+.s17 { animation: atomFill 10s linear infinite 2.24s; }
+.s18 { animation: atomFill 10s linear infinite 2.36s; }
+.s19 { animation: atomFill 10s linear infinite 2.48s; }
+.s20 { animation: atomFill 10s linear infinite 2.60s; }
+.s21 { animation: atomFill 10s linear infinite 2.72s; }
 
-.s22 { animation: atomCycle 9s linear infinite 2.70s; }
-.s23 { animation: atomCycle 9s linear infinite 2.80s; }
-.s24 { animation: atomCycle 9s linear infinite 2.90s; }
-.s25 { animation: atomCycle 9s linear infinite 3.00s; }
-.s26 { animation: atomCycle 9s linear infinite 3.10s; }
-.s27 { animation: atomCycle 9s linear infinite 3.20s; }
-.s28 { animation: atomCycle 9s linear infinite 3.30s; }
+.s22 { animation: atomFill 10s linear infinite 3.00s; }
+.s23 { animation: atomFill 10s linear infinite 3.12s; }
+.s24 { animation: atomFill 10s linear infinite 3.24s; }
+.s25 { animation: atomFill 10s linear infinite 3.36s; }
+.s26 { animation: atomFill 10s linear infinite 3.48s; }
+.s27 { animation: atomFill 10s linear infinite 3.60s; }
+.s28 { animation: atomFill 10s linear infinite 3.72s; }
 
-.s29 { animation: atomCycle 9s linear infinite 3.60s; }
-.s30 { animation: atomCycle 9s linear infinite 3.70s; }
-.s31 { animation: atomCycle 9s linear infinite 3.80s; }
-.s32 { animation: atomCycle 9s linear infinite 3.90s; }
-.s33 { animation: atomCycle 9s linear infinite 4.00s; }
-.s34 { animation: atomCycle 9s linear infinite 4.10s; }
-.s35 { animation: atomCycle 9s linear infinite 4.20s; }
+.s29 { animation: atomFill 10s linear infinite 4.00s; }
+.s30 { animation: atomFill 10s linear infinite 4.12s; }
+.s31 { animation: atomFill 10s linear infinite 4.24s; }
+.s32 { animation: atomFill 10s linear infinite 4.36s; }
+.s33 { animation: atomFill 10s linear infinite 4.48s; }
+.s34 { animation: atomFill 10s linear infinite 4.60s; }
+.s35 { animation: atomFill 10s linear infinite 4.72s; }
 
-.s36 { animation: atomCycle 9s linear infinite 4.50s; }
-.s37 { animation: atomCycle 9s linear infinite 4.60s; }
-.s38 { animation: atomCycle 9s linear infinite 4.70s; }
-.s39 { animation: atomCycle 9s linear infinite 4.80s; }
-.s40 { animation: atomCycle 9s linear infinite 4.90s; }
-.s41 { animation: atomCycle 9s linear infinite 5.00s; }
-.s42 { animation: atomCycle 9s linear infinite 5.10s; }
+.s36 { animation: atomFill 10s linear infinite 5.00s; }
+.s37 { animation: atomFill 10s linear infinite 5.12s; }
+.s38 { animation: atomFill 10s linear infinite 5.24s; }
+.s39 { animation: atomFill 10s linear infinite 5.36s; }
+.s40 { animation: atomFill 10s linear infinite 5.48s; }
+.s41 { animation: atomFill 10s linear infinite 5.60s; }
+.s42 { animation: atomFill 10s linear infinite 5.72s; }
 
-@keyframes atomCycle {
+@keyframes atomFill {
+  /* hidden before appearing */
   0%, 6% {
     opacity: 0;
-    transform: translateY(16px) scale(0.35);
+    transform: translateY(18px) scale(0.30);
+    filter: brightness(1);
   }
+
+  /* atom arrives at intersection */
   10% {
     opacity: 0.95;
-    transform: translateY(0) scale(1.05);
+    transform: translateY(0) scale(1.10);
+    filter: brightness(1);
   }
-  58% {
+
+  /* normal visible state while all atoms are filling */
+  20%, 58% {
     opacity: 0.95;
     transform: translateY(0) scale(1);
+    filter: brightness(1);
   }
-  68% {
+
+  /* once all atoms are placed, glow together for ~2 seconds */
+  60%, 76% {
     opacity: 1;
-    transform: scale(1.35);
-    filter: brightness(1.45);
+    transform: translateY(0) scale(1.18);
+    filter: brightness(1.9);
   }
-  74% {
+
+  /* then all vanish together */
+  80% {
     opacity: 0;
-    transform: scale(1.6);
-    filter: brightness(1.8);
+    transform: translateY(0) scale(1.35);
+    filter: brightness(2.2);
   }
+
   100% {
     opacity: 0;
-    transform: scale(0.3);
+    transform: translateY(18px) scale(0.30);
+    filter: brightness(1);
   }
 }
 
