@@ -287,7 +287,6 @@
       transform-origin: center;
     }
 
-    /* bottom row first, then upward */
     .s1  { animation: settle 8s linear infinite 0.00s; }
     .s2  { animation: settle 8s linear infinite 0.12s; }
     .s3  { animation: settle 8s linear infinite 0.24s; }
@@ -437,9 +436,7 @@
                 <line x1="45" y1="165" x2="175" y2="165"/>
               </g>
 
-              <!-- atoms appear from bottom row to top row -->
               <g class="settled-atoms" clip-path="url(#waferClip)">
-                <!-- bottom row y=165 -->
                 <circle class="s1" cx="45" cy="165" r="4.7"/>
                 <circle class="s2" cx="65" cy="165" r="4.7"/>
                 <circle class="s3" cx="85" cy="165" r="4.7"/>
@@ -448,7 +445,6 @@
                 <circle class="s6" cx="145" cy="165" r="4.7"/>
                 <circle class="s7" cx="165" cy="165" r="4.7"/>
 
-                <!-- y=145 -->
                 <circle class="s8" cx="45" cy="145" r="4.7"/>
                 <circle class="s9" cx="65" cy="145" r="4.7"/>
                 <circle class="s10" cx="85" cy="145" r="4.7"/>
@@ -457,7 +453,6 @@
                 <circle class="s13" cx="145" cy="145" r="4.7"/>
                 <circle class="s14" cx="165" cy="145" r="4.7"/>
 
-                <!-- y=125 -->
                 <circle class="s15" cx="45" cy="125" r="4.7"/>
                 <circle class="s16" cx="65" cy="125" r="4.7"/>
                 <circle class="s17" cx="85" cy="125" r="4.7"/>
@@ -466,7 +461,6 @@
                 <circle class="s20" cx="145" cy="125" r="4.7"/>
                 <circle class="s21" cx="165" cy="125" r="4.7"/>
 
-                <!-- y=105 -->
                 <circle class="s22" cx="45" cy="105" r="4.7"/>
                 <circle class="s23" cx="65" cy="105" r="4.7"/>
                 <circle class="s24" cx="85" cy="105" r="4.7"/>
@@ -475,7 +469,6 @@
                 <circle class="s27" cx="145" cy="105" r="4.7"/>
                 <circle class="s28" cx="165" cy="105" r="4.7"/>
 
-                <!-- y=85 -->
                 <circle class="s29" cx="45" cy="85" r="4.7"/>
                 <circle class="s30" cx="65" cy="85" r="4.7"/>
                 <circle class="s31" cx="85" cy="85" r="4.7"/>
@@ -484,7 +477,6 @@
                 <circle class="s34" cx="145" cy="85" r="4.7"/>
                 <circle class="s35" cx="165" cy="85" r="4.7"/>
 
-                <!-- top row y=65 -->
                 <circle class="s36" cx="45" cy="65" r="4.7"/>
                 <circle class="s37" cx="65" cy="65" r="4.7"/>
                 <circle class="s38" cx="85" cy="65" r="4.7"/>
@@ -570,11 +562,28 @@
   <section id="publications">
     <div class="container">
       <h3>Publications</h3>
+
       <div class="publication-card">
-        <h4>Paper Title 1</h4>
-        <div class="publication-meta">Journal Name | Year | Volume(Issue), Pages</div>
-        <p>Replace this with your abstract or paper summary.</p>
-        <a class="journal-link" href="https://doi.org/" target="_blank">View Journal Article</a>
+        <h4>Nalawade, Swapnil, et al. “Phase Transformation and Water Adsorption Behavior of As-Deposited and Annealed Ru Metal Thin Films Prepared by Atomic Layer Deposition.”</h4>
+        <div class="publication-meta">Advanced Materials Interfaces 13(1), e00689, 2026</div>
+        <p>
+          This work investigates the phase transformation of ALD-deposited Ru metal thin films during annealing
+          and examines how these structural and chemical changes influence water adsorption behavior on the surface.
+          The study connects thin-film processing, surface chemistry, and adsorption characteristics relevant to
+          catalytic and interface-driven applications.
+        </p>
+        <a class="journal-link" href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202500689" target="_blank">View Journal Article</a>
+      </div>
+
+      <div class="publication-card">
+        <h4>Nalawade, Swapnil, et al. “Role of Oxygen Concentration in Reactive Sputtering of RuO₂ Thin Films: Tuning Surface Chemistry for Enhanced Electrocatalytic Performance.”</h4>
+        <div class="publication-meta">Crystals 15(5), 417, 2025</div>
+        <p>
+          This paper explores how oxygen concentration during reactive sputtering affects the structural, chemical,
+          optical, and electrochemical behavior of RuO₂ thin films. It highlights the role of controlled stoichiometry
+          and deposition conditions in improving electrocatalytic performance for water-splitting applications.
+        </p>
+        <a class="journal-link" href="https://www.mdpi.com/2073-4352/15/5/417" target="_blank">View Journal Article</a>
       </div>
     </div>
   </section>
