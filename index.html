@@ -268,127 +268,124 @@
       padding: 22px 0;
       margin-top: 40px;
     }
+/* =========================
+   LOGO ANIMATION
+========================= */
 
-    /* =========================
-       LOGO ANIMATION
-    ========================== */
+.wafer-base {
+  fill: url(#siliconGlow);
+}
 
-    .wafer-base {
-      fill: url(#siliconGlow);
-    }
+.wafer-highlight {
+  fill: url(#waferShine);
+  opacity: 0.22;
+}
 
-    .wafer-highlight {
-      fill: url(#waferShine);
-      opacity: 0.28;
-    }
+.wafer-outline {
+  fill: none;
+  stroke: #dbeafe;
+  stroke-width: 2.8;
+}
 
-    .wafer-outline {
-      fill: none;
-      stroke: #dbeafe;
-      stroke-width: 2.6;
-    }
+.wafer-inner-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1.2;
+}
 
-    .wafer-inner-ring {
-      fill: none;
-      stroke: rgba(255, 255, 255, 0.10);
-      stroke-width: 1.2;
-    }
+.floating-atoms circle {
+  fill: rgba(230, 235, 240, 0.72);
+  opacity: 0;
+}
 
-    .floating-atoms circle {
-      fill: rgba(228, 232, 236, 0.72);
-      opacity: 0;
-      filter: blur(0.15px);
-    }
+.settled-atoms circle {
+  fill: rgba(232, 236, 240, 0.96);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
 
-    .settled-atoms circle {
-      fill: rgba(228, 232, 236, 0.90);
-      opacity: 0;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
+.circuit-layer {
+  opacity: 0;
+  animation: circuitReveal 10s linear infinite;
+}
 
-    .circuit-layer {
-      opacity: 0;
-      animation: circuitReveal 10s linear infinite;
-    }
+.circuit-grid line {
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 1.4;
+  shape-rendering: crispEdges;
+}
 
-    .circuit-grid line {
-      stroke: rgba(255, 255, 255, 0.16);
-      stroke-width: 1;
-    }
+.chip-block {
+  fill: rgba(255, 255, 255, 0.10);
+  stroke: rgba(219, 234, 254, 0.90);
+  stroke-width: 1.2;
+  rx: 2;
+  ry: 2;
+}
 
-    .chip-block {
-      fill: rgba(255, 255, 255, 0.035);
-      stroke: rgba(219, 234, 254, 0.28);
-      stroke-width: 0.8;
-      rx: 2;
-      ry: 2;
-    }
+.chip-trace {
+  stroke: rgba(255, 255, 255, 0.92);
+  stroke-width: 1.15;
+  fill: none;
+  stroke-linecap: round;
+  shape-rendering: crispEdges;
+}
 
-    .chip-trace {
-      stroke: rgba(219, 234, 254, 0.30);
-      stroke-width: 0.9;
-      fill: none;
-      stroke-linecap: round;
-    }
+@keyframes incomingAtom {
+  0%, 19% {
+    opacity: 0;
+    transform: translateY(-22px) scale(0.35);
+  }
+  26% {
+    opacity: 0.7;
+    transform: translateY(-7px) scale(0.85);
+  }
+  42% {
+    opacity: 0.32;
+    transform: translateY(3px) scale(0.95);
+  }
+  55%, 100% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.2);
+  }
+}
 
-    @keyframes incomingAtom {
-      0%, 19% {
-        opacity: 0;
-        transform: translateY(-26px) scale(0.4);
-      }
-      25% {
-        opacity: 0.65;
-        transform: translateY(-8px) scale(0.85);
-      }
-      42% {
-        opacity: 0.38;
-        transform: translateY(4px) scale(0.95);
-      }
-      55%, 100% {
-        opacity: 0;
-        transform: translateY(14px) scale(0.2);
-      }
-    }
+@keyframes settleAtom {
+  0%, 19% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.45);
+  }
+  24% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.55);
+  }
+  34% {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+  }
+}
 
-    @keyframes settleAtom {
-      0%, 19% {
-        opacity: 0;
-        transform: translateY(12px) scale(0.45);
-      }
-      24% {
-        opacity: 0;
-        transform: translateY(10px) scale(0.55);
-      }
-      34% {
-        opacity: 0.96;
-        transform: translateY(0) scale(1.06);
-      }
-      78% {
-        opacity: 0.96;
-        transform: translateY(0) scale(1);
-      }
-      86% {
-        opacity: 0.96;
-        transform: translateY(0) scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(0) scale(1);
-      }
-    }
+@keyframes circuitReveal {
+  0%, 86% {
+    opacity: 0;
+  }
+  90%, 99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
-    @keyframes circuitReveal {
-      0%, 88% {
-        opacity: 0;
-      }
-      92%, 98% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
 
     @media (max-width: 900px) {
       nav {
@@ -454,9 +451,9 @@
                 </radialGradient>
 
                 <radialGradient id="waferShine" cx="38%" cy="32%" r="62%">
-                  <stop offset="0%" stop-color="rgba(255,255,255,0.95)"></stop>
-                  <stop offset="32%" stop-color="rgba(255,255,255,0.18)"></stop>
-                  <stop offset="100%" stop-color="rgba(255,255,255,0)"></stop>
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"></stop>
+                  <stop offset="32%" stop-color="#ffffff" stop-opacity="0.18"></stop>
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
                 </radialGradient>
               </defs>
 
@@ -709,133 +706,132 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      const svgNS = "http://www.w3.org/2000/svg";
-      const floatingGroup = document.getElementById("floatingAtoms");
-      const settledGroup = document.getElementById("settledAtoms");
-      const gridGroup = document.getElementById("circuitGrid");
-      const chipGroup = document.getElementById("chipBlocks");
+<script>
+  (function () {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const floatingGroup = document.getElementById("floatingAtoms");
+    const settledGroup = document.getElementById("settledAtoms");
+    const gridGroup = document.getElementById("circuitGrid");
+    const chipGroup = document.getElementById("chipBlocks");
 
-      const centerX = 110;
-      const centerY = 110;
-      const waferRadius = 82;
+    const centerX = 110;
+    const centerY = 110;
+    const waferRadius = 82;
 
-      function insideWafer(x, y, margin = 0) {
-        const dx = x - centerX;
-        const dy = y - centerY;
-        return (dx * dx + dy * dy) <= Math.pow(waferRadius - margin, 2);
-      }
+    function insideWafer(x, y, margin = 0) {
+      const dx = x - centerX;
+      const dy = y - centerY;
+      return (dx * dx + dy * dy) <= Math.pow(waferRadius - margin, 2);
+    }
 
-      /* =========================
-         1. SETTLED ATOMS
-         bottom to top between 2s and 9s
-      ========================== */
-      const rowYs = [164, 150, 136, 122, 108, 94, 80, 66];
-      const xSpacing = 14;
-      let atomIndex = 0;
+    /* =========================
+       1. DEPOSITED ATOMS
+       fill from bottom to top
+    ========================== */
+    const rowYs = [164, 152, 140, 128, 116, 104, 92, 80, 68, 56];
+    const xSpacing = 12;
 
-      rowYs.forEach((y, rowIndex) => {
-        for (let x = 46; x <= 174; x += xSpacing) {
-          if (insideWafer(x, y, 6)) {
-            const circle = document.createElementNS(svgNS, "circle");
-            circle.setAttribute("cx", x);
-            circle.setAttribute("cy", y);
-            circle.setAttribute("r", 3.7);
-
-            const delay = 2 + (rowIndex / (rowYs.length - 1)) * 7 + ((x - 46) / 128) * 0.42;
-            circle.style.animation = `settleAtom 10s linear infinite ${delay - 10}s`;
-            settledGroup.appendChild(circle);
-            atomIndex++;
-          }
-        }
-      });
-
-      /* =========================
-         2. RANDOM FLOATING ATOMS
-         symbolic incoming flux
-      ========================== */
-      const floatingCount = 34;
-
-      for (let i = 0; i < floatingCount; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const radius = Math.sqrt(Math.random()) * 62;
-        const x = centerX + Math.cos(angle) * radius;
-
-        const targetY = 58 + Math.random() * 92;
-        const startY = targetY - (18 + Math.random() * 18);
-
-        if (!insideWafer(x, targetY, 10)) continue;
+    rowYs.forEach((y, rowIndex) => {
+      for (let x = 42; x <= 178; x += xSpacing) {
+        if (!insideWafer(x, y, 6)) continue;
 
         const circle = document.createElementNS(svgNS, "circle");
-        circle.setAttribute("cx", x.toFixed(2));
-        circle.setAttribute("cy", targetY.toFixed(2));
-        circle.setAttribute("r", (2.2 + Math.random() * 1.1).toFixed(2));
+        circle.setAttribute("cx", x);
+        circle.setAttribute("cy", y);
+        circle.setAttribute("r", 3.4);
 
-        const atomDelay = 2 + Math.random() * 6.2;
-        circle.style.transform = `translateY(${startY - targetY}px)`;
-        circle.style.animation = `incomingAtom 10s linear infinite ${atomDelay - 10}s`;
+        const xProgress = (x - 42) / (178 - 42);
+        const rowProgress = rowIndex / (rowYs.length - 1);
+        const delay = 2 + rowProgress * 7 + xProgress * 0.35;
 
-        floatingGroup.appendChild(circle);
+        circle.style.animation = `settleAtom 10s linear infinite ${delay - 10}s`;
+        settledGroup.appendChild(circle);
       }
+    });
 
-      /* =========================
-         3. CIRCUIT GRID
-      ========================== */
-      const gridPositions = [54, 70, 86, 102, 118, 134, 150, 166];
-      gridPositions.forEach((x) => {
-        const line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", x);
-        line.setAttribute("y1", 40);
-        line.setAttribute("x2", x);
-        line.setAttribute("y2", 180);
-        gridGroup.appendChild(line);
+    /* =========================
+       2. RANDOM INCOMING ATOMS
+    ========================== */
+    const floatingCount = 42;
+
+    for (let i = 0; i < floatingCount; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const radius = Math.sqrt(Math.random()) * 62;
+      const x = centerX + Math.cos(angle) * radius;
+      const y = centerY + Math.sin(angle) * radius;
+
+      if (!insideWafer(x, y, 10)) continue;
+
+      const circle = document.createElementNS(svgNS, "circle");
+      circle.setAttribute("cx", x.toFixed(2));
+      circle.setAttribute("cy", y.toFixed(2));
+      circle.setAttribute("r", (2.0 + Math.random() * 0.9).toFixed(2));
+
+      const atomDelay = 2 + Math.random() * 6.2;
+      circle.style.animation = `incomingAtom 10s linear infinite ${atomDelay - 10}s`;
+
+      floatingGroup.appendChild(circle);
+    }
+
+    /* =========================
+       3. IC GRID
+    ========================== */
+    const gridPositions = [50, 66, 82, 98, 114, 130, 146, 162, 178];
+
+    gridPositions.forEach((x) => {
+      const line = document.createElementNS(svgNS, "line");
+      line.setAttribute("x1", x);
+      line.setAttribute("y1", 42);
+      line.setAttribute("x2", x);
+      line.setAttribute("y2", 178);
+      gridGroup.appendChild(line);
+    });
+
+    gridPositions.forEach((y) => {
+      const line = document.createElementNS(svgNS, "line");
+      line.setAttribute("x1", 42);
+      line.setAttribute("y1", y);
+      line.setAttribute("x2", 178);
+      line.setAttribute("y2", y);
+      gridGroup.appendChild(line);
+    });
+
+    /* =========================
+       4. CHIP BLOCKS + TRACES
+       make them bigger and brighter
+    ========================== */
+    const chipRows = [56, 76, 96, 116, 136, 156];
+    const chipCols = [56, 76, 96, 116, 136, 156];
+
+    chipRows.forEach((y) => {
+      chipCols.forEach((x) => {
+        if (!insideWafer(x + 8, y + 7, 10)) return;
+
+        const rect = document.createElementNS(svgNS, "rect");
+        rect.setAttribute("x", x);
+        rect.setAttribute("y", y);
+        rect.setAttribute("width", 16);
+        rect.setAttribute("height", 13);
+        rect.setAttribute("class", "chip-block");
+        chipGroup.appendChild(rect);
+
+        const trace1 = document.createElementNS(svgNS, "path");
+        trace1.setAttribute("class", "chip-trace");
+        trace1.setAttribute("d", `M ${x + 3} ${y + 4} L ${x + 13} ${y + 4}`);
+        chipGroup.appendChild(trace1);
+
+        const trace2 = document.createElementNS(svgNS, "path");
+        trace2.setAttribute("class", "chip-trace");
+        trace2.setAttribute("d", `M ${x + 4} ${y + 7} L ${x + 11} ${y + 7}`);
+        chipGroup.appendChild(trace2);
+
+        const trace3 = document.createElementNS(svgNS, "path");
+        trace3.setAttribute("class", "chip-trace");
+        trace3.setAttribute("d", `M ${x + 8} ${y + 2} L ${x + 8} ${y + 11}`);
+        chipGroup.appendChild(trace3);
       });
-
-      gridPositions.forEach((y) => {
-        const line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", 40);
-        line.setAttribute("y1", y);
-        line.setAttribute("x2", 180);
-        line.setAttribute("y2", y);
-        gridGroup.appendChild(line);
-      });
-
-      /* =========================
-         4. CHIP BLOCKS + TRACES
-      ========================== */
-      const chipRows = [60, 78, 96, 114, 132, 150];
-      const chipCols = [60, 78, 96, 114, 132, 150];
-
-      chipRows.forEach((y) => {
-        chipCols.forEach((x) => {
-          if (!insideWafer(x + 8, y + 6, 10)) return;
-
-          const rect = document.createElementNS(svgNS, "rect");
-          rect.setAttribute("x", x);
-          rect.setAttribute("y", y);
-          rect.setAttribute("width", 14);
-          rect.setAttribute("height", 11);
-          rect.setAttribute("class", "chip-block");
-          chipGroup.appendChild(rect);
-
-          const trace1 = document.createElementNS(svgNS, "path");
-          trace1.setAttribute("class", "chip-trace");
-          trace1.setAttribute("d", `M ${x + 2} ${y + 3} L ${x + 11} ${y + 3}`);
-          chipGroup.appendChild(trace1);
-
-          const trace2 = document.createElementNS(svgNS, "path");
-          trace2.setAttribute("class", "chip-trace");
-          trace2.setAttribute("d", `M ${x + 4} ${y + 6} L ${x + 9} ${y + 6}`);
-          chipGroup.appendChild(trace2);
-
-          const trace3 = document.createElementNS(svgNS, "path");
-          trace3.setAttribute("class", "chip-trace");
-          trace3.setAttribute("d", `M ${x + 6} ${y + 2} L ${x + 6} ${y + 9}`);
-          chipGroup.appendChild(trace3);
-        });
-      });
-    })();
-  </script>
+    });
+  })();
+</script>
 </body>
 </html>
