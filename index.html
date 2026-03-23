@@ -264,95 +264,106 @@
       margin-top: 40px;
     }
 
-    /* LOGO */
-    .wafer-base {
-      fill: url(#siliconGlow);
-    }
+  /* LOGO */
+.wafer-base {
+  fill: url(#siliconGlow);
+}
 
-    .wafer-outline {
-      fill: none;
-      stroke: #dbeafe;
-      stroke-width: 3;
-    }
+.wafer-outline {
+  fill: none;
+  stroke: #dbeafe;
+  stroke-width: 3;
+}
 
-    .wafer-grid line {
-      stroke: rgba(255, 255, 255, 0.20);
-      stroke-width: 1.15;
-    }
+.wafer-grid line {
+  stroke: rgba(255, 255, 255, 0.20);
+  stroke-width: 1.15;
+}
 
-    .settled-atoms circle {
-      fill: rgba(235, 235, 235, 0.92);
-      opacity: 0;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
+.settled-atoms circle {
+  fill: rgba(238, 238, 238, 0.90);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
 
-    .s1  { animation: settle 8s linear infinite 0.00s; }
-    .s2  { animation: settle 8s linear infinite 0.12s; }
-    .s3  { animation: settle 8s linear infinite 0.24s; }
-    .s4  { animation: settle 8s linear infinite 0.36s; }
-    .s5  { animation: settle 8s linear infinite 0.48s; }
-    .s6  { animation: settle 8s linear infinite 0.60s; }
-    .s7  { animation: settle 8s linear infinite 0.72s; }
+/* bottom row to top row */
+.s1  { animation: atomCycle 9s linear infinite 0.00s; }
+.s2  { animation: atomCycle 9s linear infinite 0.10s; }
+.s3  { animation: atomCycle 9s linear infinite 0.20s; }
+.s4  { animation: atomCycle 9s linear infinite 0.30s; }
+.s5  { animation: atomCycle 9s linear infinite 0.40s; }
+.s6  { animation: atomCycle 9s linear infinite 0.50s; }
+.s7  { animation: atomCycle 9s linear infinite 0.60s; }
 
-    .s8  { animation: settle 8s linear infinite 1.05s; }
-    .s9  { animation: settle 8s linear infinite 1.17s; }
-    .s10 { animation: settle 8s linear infinite 1.29s; }
-    .s11 { animation: settle 8s linear infinite 1.41s; }
-    .s12 { animation: settle 8s linear infinite 1.53s; }
-    .s13 { animation: settle 8s linear infinite 1.65s; }
-    .s14 { animation: settle 8s linear infinite 1.77s; }
+.s8  { animation: atomCycle 9s linear infinite 0.90s; }
+.s9  { animation: atomCycle 9s linear infinite 1.00s; }
+.s10 { animation: atomCycle 9s linear infinite 1.10s; }
+.s11 { animation: atomCycle 9s linear infinite 1.20s; }
+.s12 { animation: atomCycle 9s linear infinite 1.30s; }
+.s13 { animation: atomCycle 9s linear infinite 1.40s; }
+.s14 { animation: atomCycle 9s linear infinite 1.50s; }
 
-    .s15 { animation: settle 8s linear infinite 2.10s; }
-    .s16 { animation: settle 8s linear infinite 2.22s; }
-    .s17 { animation: settle 8s linear infinite 2.34s; }
-    .s18 { animation: settle 8s linear infinite 2.46s; }
-    .s19 { animation: settle 8s linear infinite 2.58s; }
-    .s20 { animation: settle 8s linear infinite 2.70s; }
-    .s21 { animation: settle 8s linear infinite 2.82s; }
+.s15 { animation: atomCycle 9s linear infinite 1.80s; }
+.s16 { animation: atomCycle 9s linear infinite 1.90s; }
+.s17 { animation: atomCycle 9s linear infinite 2.00s; }
+.s18 { animation: atomCycle 9s linear infinite 2.10s; }
+.s19 { animation: atomCycle 9s linear infinite 2.20s; }
+.s20 { animation: atomCycle 9s linear infinite 2.30s; }
+.s21 { animation: atomCycle 9s linear infinite 2.40s; }
 
-    .s22 { animation: settle 8s linear infinite 3.15s; }
-    .s23 { animation: settle 8s linear infinite 3.27s; }
-    .s24 { animation: settle 8s linear infinite 3.39s; }
-    .s25 { animation: settle 8s linear infinite 3.51s; }
-    .s26 { animation: settle 8s linear infinite 3.63s; }
-    .s27 { animation: settle 8s linear infinite 3.75s; }
-    .s28 { animation: settle 8s linear infinite 3.87s; }
+.s22 { animation: atomCycle 9s linear infinite 2.70s; }
+.s23 { animation: atomCycle 9s linear infinite 2.80s; }
+.s24 { animation: atomCycle 9s linear infinite 2.90s; }
+.s25 { animation: atomCycle 9s linear infinite 3.00s; }
+.s26 { animation: atomCycle 9s linear infinite 3.10s; }
+.s27 { animation: atomCycle 9s linear infinite 3.20s; }
+.s28 { animation: atomCycle 9s linear infinite 3.30s; }
 
-    .s29 { animation: settle 8s linear infinite 4.20s; }
-    .s30 { animation: settle 8s linear infinite 4.32s; }
-    .s31 { animation: settle 8s linear infinite 4.44s; }
-    .s32 { animation: settle 8s linear infinite 4.56s; }
-    .s33 { animation: settle 8s linear infinite 4.68s; }
-    .s34 { animation: settle 8s linear infinite 4.80s; }
-    .s35 { animation: settle 8s linear infinite 4.92s; }
+.s29 { animation: atomCycle 9s linear infinite 3.60s; }
+.s30 { animation: atomCycle 9s linear infinite 3.70s; }
+.s31 { animation: atomCycle 9s linear infinite 3.80s; }
+.s32 { animation: atomCycle 9s linear infinite 3.90s; }
+.s33 { animation: atomCycle 9s linear infinite 4.00s; }
+.s34 { animation: atomCycle 9s linear infinite 4.10s; }
+.s35 { animation: atomCycle 9s linear infinite 4.20s; }
 
-    .s36 { animation: settle 8s linear infinite 5.25s; }
-    .s37 { animation: settle 8s linear infinite 5.37s; }
-    .s38 { animation: settle 8s linear infinite 5.49s; }
-    .s39 { animation: settle 8s linear infinite 5.61s; }
-    .s40 { animation: settle 8s linear infinite 5.73s; }
-    .s41 { animation: settle 8s linear infinite 5.85s; }
-    .s42 { animation: settle 8s linear infinite 5.97s; }
+.s36 { animation: atomCycle 9s linear infinite 4.50s; }
+.s37 { animation: atomCycle 9s linear infinite 4.60s; }
+.s38 { animation: atomCycle 9s linear infinite 4.70s; }
+.s39 { animation: atomCycle 9s linear infinite 4.80s; }
+.s40 { animation: atomCycle 9s linear infinite 4.90s; }
+.s41 { animation: atomCycle 9s linear infinite 5.00s; }
+.s42 { animation: atomCycle 9s linear infinite 5.10s; }
 
-    @keyframes settle {
-      0%, 8% {
-        opacity: 0;
-        transform: translateY(18px) scale(0.25);
-      }
-      14% {
-        opacity: 0.9;
-        transform: translateY(0) scale(1.12);
-      }
-      22%, 88% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(0) scale(0.55);
-      }
-    }
+@keyframes atomCycle {
+  0%, 6% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.35);
+  }
+  10% {
+    opacity: 0.95;
+    transform: translateY(0) scale(1.05);
+  }
+  58% {
+    opacity: 0.95;
+    transform: translateY(0) scale(1);
+  }
+  68% {
+    opacity: 1;
+    transform: scale(1.35);
+    filter: brightness(1.45);
+  }
+  74% {
+    opacity: 0;
+    transform: scale(1.6);
+    filter: brightness(1.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
 
     @media (max-width: 900px) {
       nav {
@@ -405,90 +416,110 @@
       <nav>
         <div class="brand">
           <div class="logo-wrap">
-            <svg class="wafer-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Swapnil Nano logo">
-              <defs>
-                <clipPath id="waferClip">
-                  <circle cx="110" cy="110" r="82"/>
-                </clipPath>
-                <radialGradient id="siliconGlow" cx="50%" cy="45%" r="72%">
-                  <stop offset="0%" stop-color="#cbd5e1"/>
-                  <stop offset="62%" stop-color="#98a7b8"/>
-                  <stop offset="100%" stop-color="#718196"/>
-                </radialGradient>
-              </defs>
+  <svg class="wafer-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Swapnil Nano logo">
+    <defs>
+      <clipPath id="waferClip">
+        <path d="M110 28
+                 A82 82 0 1 1 109.9 28
+                 L109.9 28 Z"/>
+      </clipPath>
+      <radialGradient id="siliconGlow" cx="50%" cy="42%" r="74%">
+        <stop offset="0%" stop-color="#d6dee8"/>
+        <stop offset="58%" stop-color="#a2afbf"/>
+        <stop offset="100%" stop-color="#718196"/>
+      </radialGradient>
+    </defs>
 
-              <circle class="wafer-base" cx="110" cy="110" r="82"/>
+    <!-- silicon wafer with small flat side at bottom -->
+    <path class="wafer-base"
+      d="M110 28
+         A82 82 0 1 1 78 186
+         L142 186
+         A82 82 0 0 1 110 28 Z"/>
 
-              <g class="wafer-grid" clip-path="url(#waferClip)">
-                <line x1="45" y1="50" x2="45" y2="170"/>
-                <line x1="65" y1="40" x2="65" y2="180"/>
-                <line x1="85" y1="35" x2="85" y2="185"/>
-                <line x1="105" y1="30" x2="105" y2="190"/>
-                <line x1="125" y1="35" x2="125" y2="185"/>
-                <line x1="145" y1="40" x2="145" y2="180"/>
-                <line x1="165" y1="50" x2="165" y2="170"/>
+    <!-- wafer grid -->
+    <g class="wafer-grid" clip-path="url(#waferClip)">
+      <line x1="45" y1="50" x2="45" y2="170"/>
+      <line x1="65" y1="40" x2="65" y2="180"/>
+      <line x1="85" y1="35" x2="85" y2="185"/>
+      <line x1="105" y1="30" x2="105" y2="190"/>
+      <line x1="125" y1="35" x2="125" y2="185"/>
+      <line x1="145" y1="40" x2="145" y2="180"/>
+      <line x1="165" y1="50" x2="165" y2="170"/>
 
-                <line x1="35" y1="65" x2="185" y2="65"/>
-                <line x1="30" y1="85" x2="190" y2="85"/>
-                <line x1="28" y1="105" x2="192" y2="105"/>
-                <line x1="30" y1="125" x2="190" y2="125"/>
-                <line x1="35" y1="145" x2="185" y2="145"/>
-                <line x1="45" y1="165" x2="175" y2="165"/>
-              </g>
+      <line x1="35" y1="65" x2="185" y2="65"/>
+      <line x1="30" y1="85" x2="190" y2="85"/>
+      <line x1="28" y1="105" x2="192" y2="105"/>
+      <line x1="30" y1="125" x2="190" y2="125"/>
+      <line x1="35" y1="145" x2="185" y2="145"/>
+      <line x1="45" y1="165" x2="175" y2="165"/>
+    </g>
 
-              <g class="settled-atoms" clip-path="url(#waferClip)">
-                <circle class="s1" cx="45" cy="165" r="4.7"/>
-                <circle class="s2" cx="65" cy="165" r="4.7"/>
-                <circle class="s3" cx="85" cy="165" r="4.7"/>
-                <circle class="s4" cx="105" cy="165" r="4.7"/>
-                <circle class="s5" cx="125" cy="165" r="4.7"/>
-                <circle class="s6" cx="145" cy="165" r="4.7"/>
-                <circle class="s7" cx="165" cy="165" r="4.7"/>
+    <!-- atoms fill from bottom to top -->
+    <g class="settled-atoms" clip-path="url(#waferClip)">
+      <!-- bottom row -->
+      <circle class="s1" cx="45" cy="165" r="4.7"/>
+      <circle class="s2" cx="65" cy="165" r="4.7"/>
+      <circle class="s3" cx="85" cy="165" r="4.7"/>
+      <circle class="s4" cx="105" cy="165" r="4.7"/>
+      <circle class="s5" cx="125" cy="165" r="4.7"/>
+      <circle class="s6" cx="145" cy="165" r="4.7"/>
+      <circle class="s7" cx="165" cy="165" r="4.7"/>
 
-                <circle class="s8" cx="45" cy="145" r="4.7"/>
-                <circle class="s9" cx="65" cy="145" r="4.7"/>
-                <circle class="s10" cx="85" cy="145" r="4.7"/>
-                <circle class="s11" cx="105" cy="145" r="4.7"/>
-                <circle class="s12" cx="125" cy="145" r="4.7"/>
-                <circle class="s13" cx="145" cy="145" r="4.7"/>
-                <circle class="s14" cx="165" cy="145" r="4.7"/>
+      <!-- row 2 -->
+      <circle class="s8" cx="45" cy="145" r="4.7"/>
+      <circle class="s9" cx="65" cy="145" r="4.7"/>
+      <circle class="s10" cx="85" cy="145" r="4.7"/>
+      <circle class="s11" cx="105" cy="145" r="4.7"/>
+      <circle class="s12" cx="125" cy="145" r="4.7"/>
+      <circle class="s13" cx="145" cy="145" r="4.7"/>
+      <circle class="s14" cx="165" cy="145" r="4.7"/>
 
-                <circle class="s15" cx="45" cy="125" r="4.7"/>
-                <circle class="s16" cx="65" cy="125" r="4.7"/>
-                <circle class="s17" cx="85" cy="125" r="4.7"/>
-                <circle class="s18" cx="105" cy="125" r="4.7"/>
-                <circle class="s19" cx="125" cy="125" r="4.7"/>
-                <circle class="s20" cx="145" cy="125" r="4.7"/>
-                <circle class="s21" cx="165" cy="125" r="4.7"/>
+      <!-- row 3 -->
+      <circle class="s15" cx="45" cy="125" r="4.7"/>
+      <circle class="s16" cx="65" cy="125" r="4.7"/>
+      <circle class="s17" cx="85" cy="125" r="4.7"/>
+      <circle class="s18" cx="105" cy="125" r="4.7"/>
+      <circle class="s19" cx="125" cy="125" r="4.7"/>
+      <circle class="s20" cx="145" cy="125" r="4.7"/>
+      <circle class="s21" cx="165" cy="125" r="4.7"/>
 
-                <circle class="s22" cx="45" cy="105" r="4.7"/>
-                <circle class="s23" cx="65" cy="105" r="4.7"/>
-                <circle class="s24" cx="85" cy="105" r="4.7"/>
-                <circle class="s25" cx="105" cy="105" r="4.7"/>
-                <circle class="s26" cx="125" cy="105" r="4.7"/>
-                <circle class="s27" cx="145" cy="105" r="4.7"/>
-                <circle class="s28" cx="165" cy="105" r="4.7"/>
+      <!-- row 4 -->
+      <circle class="s22" cx="45" cy="105" r="4.7"/>
+      <circle class="s23" cx="65" cy="105" r="4.7"/>
+      <circle class="s24" cx="85" cy="105" r="4.7"/>
+      <circle class="s25" cx="105" cy="105" r="4.7"/>
+      <circle class="s26" cx="125" cy="105" r="4.7"/>
+      <circle class="s27" cx="145" cy="105" r="4.7"/>
+      <circle class="s28" cx="165" cy="105" r="4.7"/>
 
-                <circle class="s29" cx="45" cy="85" r="4.7"/>
-                <circle class="s30" cx="65" cy="85" r="4.7"/>
-                <circle class="s31" cx="85" cy="85" r="4.7"/>
-                <circle class="s32" cx="105" cy="85" r="4.7"/>
-                <circle class="s33" cx="125" cy="85" r="4.7"/>
-                <circle class="s34" cx="145" cy="85" r="4.7"/>
-                <circle class="s35" cx="165" cy="85" r="4.7"/>
+      <!-- row 5 -->
+      <circle class="s29" cx="45" cy="85" r="4.7"/>
+      <circle class="s30" cx="65" cy="85" r="4.7"/>
+      <circle class="s31" cx="85" cy="85" r="4.7"/>
+      <circle class="s32" cx="105" cy="85" r="4.7"/>
+      <circle class="s33" cx="125" cy="85" r="4.7"/>
+      <circle class="s34" cx="145" cy="85" r="4.7"/>
+      <circle class="s35" cx="165" cy="85" r="4.7"/>
 
-                <circle class="s36" cx="45" cy="65" r="4.7"/>
-                <circle class="s37" cx="65" cy="65" r="4.7"/>
-                <circle class="s38" cx="85" cy="65" r="4.7"/>
-                <circle class="s39" cx="105" cy="65" r="4.7"/>
-                <circle class="s40" cx="125" cy="65" r="4.7"/>
-                <circle class="s41" cx="145" cy="65" r="4.7"/>
-                <circle class="s42" cx="165" cy="65" r="4.7"/>
-              </g>
+      <!-- top row -->
+      <circle class="s36" cx="45" cy="65" r="4.7"/>
+      <circle class="s37" cx="65" cy="65" r="4.7"/>
+      <circle class="s38" cx="85" cy="65" r="4.7"/>
+      <circle class="s39" cx="105" cy="65" r="4.7"/>
+      <circle class="s40" cx="125" cy="65" r="4.7"/>
+      <circle class="s41" cx="145" cy="65" r="4.7"/>
+      <circle class="s42" cx="165" cy="65" r="4.7"/>
+    </g>
 
-              <circle class="wafer-outline" cx="110" cy="110" r="82"/>
-            </svg>
-          </div>
+    <!-- wafer outline -->
+    <path class="wafer-outline"
+      d="M110 28
+         A82 82 0 1 1 78 186
+         L142 186
+         A82 82 0 0 1 110 28 Z"/>
+  </svg>
+</div>
 
           <div class="brand-text">
             <span>Swapnil</span>
