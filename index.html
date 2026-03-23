@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Swapnil Nalawade (PhD) | Materials Scientist</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background-color: #f5f7fb;
       color: #1f2937;
       line-height: 1.6;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     header {
@@ -24,7 +24,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.16);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
     }
 
     .container {
@@ -39,18 +39,6 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 14px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 16px;
-      font-size: 0.95rem;
-      transition: opacity 0.2s ease;
-    }
-
-    nav a:hover {
-      opacity: 0.8;
     }
 
     .brand {
@@ -94,6 +82,73 @@
       letter-spacing: 0.3px;
     }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .nav-links > a,
+    .dropbtn {
+      color: white;
+      text-decoration: none;
+      margin-left: 16px;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    .nav-links > a:hover,
+    .dropbtn:hover {
+      opacity: 0.8;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-left: 16px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 24px;
+      left: 0;
+      min-width: 220px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      overflow: hidden;
+      z-index: 2000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      color: #0f172a;
+      text-decoration: none;
+      padding: 12px 16px;
+      margin: 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
     .hero {
       background: linear-gradient(to right, #0f172a, #1e3a8a);
       color: white;
@@ -134,24 +189,24 @@
       margin-top: 25px;
     }
 
-    .card {
+    .card,
+    .resource-box,
+    .education-box,
+    .publication-card {
       background: white;
       padding: 22px;
       border-radius: 14px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
     }
 
-    .card h4 {
+    .card h4,
+    .resource-box h4,
+    .education-box h4 {
       margin-top: 0;
       color: #1e3a8a;
-      line-height: 1.35;
     }
 
     .publication-card {
-      background: white;
-      padding: 24px;
-      border-radius: 14px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
       margin-bottom: 20px;
     }
 
@@ -169,23 +224,15 @@
       font-style: italic;
     }
 
-    .publication-card p {
-      margin-top: 0;
-      margin-bottom: 14px;
-    }
-
-    .journal-link {
+    .journal-link,
+    .download-btn {
       display: inline-block;
       padding: 10px 16px;
       background: #1e3a8a;
-      color: white;
+      color: white !important;
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
-    }
-
-    .journal-link:hover {
-      background: #163172;
     }
 
     .resource-list,
@@ -194,20 +241,6 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       margin-top: 25px;
-    }
-
-    .resource-box,
-    .education-box {
-      background: white;
-      padding: 22px;
-      border-radius: 14px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    }
-
-    .resource-box h4,
-    .education-box h4 {
-      margin-top: 0;
-      color: #1e3a8a;
     }
 
     ul {
@@ -223,16 +256,6 @@
       font-weight: 600;
     }
 
-    .download-btn {
-      display: inline-block;
-      padding: 11px 18px;
-      background: #1f4e79;
-      color: white !important;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-    }
-
     footer {
       background-color: #0f172a;
       color: white;
@@ -244,7 +267,7 @@
     /* LOGO */
     .wafer-base {
       fill: url(#siliconGlow);
-      animation: baseFade 10s linear infinite;
+      animation: waferFade 10s linear infinite;
     }
 
     .wafer-outline {
@@ -254,7 +277,7 @@
     }
 
     .wafer-grid line {
-      stroke: rgba(255,255,255,0.20);
+      stroke: rgba(255, 255, 255, 0.20);
       stroke-width: 1.15;
       animation: gridFade 10s linear infinite;
     }
@@ -264,172 +287,242 @@
       animation: spectrumReveal 10s linear infinite;
     }
 
-    .stripe-1 { fill: #6a0f16; }
-    .stripe-2 { fill: #7f2f0d; }
-    .stripe-3 { fill: #8b6a07; }
+    .stripe-1 { fill: #661016; }
+    .stripe-2 { fill: #7c2d12; }
+    .stripe-3 { fill: #854d0e; }
     .stripe-4 { fill: #14532d; }
-    .stripe-5 { fill: #115e59; }
+    .stripe-5 { fill: #155e75; }
     .stripe-6 { fill: #1d4ed8; }
     .stripe-7 { fill: #581c87; }
 
     .moving-atoms circle {
-      fill: rgba(255,255,255,0.96);
+      fill: rgba(255, 255, 255, 0.96);
       opacity: 0;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.18));
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
     }
 
-    .atom-fly-1 { animation: fly1 10s linear infinite; }
-    .atom-fly-2 { animation: fly2 10s linear infinite; }
-    .atom-fly-3 { animation: fly3 10s linear infinite; }
-    .atom-fly-4 { animation: fly4 10s linear infinite; }
-    .atom-fly-5 { animation: fly5 10s linear infinite; }
-    .atom-fly-6 { animation: fly6 10s linear infinite; }
-    .atom-fly-7 { animation: fly7 10s linear infinite; }
-    .atom-fly-8 { animation: fly8 10s linear infinite; }
-    .atom-fly-9 { animation: fly9 10s linear infinite; }
-    .atom-fly-10 { animation: fly10 10s linear infinite; }
-    .atom-fly-11 { animation: fly11 10s linear infinite; }
-    .atom-fly-12 { animation: fly12 10s linear infinite; }
-
-    .lattice-atoms circle {
-      fill: rgba(245,245,245,0.92);
+    .settled-atoms circle {
+      fill: rgba(240, 240, 240, 0.92);
       opacity: 0;
-      animation: latticeAppear 10s linear infinite;
+      transform-box: fill-box;
+      transform-origin: center;
     }
 
-    @keyframes baseFade {
+    /* Flying atoms: random-looking motion first, then settle near target */
+    .a1 { animation: atom1 10s linear infinite; }
+    .a2 { animation: atom2 10s linear infinite; }
+    .a3 { animation: atom3 10s linear infinite; }
+    .a4 { animation: atom4 10s linear infinite; }
+    .a5 { animation: atom5 10s linear infinite; }
+    .a6 { animation: atom6 10s linear infinite; }
+    .a7 { animation: atom7 10s linear infinite; }
+    .a8 { animation: atom8 10s linear infinite; }
+    .a9 { animation: atom9 10s linear infinite; }
+    .a10 { animation: atom10 10s linear infinite; }
+    .a11 { animation: atom11 10s linear infinite; }
+    .a12 { animation: atom12 10s linear infinite; }
+
+    /* Settling atoms appear one after another */
+    .s1 { animation: settle 10s linear infinite 0.00s; }
+    .s2 { animation: settle 10s linear infinite 0.12s; }
+    .s3 { animation: settle 10s linear infinite 0.24s; }
+    .s4 { animation: settle 10s linear infinite 0.36s; }
+    .s5 { animation: settle 10s linear infinite 0.48s; }
+    .s6 { animation: settle 10s linear infinite 0.60s; }
+    .s7 { animation: settle 10s linear infinite 0.72s; }
+    .s8 { animation: settle 10s linear infinite 0.84s; }
+    .s9 { animation: settle 10s linear infinite 0.96s; }
+    .s10 { animation: settle 10s linear infinite 1.08s; }
+    .s11 { animation: settle 10s linear infinite 1.20s; }
+    .s12 { animation: settle 10s linear infinite 1.32s; }
+    .s13 { animation: settle 10s linear infinite 1.44s; }
+    .s14 { animation: settle 10s linear infinite 1.56s; }
+    .s15 { animation: settle 10s linear infinite 1.68s; }
+    .s16 { animation: settle 10s linear infinite 1.80s; }
+    .s17 { animation: settle 10s linear infinite 1.92s; }
+    .s18 { animation: settle 10s linear infinite 2.04s; }
+    .s19 { animation: settle 10s linear infinite 2.16s; }
+    .s20 { animation: settle 10s linear infinite 2.28s; }
+    .s21 { animation: settle 10s linear infinite 2.40s; }
+    .s22 { animation: settle 10s linear infinite 2.52s; }
+    .s23 { animation: settle 10s linear infinite 2.64s; }
+    .s24 { animation: settle 10s linear infinite 2.76s; }
+    .s25 { animation: settle 10s linear infinite 2.88s; }
+    .s26 { animation: settle 10s linear infinite 3.00s; }
+    .s27 { animation: settle 10s linear infinite 3.12s; }
+    .s28 { animation: settle 10s linear infinite 3.24s; }
+    .s29 { animation: settle 10s linear infinite 3.36s; }
+    .s30 { animation: settle 10s linear infinite 3.48s; }
+    .s31 { animation: settle 10s linear infinite 3.60s; }
+    .s32 { animation: settle 10s linear infinite 3.72s; }
+    .s33 { animation: settle 10s linear infinite 3.84s; }
+    .s34 { animation: settle 10s linear infinite 3.96s; }
+    .s35 { animation: settle 10s linear infinite 4.08s; }
+    .s36 { animation: settle 10s linear infinite 4.20s; }
+    .s37 { animation: settle 10s linear infinite 4.32s; }
+    .s38 { animation: settle 10s linear infinite 4.44s; }
+    .s39 { animation: settle 10s linear infinite 4.56s; }
+    .s40 { animation: settle 10s linear infinite 4.68s; }
+    .s41 { animation: settle 10s linear infinite 4.80s; }
+    .s42 { animation: settle 10s linear infinite 4.92s; }
+
+    @keyframes waferFade {
       0%, 52% { opacity: 1; }
-      66% { opacity: 0.65; }
+      66% { opacity: 0.7; }
       78%, 92% { opacity: 0.28; }
       100% { opacity: 1; }
     }
 
     @keyframes gridFade {
-      0%, 52% { opacity: 1; }
-      68%, 92% { opacity: 0.20; }
+      0%, 56% { opacity: 1; }
+      72%, 92% { opacity: 0.18; }
       100% { opacity: 1; }
     }
 
     @keyframes spectrumReveal {
-      0%, 50% { opacity: 0; }
-      62% { opacity: 0.35; }
-      76%, 92% { opacity: 0.96; }
+      0%, 56% { opacity: 0; }
+      68% { opacity: 0.38; }
+      80%, 92% { opacity: 0.96; }
       100% { opacity: 0; }
     }
 
-    @keyframes latticeAppear {
-      0%, 50% { opacity: 0; transform: scale(0.35); }
-      62% { opacity: 0.6; transform: scale(1.08); }
-      76%, 92% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(0.5); }
+    @keyframes settle {
+      0%, 58% {
+        opacity: 0;
+        transform: scale(0.25);
+      }
+      64% {
+        opacity: 0.95;
+        transform: scale(1.15);
+      }
+      78%, 92% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.4);
+      }
     }
 
-    @keyframes fly1 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      14% { opacity: 1; }
-      26% { transform: translate(35px,-18px); opacity: 1; }
-      38% { transform: translate(62px,4px); opacity: 1; }
-      50% { transform: translate(82px,2px); opacity: 0; }
-      100% { transform: translate(82px,2px); opacity: 0; }
+    @keyframes atom1 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      20% { transform: translate(22px,-14px); opacity: 1; }
+      32% { transform: translate(48px,10px); opacity: 1; }
+      48% { transform: translate(16px,-4px); opacity: 1; }
+      58% { transform: translate(17px,-45px); opacity: 0; }
+      100% { transform: translate(17px,-45px); opacity: 0; }
     }
 
-    @keyframes fly2 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      28% { transform: translate(18px,26px); opacity: 1; }
-      39% { transform: translate(46px,18px); opacity: 1; }
-      50% { transform: translate(64px,10px); opacity: 0; }
-      100% { transform: translate(64px,10px); opacity: 0; }
+    @keyframes atom2 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(16px,26px); opacity: 1; }
+      36% { transform: translate(42px,8px); opacity: 1; }
+      50% { transform: translate(24px,12px); opacity: 1; }
+      58% { transform: translate(15px,-7px); opacity: 0; }
+      100% { transform: translate(15px,-7px); opacity: 0; }
     }
 
-    @keyframes fly3 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      27% { transform: translate(16px,-22px); opacity: 1; }
-      39% { transform: translate(44px,-34px); opacity: 1; }
-      50% { transform: translate(60px,-44px); opacity: 0; }
-      100% { transform: translate(60px,-44px); opacity: 0; }
+    @keyframes atom3 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      13% { opacity: 1; }
+      22% { transform: translate(28px,-18px); opacity: 1; }
+      34% { transform: translate(54px,-6px); opacity: 1; }
+      48% { transform: translate(38px,-26px); opacity: 1; }
+      58% { transform: translate(13px,-5px); opacity: 0; }
+      100% { transform: translate(13px,-5px); opacity: 0; }
     }
 
-    @keyframes fly4 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      26% { transform: translate(6px,30px); opacity: 1; }
-      38% { transform: translate(18px,54px); opacity: 1; }
-      50% { transform: translate(30px,78px); opacity: 0; }
-      100% { transform: translate(30px,78px); opacity: 0; }
+    @keyframes atom4 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(10px,24px); opacity: 1; }
+      38% { transform: translate(20px,46px); opacity: 1; }
+      50% { transform: translate(26px,20px); opacity: 1; }
+      58% { transform: translate(-21px,37px); opacity: 0; }
+      100% { transform: translate(-21px,37px); opacity: 0; }
     }
 
-    @keyframes fly5 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      16% { opacity: 1; }
-      28% { transform: translate(-18px,28px); opacity: 1; }
-      40% { transform: translate(-40px,50px); opacity: 1; }
-      50% { transform: translate(-56px,72px); opacity: 0; }
-      100% { transform: translate(-56px,72px); opacity: 0; }
+    @keyframes atom5 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(-18px,26px); opacity: 1; }
+      36% { transform: translate(-40px,46px); opacity: 1; }
+      50% { transform: translate(-22px,18px); opacity: 1; }
+      58% { transform: translate(-35px,37px); opacity: 0; }
+      100% { transform: translate(-35px,37px); opacity: 0; }
     }
 
-    @keyframes fly6 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      14% { opacity: 1; }
-      27% { transform: translate(-22px,12px); opacity: 1; }
-      38% { transform: translate(-46px,24px); opacity: 1; }
-      50% { transform: translate(-66px,34px); opacity: 0; }
-      100% { transform: translate(-66px,34px); opacity: 0; }
+    @keyframes atom6 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(-20px,12px); opacity: 1; }
+      38% { transform: translate(-44px,26px); opacity: 1; }
+      50% { transform: translate(-28px,4px); opacity: 1; }
+      58% { transform: translate(-31px,27px); opacity: 0; }
+      100% { transform: translate(-31px,27px); opacity: 0; }
     }
 
-    @keyframes fly7 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      26% { transform: translate(-24px,-6px); opacity: 1; }
-      38% { transform: translate(-54px,-2px); opacity: 1; }
-      50% { transform: translate(-78px,0px); opacity: 0; }
-      100% { transform: translate(-78px,0px); opacity: 0; }
+    @keyframes atom7 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(-18px,-10px); opacity: 1; }
+      36% { transform: translate(-48px,8px); opacity: 1; }
+      50% { transform: translate(-24px,-3px); opacity: 1; }
+      58% { transform: translate(-27px,-45px); opacity: 0; }
+      100% { transform: translate(-27px,-45px); opacity: 0; }
     }
 
-    @keyframes fly8 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      28% { transform: translate(-16px,-22px); opacity: 1; }
-      39% { transform: translate(-38px,-42px); opacity: 1; }
-      50% { transform: translate(-58px,-64px); opacity: 0; }
-      100% { transform: translate(-58px,-64px); opacity: 0; }
+    @keyframes atom8 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(-14px,-24px); opacity: 1; }
+      38% { transform: translate(-36px,-42px); opacity: 1; }
+      50% { transform: translate(-18px,-18px); opacity: 1; }
+      58% { transform: translate(-25px,-55px); opacity: 0; }
+      100% { transform: translate(-25px,-55px); opacity: 0; }
     }
 
-    @keyframes fly9 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      28% { transform: translate(10px,-28px); opacity: 1; }
-      39% { transform: translate(22px,-50px); opacity: 1; }
-      50% { transform: translate(34px,-76px); opacity: 0; }
-      100% { transform: translate(34px,-76px); opacity: 0; }
+    @keyframes atom9 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(12px,-22px); opacity: 1; }
+      36% { transform: translate(26px,-48px); opacity: 1; }
+      50% { transform: translate(18px,-20px); opacity: 1; }
+      58% { transform: translate(-17px,-63px); opacity: 0; }
+      100% { transform: translate(-17px,-63px); opacity: 0; }
     }
 
-    @keyframes fly10 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      27% { transform: translate(28px,8px); opacity: 1; }
-      38% { transform: translate(52px,-8px); opacity: 1; }
-      50% { transform: translate(76px,-14px); opacity: 0; }
-      100% { transform: translate(76px,-14px); opacity: 0; }
+    @keyframes atom10 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(20px,10px); opacity: 1; }
+      38% { transform: translate(42px,-8px); opacity: 1; }
+      50% { transform: translate(28px,8px); opacity: 1; }
+      58% { transform: translate(37px,21px); opacity: 0; }
+      100% { transform: translate(37px,21px); opacity: 0; }
     }
 
-    @keyframes fly11 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      28% { transform: translate(-8px,-26px); opacity: 1; }
-      38% { transform: translate(-18px,-50px); opacity: 1; }
-      50% { transform: translate(-28px,-74px); opacity: 0; }
-      100% { transform: translate(-28px,-74px); opacity: 0; }
+    @keyframes atom11 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(-10px,-24px); opacity: 1; }
+      38% { transform: translate(-20px,-46px); opacity: 1; }
+      50% { transform: translate(-8px,-20px); opacity: 1; }
+      58% { transform: translate(5px,-65px); opacity: 0; }
+      100% { transform: translate(5px,-65px); opacity: 0; }
     }
 
-    @keyframes fly12 {
-      0%, 10% { transform: translate(0,0); opacity: 0; }
-      15% { opacity: 1; }
-      27% { transform: translate(0px,24px); opacity: 1; }
-      39% { transform: translate(-4px,52px); opacity: 1; }
-      50% { transform: translate(-12px,82px); opacity: 0; }
-      100% { transform: translate(-12px,82px); opacity: 0; }
+    @keyframes atom12 {
+      0%, 8% { transform: translate(0,0); opacity: 0; }
+      12% { opacity: 1; }
+      24% { transform: translate(0px,24px); opacity: 1; }
+      36% { transform: translate(-8px,48px); opacity: 1; }
+      50% { transform: translate(6px,18px); opacity: 1; }
+      58% { transform: translate(-21px,45px); opacity: 0; }
+      100% { transform: translate(-21px,45px); opacity: 0; }
     }
 
     @media (max-width: 900px) {
@@ -438,9 +531,16 @@
         align-items: flex-start;
       }
 
-      nav a {
+      .nav-links {
+        width: 100%;
+      }
+
+      .nav-links > a,
+      .dropbtn,
+      .dropdown {
         margin-left: 0;
-        margin-right: 12px;
+        margin-right: 14px;
+        margin-top: 6px;
       }
 
       .hero h2 {
@@ -471,7 +571,6 @@
   </style>
 </head>
 <body>
-
   <header>
     <div class="container">
       <nav>
@@ -518,76 +617,77 @@
                 <rect class="stripe-7" x="28" y="166" width="164" height="23"/>
               </g>
 
+              <!-- Flying atoms -->
               <g class="moving-atoms">
-                <circle class="atom-fly-1" cx="28" cy="110" r="4.6"/>
-                <circle class="atom-fly-2" cx="50" cy="72" r="4.1"/>
-                <circle class="atom-fly-3" cx="52" cy="150" r="4.2"/>
-                <circle class="atom-fly-4" cx="86" cy="28" r="4.1"/>
-                <circle class="atom-fly-5" cx="140" cy="28" r="4.1"/>
-                <circle class="atom-fly-6" cx="176" cy="58" r="4.2"/>
-                <circle class="atom-fly-7" cx="192" cy="110" r="4.6"/>
-                <circle class="atom-fly-8" cx="172" cy="160" r="4.1"/>
-                <circle class="atom-fly-9" cx="82" cy="188" r="4.2"/>
-                <circle class="atom-fly-10" cx="28" cy="84" r="4.1"/>
-                <circle class="atom-fly-11" cx="140" cy="190" r="4.1"/>
-                <circle class="atom-fly-12" cx="126" cy="20" r="4.1"/>
+                <circle class="a1" cx="28" cy="110" r="4.4"/>
+                <circle class="a2" cx="50" cy="72" r="4.1"/>
+                <circle class="a3" cx="52" cy="150" r="4.1"/>
+                <circle class="a4" cx="86" cy="28" r="4.1"/>
+                <circle class="a5" cx="140" cy="28" r="4.1"/>
+                <circle class="a6" cx="176" cy="58" r="4.1"/>
+                <circle class="a7" cx="192" cy="110" r="4.4"/>
+                <circle class="a8" cx="172" cy="160" r="4.1"/>
+                <circle class="a9" cx="82" cy="188" r="4.1"/>
+                <circle class="a10" cx="28" cy="84" r="4.1"/>
+                <circle class="a11" cx="140" cy="190" r="4.1"/>
+                <circle class="a12" cx="126" cy="20" r="4.1"/>
               </g>
 
-              <!-- atoms at every grid intersection -->
-              <g class="lattice-atoms" clip-path="url(#waferClip)">
+              <!-- Settled atoms at intersections -->
+              <g class="settled-atoms" clip-path="url(#waferClip)">
                 <!-- y = 65 -->
-                <circle cx="45" cy="65" r="4.8"/>
-                <circle cx="65" cy="65" r="4.8"/>
-                <circle cx="85" cy="65" r="4.8"/>
-                <circle cx="105" cy="65" r="4.8"/>
-                <circle cx="125" cy="65" r="4.8"/>
-                <circle cx="145" cy="65" r="4.8"/>
-                <circle cx="165" cy="65" r="4.8"/>
+                <circle class="s1" cx="45" cy="65" r="4.7"/>
+                <circle class="s2" cx="65" cy="65" r="4.7"/>
+                <circle class="s3" cx="85" cy="65" r="4.7"/>
+                <circle class="s4" cx="105" cy="65" r="4.7"/>
+                <circle class="s5" cx="125" cy="65" r="4.7"/>
+                <circle class="s6" cx="145" cy="65" r="4.7"/>
+                <circle class="s7" cx="165" cy="65" r="4.7"/>
 
                 <!-- y = 85 -->
-                <circle cx="45" cy="85" r="4.8"/>
-                <circle cx="65" cy="85" r="4.8"/>
-                <circle cx="85" cy="85" r="4.8"/>
-                <circle cx="105" cy="85" r="4.8"/>
-                <circle cx="125" cy="85" r="4.8"/>
-                <circle cx="145" cy="85" r="4.8"/>
-                <circle cx="165" cy="85" r="4.8"/>
+                <circle class="s8" cx="45" cy="85" r="4.7"/>
+                <circle class="s9" cx="65" cy="85" r="4.7"/>
+                <circle class="s10" cx="85" cy="85" r="4.7"/>
+                <circle class="s11" cx="105" cy="85" r="4.7"/>
+                <circle class="s12" cx="125" cy="85" r="4.7"/>
+                <circle class="s13" cx="145" cy="85" r="4.7"/>
+                <circle class="s14" cx="165" cy="85" r="4.7"/>
 
                 <!-- y = 105 -->
-                <circle cx="45" cy="105" r="4.8"/>
-                <circle cx="65" cy="105" r="4.8"/>
-                <circle cx="85" cy="105" r="4.8"/>
-                <circle cx="105" cy="105" r="4.8"/>
-                <circle cx="125" cy="105" r="4.8"/>
-                <circle cx="145" cy="105" r="4.8"/>
-                <circle cx="165" cy="105" r="4.8"/>
+                <circle class="s15" cx="45" cy="105" r="4.7"/>
+                <circle class="s16" cx="65" cy="105" r="4.7"/>
+                <circle class="s17" cx="85" cy="105" r="4.7"/>
+                <circle class="s18" cx="105" cy="105" r="4.7"/>
+                <circle class="s19" cx="125" cy="105" r="4.7"/>
+                <circle class="s20" cx="145" cy="105" r="4.7"/>
+                <circle class="s21" cx="165" cy="105" r="4.7"/>
 
                 <!-- y = 125 -->
-                <circle cx="45" cy="125" r="4.8"/>
-                <circle cx="65" cy="125" r="4.8"/>
-                <circle cx="85" cy="125" r="4.8"/>
-                <circle cx="105" cy="125" r="4.8"/>
-                <circle cx="125" cy="125" r="4.8"/>
-                <circle cx="145" cy="125" r="4.8"/>
-                <circle cx="165" cy="125" r="4.8"/>
+                <circle class="s22" cx="45" cy="125" r="4.7"/>
+                <circle class="s23" cx="65" cy="125" r="4.7"/>
+                <circle class="s24" cx="85" cy="125" r="4.7"/>
+                <circle class="s25" cx="105" cy="125" r="4.7"/>
+                <circle class="s26" cx="125" cy="125" r="4.7"/>
+                <circle class="s27" cx="145" cy="125" r="4.7"/>
+                <circle class="s28" cx="165" cy="125" r="4.7"/>
 
                 <!-- y = 145 -->
-                <circle cx="45" cy="145" r="4.8"/>
-                <circle cx="65" cy="145" r="4.8"/>
-                <circle cx="85" cy="145" r="4.8"/>
-                <circle cx="105" cy="145" r="4.8"/>
-                <circle cx="125" cy="145" r="4.8"/>
-                <circle cx="145" cy="145" r="4.8"/>
-                <circle cx="165" cy="145" r="4.8"/>
+                <circle class="s29" cx="45" cy="145" r="4.7"/>
+                <circle class="s30" cx="65" cy="145" r="4.7"/>
+                <circle class="s31" cx="85" cy="145" r="4.7"/>
+                <circle class="s32" cx="105" cy="145" r="4.7"/>
+                <circle class="s33" cx="125" cy="145" r="4.7"/>
+                <circle class="s34" cx="145" cy="145" r="4.7"/>
+                <circle class="s35" cx="165" cy="145" r="4.7"/>
 
                 <!-- y = 165 -->
-                <circle cx="45" cy="165" r="4.8"/>
-                <circle cx="65" cy="165" r="4.8"/>
-                <circle cx="85" cy="165" r="4.8"/>
-                <circle cx="105" cy="165" r="4.8"/>
-                <circle cx="125" cy="165" r="4.8"/>
-                <circle cx="145" cy="165" r="4.8"/>
-                <circle cx="165" cy="165" r="4.8"/>
+                <circle class="s36" cx="45" cy="165" r="4.7"/>
+                <circle class="s37" cx="65" cy="165" r="4.7"/>
+                <circle class="s38" cx="85" cy="165" r="4.7"/>
+                <circle class="s39" cx="105" cy="165" r="4.7"/>
+                <circle class="s40" cx="125" cy="165" r="4.7"/>
+                <circle class="s41" cx="145" cy="165" r="4.7"/>
+                <circle class="s42" cx="165" cy="165" r="4.7"/>
               </g>
 
               <circle class="wafer-outline" cx="110" cy="110" r="82"/>
@@ -600,13 +700,22 @@
           </div>
         </div>
 
-        <div>
+        <div class="nav-links">
           <a href="#about">About</a>
           <a href="#research">Research</a>
           <a href="#publications">Publications</a>
           <a href="#achievements">Achievements</a>
           <a href="#education">Education</a>
-          <a href="#resources">Resources</a>
+
+          <div class="dropdown">
+            <button class="dropbtn">Resources</button>
+            <div class="dropdown-content">
+              <a href="#xps">XPS</a>
+              <a href="#xrd">XRD</a>
+              <a href="#ellipsometry">Spectroscopic Ellipsometry</a>
+            </div>
+          </div>
+
           <a href="#cv">CV</a>
           <a href="#contact">Contact</a>
         </div>
@@ -629,14 +738,7 @@
       <p class="section-intro">
         I am a materials scientist and researcher working at the intersection of nanotechnology, thin-film engineering,
         and semiconductor processing. My work focuses on the deposition and characterization of functional thin films
-        using Atomic Layer Deposition (ALD) and sputtering, with particular emphasis on ruthenium and ruthenium oxide
-        systems for energy and device-related applications.
-      </p>
-      <p>
-        I use advanced characterization techniques such as XPS, XRD, AFM, Raman spectroscopy, ellipsometry,
-        and electrochemical measurements to understand how processing conditions affect structure, surface chemistry,
-        and performance. My broader interests include semiconductor manufacturing, metrology, process optimization,
-        and scientific data analysis using Python.
+        using Atomic Layer Deposition (ALD) and sputtering.
       </p>
     </div>
   </section>
@@ -647,26 +749,15 @@
       <div class="card-grid">
         <div class="card">
           <h4>ALD Ru to RuO₂ Phase Transformation</h4>
-          <p>
-            Investigated how annealing transforms ALD-deposited Ru metal into RuO₂ and how these changes influence
-            surface chemistry, structure, and water adsorption behavior.
-          </p>
+          <p>Study of annealing-driven phase evolution, structure, and surface chemistry.</p>
         </div>
-
         <div class="card">
           <h4>Reactive Sputtered RuO₂ Thin Films</h4>
-          <p>
-            Studied the influence of Ar:O₂ gas ratio on the stoichiometry, morphology, crystallinity,
-            and electrochemical performance of sputtered RuO₂ thin films.
-          </p>
+          <p>Effect of Ar:O₂ ratio on stoichiometry, morphology, crystallinity, and electrochemistry.</p>
         </div>
-
         <div class="card">
           <h4>Web-Based XPS Analysis Tool</h4>
-          <p>
-            Developed a Python-based web application for XPS analysis, including region selection,
-            background correction, charge correction, and peak fitting workflows.
-          </p>
+          <p>Development of a Python-based tool for region selection, background correction, and fitting.</p>
         </div>
       </div>
     </div>
@@ -675,36 +766,10 @@
   <section id="publications">
     <div class="container">
       <h3>Publications</h3>
-      <p class="section-intro">
-        Add your published papers, submitted manuscripts, or selected research outputs here. Replace the sample text and links below with your actual paper titles, abstracts, and journal URLs.
-      </p>
-
       <div class="publication-card">
-        <h4>Paper Title 1: Replace this with your published article title</h4>
+        <h4>Paper Title 1</h4>
         <div class="publication-meta">Journal Name | Year | Volume(Issue), Pages</div>
-        <p>
-          Replace this paragraph with a concise abstract or summary of your paper. Mention the material system,
-          deposition method, characterization techniques, and the main scientific outcome.
-        </p>
-        <a class="journal-link" href="https://doi.org/" target="_blank">View Journal Article</a>
-      </div>
-
-      <div class="publication-card">
-        <h4>Paper Title 2: Replace this with your second article title</h4>
-        <div class="publication-meta">Journal Name | Year | Volume(Issue), Pages</div>
-        <p>
-          Replace this with the abstract or short summary of the second paper. Keep it to 3–5 lines so the website stays clean and readable.
-        </p>
-        <a class="journal-link" href="https://doi.org/" target="_blank">View Journal Article</a>
-      </div>
-
-      <div class="publication-card">
-        <h4>Paper Title 3: Replace this with your third article title</h4>
-        <div class="publication-meta">Journal Name | Year | Volume(Issue), Pages</div>
-        <p>
-          Replace this section with a brief description of the paper, including the purpose of the study,
-          the key methods, and the main finding.
-        </p>
+        <p>Replace this with your abstract or paper summary.</p>
         <a class="journal-link" href="https://doi.org/" target="_blank">View Journal Article</a>
       </div>
     </div>
@@ -720,19 +785,14 @@
             <li>Atomic Layer Deposition (ALD) and sputtering</li>
             <li>XPS, XRD, AFM, Raman, and ellipsometry</li>
             <li>Electrochemical characterization</li>
-            <li>Python-based scientific data analysis</li>
-            <li>Thin-film process optimization</li>
           </ul>
         </div>
-
         <div class="card">
           <h4>Professional Highlights</h4>
           <ul>
             <li>PhD research in thin-film deposition and characterization</li>
-            <li>Conference posters and technical presentations</li>
-            <li>Cleanroom and nanofabrication experience</li>
-            <li>Lean Six Sigma certification</li>
-            <li>Research collaborations with universities and national labs</li>
+            <li>Conference posters and presentations</li>
+            <li>Cleanroom experience</li>
           </ul>
         </div>
       </div>
@@ -744,52 +804,44 @@
       <h3>Education</h3>
       <div class="education-list">
         <div class="education-box">
-          <h4>PhD in Nanoscience / Nanotechnology</h4>
-          <p>
-            Add your university name, expected graduation year or graduation year, dissertation topic, and major research focus.
-          </p>
+          <h4>PhD</h4>
+          <p>Add your PhD university, year, and dissertation topic.</p>
         </div>
-
         <div class="education-box">
           <h4>Master’s Degree</h4>
-          <p>
-            Add your master’s university, department, graduation year, and relevant specialization.
-          </p>
+          <p>Add your master’s details here.</p>
         </div>
-
         <div class="education-box">
           <h4>Bachelor’s Degree</h4>
-          <p>
-            Add your bachelor’s institution, department, and graduation year.
-          </p>
+          <p>Add your bachelor’s details here.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="resources">
+  <section id="xps">
     <div class="container">
-      <h3>Resources</h3>
-      <div class="resource-list">
-        <div class="resource-box">
-          <h4>Research Profiles</h4>
-          <p>Add links to Google Scholar, ORCID, ResearchGate, Scopus, or your lab profile.</p>
-          <ul>
-            <li><a href="#">Google Scholar</a></li>
-            <li><a href="#">ORCID</a></li>
-            <li><a href="#">ResearchGate</a></li>
-          </ul>
-        </div>
+      <h3>XPS</h3>
+      <div class="resource-box">
+        <p>Add your XPS information here later.</p>
+      </div>
+    </div>
+  </section>
 
-        <div class="resource-box">
-          <h4>Tools & Projects</h4>
-          <p>Highlight your web app, GitHub repositories, code notebooks, or technical documentation.</p>
-          <ul>
-            <li><a href="https://github.com/Swapnil-Nano" target="_blank">GitHub Projects</a></li>
-            <li><a href="#">XPS Web App</a></li>
-            <li><a href="#">Presentation Slides / Posters</a></li>
-          </ul>
-        </div>
+  <section id="xrd">
+    <div class="container">
+      <h3>XRD</h3>
+      <div class="resource-box">
+        <p>Add your XRD information here later.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ellipsometry">
+    <div class="container">
+      <h3>Spectroscopic Ellipsometry</h3>
+      <div class="resource-box">
+        <p>Add your spectroscopic ellipsometry information here later.</p>
       </div>
     </div>
   </section>
@@ -797,9 +849,7 @@
   <section id="cv">
     <div class="container cv-link">
       <h3>CV</h3>
-      <p>
-        <a href="CV.pdf" download class="download-btn">Download CV</a>
-      </p>
+      <p><a href="CV.pdf" download class="download-btn">Download CV</a></p>
     </div>
   </section>
 
@@ -817,6 +867,5 @@
       <p>© 2026 Swapnil Nalawade (PhD) | Built with GitHub Pages</p>
     </div>
   </footer>
-
 </body>
 </html>
