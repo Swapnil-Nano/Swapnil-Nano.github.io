@@ -182,11 +182,13 @@
       margin-bottom: 24px;
       text-align: justify;
       text-justify: inter-word;
-}
+    }
+
     p {
       text-align: justify;
       text-justify: inter-word;
-}
+    }
+
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -252,52 +254,54 @@
       gap: 20px;
       margin-top: 25px;
     }
+
     .resource-links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
 
-.resource-item {
-  display: block;
-}
+    .resource-item {
+      display: block;
+    }
 
-.resource-toggle {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  color: #0f172a;
-  font-size: 1.15rem;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  text-align: left;
-}
+    .resource-toggle {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      color: #0f172a;
+      font-size: 1.15rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+    }
 
-.resource-toggle:hover {
-  opacity: 0.8;
-}
+    .resource-toggle:hover {
+      opacity: 0.8;
+    }
 
-.resource-content {
-  display: none;
-  margin-top: 10px;
-  padding-left: 0;
-  text-align: justify;
-  text-justify: inter-word;
-  max-width: 100%;
-}
+    .resource-content {
+      display: none;
+      margin-top: 10px;
+      padding-left: 0;
+      text-align: justify;
+      text-justify: inter-word;
+      max-width: 100%;
+    }
 
-.resource-content p {
-  text-align: justify;
-  text-justify: inter-word;
-  margin-top: 0;
-}
+    .resource-content p {
+      text-align: justify;
+      text-justify: inter-word;
+      margin-top: 0;
+    }
 
-.resource-item.active .resource-content {
-  display: block;
-}
+    .resource-item.active .resource-content {
+      display: block;
+    }
+
     ul {
       padding-left: 20px;
       margin-bottom: 0;
@@ -318,124 +322,105 @@
       padding: 22px 0;
       margin-top: 40px;
     }
-/* =========================
-   LOGO ANIMATION
-========================= */
 
-.wafer-base {
-  fill: url(#siliconGlow);
-}
+    /* =========================
+       LOGO ANIMATION
+    ========================= */
 
-.wafer-highlight {
-  fill: url(#waferShine);
-  opacity: 0.22;
-}
+    .wafer-base {
+      fill: url(#siliconGlow);
+    }
 
-.wafer-outline {
-  fill: none;
-  stroke: #dbeafe;
-  stroke-width: 2.8;
-}
+    .wafer-highlight {
+      fill: url(#waferShine);
+      opacity: 0.22;
+    }
 
-.wafer-inner-ring {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.12);
-  stroke-width: 1.2;
-}
+    .wafer-outline {
+      fill: none;
+      stroke: #dbeafe;
+      stroke-width: 2.8;
+    }
 
-.floating-atoms circle {
-  fill: rgba(230, 235, 240, 0.72);
-  opacity: 0;
-}
+    .wafer-inner-ring {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.12);
+      stroke-width: 1.2;
+    }
 
-.settled-atoms circle {
-  fill: rgba(232, 236, 240, 0.96);
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-}
+    .settled-atoms {
+      animation: settledGroupCycle 22s linear infinite;
+    }
 
-.circuit-layer {
-  opacity: 0;
-  animation: circuitReveal 10s linear infinite;
-}
+    .settled-atoms circle {
+      fill: rgba(232, 236, 240, 0.96);
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
 
-.circuit-grid line {
-  stroke: rgba(255, 255, 255, 0.55);
-  stroke-width: 1.4;
-  shape-rendering: crispEdges;
-}
+    .circuit-layer {
+      opacity: 0;
+      animation: circuitReveal 22s linear infinite;
+    }
 
-.chip-block {
-  fill: rgba(255, 255, 255, 0.10);
-  stroke: rgba(219, 234, 254, 0.90);
-  stroke-width: 1.2;
-  rx: 2;
-  ry: 2;
-}
+    .circuit-grid line {
+      stroke: rgba(255, 255, 255, 0.55);
+      stroke-width: 1.4;
+      shape-rendering: crispEdges;
+    }
 
-.chip-trace {
-  stroke: rgba(255, 255, 255, 0.92);
-  stroke-width: 1.15;
-  fill: none;
-  stroke-linecap: round;
-  shape-rendering: crispEdges;
-}
+    .chip-block {
+      fill: rgba(255, 255, 255, 0.10);
+      stroke: rgba(219, 234, 254, 0.90);
+      stroke-width: 1.2;
+      rx: 2;
+      ry: 2;
+    }
 
-@keyframes incomingAtom {
-  0%, 19% {
-    opacity: 0;
-    transform: translateY(-22px) scale(0.35);
-  }
-  26% {
-    opacity: 0.7;
-    transform: translateY(-7px) scale(0.85);
-  }
-  42% {
-    opacity: 0.32;
-    transform: translateY(3px) scale(0.95);
-  }
-  55%, 100% {
-    opacity: 0;
-    transform: translateY(12px) scale(0.2);
-  }
-}
+    .chip-trace {
+      stroke: rgba(255, 255, 255, 0.92);
+      stroke-width: 1.15;
+      fill: none;
+      stroke-linecap: round;
+      shape-rendering: crispEdges;
+    }
 
-@keyframes settleAtom {
-  0%, 19% {
-    opacity: 0;
-    transform: translateY(10px) scale(0.45);
-  }
-  24% {
-    opacity: 0;
-    transform: translateY(8px) scale(0.55);
-  }
-  34% {
-    opacity: 1;
-    transform: translateY(0) scale(1.05);
-  }
-  82% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(0) scale(1);
-  }
-}
+    @keyframes settleAtom {
+      0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.55);
+      }
+      8% {
+        opacity: 1;
+        transform: translateY(0) scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-@keyframes circuitReveal {
-  0%, 86% {
-    opacity: 0;
-  }
-  90%, 99% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+    @keyframes settledGroupCycle {
+      0%, 68.18% {
+        opacity: 1;
+      }
+      77.27% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
 
+    @keyframes circuitReveal {
+      0%, 77.27% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
 
     @media (max-width: 900px) {
       nav {
@@ -507,18 +492,12 @@
                 </radialGradient>
               </defs>
 
-              <!-- bare silicon wafer -->
               <circle class="wafer-base" cx="110" cy="110" r="82"></circle>
               <circle class="wafer-highlight" cx="110" cy="110" r="82"></circle>
               <circle class="wafer-inner-ring" cx="110" cy="110" r="70"></circle>
 
-              <!-- random incoming atoms -->
-              <g class="floating-atoms" clip-path="url(#waferClip)" id="floatingAtoms"></g>
-
-              <!-- bottom-to-top deposited layers -->
               <g class="settled-atoms" clip-path="url(#waferClip)" id="settledAtoms"></g>
 
-              <!-- IC pattern appears after deposition -->
               <g class="circuit-layer" clip-path="url(#waferClip)" id="circuitLayer">
                 <g class="circuit-grid" id="circuitGrid"></g>
                 <g id="chipBlocks"></g>
@@ -561,7 +540,6 @@
   <section class="hero">
     <div class="container">
       <h2>Materials Scientist | Semiconductor Process Engineer</h2>
-            
     </div>
   </section>
 
@@ -680,128 +658,132 @@
   </section>
 
   <section id="resources">
-  <div class="container">
-    <h3>Resources</h3>
+    <div class="container">
+      <h3>Resources</h3>
 
-    <div class="resource-links">
-      <div class="resource-item" id="ald">
-        <button class="resource-toggle">Atomic Layer Deposition (ALD)</button>
-        <div class="resource-content">
-          <p>
-            In recent years, there has been a tremendous demand for atomically flat thin 
-            films across a wide range of industries, including electronics, photonics, energy 
-            generation and storage, medical, biomedical, and aerospace. Defect-free, conformal, 
-            and uniform thin films are essential for ensuring consistent material performance in 
-            these applications, and atomically flat films play a vital role in modern nanofabrication.
-          </p>
-          <p>
-            Atomic layer deposition is one such technique that stands out for several reasons, 
-            including precise thickness control, excellent film conformality, low-temperature processing, 
-            stoichiometric control, and inherent film quality. The demand for continuous and pinhole-free films 
-            in semiconductor devices has further driven developments in ALD. The International Technology Roadmap 
-            for Semiconductors (ITRS) has also recognized ALD for applications such as high-dielectric-constant gate 
-            oxides in MOSFET structures and copper diffusion barriers for interconnects.
-          </p>
-        </p>
-          The demand for continuous and pinhole-free films in semiconductor devices has driven the development of 
-          Atomic Layer Deposition (ALD). ALD enables the precise formation of ultra-thin, conformal passivation or 
-          capping layers, ensuring effective protection against environmental degradation and surface contamination. 
-          ALD effectively meets the requirements for atomic-level control and conformal deposition through sequential, 
-          self-limiting surface reactions. 
-          Most ALD methods rely on binary reaction sequences, where two surface reactions occur to deposit a binary compound film. 
-          Since there are a limited number of surface sites, the reactions can deposit only a finite number of surface species.
-          When both surface reactions are self-limiting, they proceed sequentially, enabling the deposition of thin films with atomic-level precision. 
-          The primary advantages of ALD include precise thickness control at the Angstrom or monolayer level. 
-          The self-limiting nature of ALD ensures excellent step coverage and conformal deposition on high aspect ratio structures. 
-          Initially, some surface areas react before others due to varying precursor gas fluxes. 
-          However, the precursors adsorb and subsequently desorb from fully reacted areas, then proceed to react with unreacted surface areas, 
-          resulting in highly conformal deposition. This self-limiting aspect also leads to non-statistical deposition eliminating randomness 
-          in precursor flux as a significant factor. Consequently, ALD films remain extremely smooth and conformal to the original substrate, 
-          as the reactions are driven to completion during each cycle. Since no surface sites are left unreacted during film growth, the resulting 
-          films are continuous and pinhole-free, which is crucial for depositing high-quality dielectric films.
-        </p>
-        </p>
-          ALD is also scalable to very large substrates and suitable for parallel processing of multiple substrates. The gas-phase ALD precursors fill 
-          all available space, regardless of substrate geometry, and do not require line-of-sight to the substrate. The process is limited only by the 
-          size of the reaction chamber. Dominated by surface reactions, ALD ensures that the
-          two gas-phase reactants do not contact each other in the gas phase, minimizing the formation of particles that could deposit on the 
-          surface and produce granular films. 
-        </p>
+      <div class="resource-links">
+        <div class="resource-item" id="ald">
+          <button class="resource-toggle">Atomic Layer Deposition (ALD)</button>
+          <div class="resource-content">
+            <p>
+              In recent years, there has been a tremendous demand for atomically flat thin
+              films across a wide range of industries, including electronics, photonics, energy
+              generation and storage, medical, biomedical, and aerospace. Defect-free, conformal,
+              and uniform thin films are essential for ensuring consistent material performance in
+              these applications, and atomically flat films play a vital role in modern nanofabrication.
+            </p>
+            <p>
+              Atomic layer deposition is one such technique that stands out for several reasons,
+              including precise thickness control, excellent film conformality, low-temperature processing,
+              stoichiometric control, and inherent film quality. The demand for continuous and pinhole-free films
+              in semiconductor devices has further driven developments in ALD. The International Technology Roadmap
+              for Semiconductors (ITRS) has also recognized ALD for applications such as high-dielectric-constant gate
+              oxides in MOSFET structures and copper diffusion barriers for interconnects.
+            </p>
+            <p>
+              The demand for continuous and pinhole-free films in semiconductor devices has driven the development of
+              Atomic Layer Deposition (ALD). ALD enables the precise formation of ultra-thin, conformal passivation or
+              capping layers, ensuring effective protection against environmental degradation and surface contamination.
+              ALD effectively meets the requirements for atomic-level control and conformal deposition through sequential,
+              self-limiting surface reactions.
+            </p>
+            <p>
+              Most ALD methods rely on binary reaction sequences, where two surface reactions occur to deposit a binary compound film.
+              Since there are a limited number of surface sites, the reactions can deposit only a finite number of surface species.
+              When both surface reactions are self-limiting, they proceed sequentially, enabling the deposition of thin films with atomic-level precision.
+              The primary advantages of ALD include precise thickness control at the Angstrom or monolayer level.
+            </p>
+            <p>
+              The self-limiting nature of ALD ensures excellent step coverage and conformal deposition on high aspect ratio structures.
+              Initially, some surface areas react before others due to varying precursor gas fluxes.
+              However, the precursors adsorb and subsequently desorb from fully reacted areas, then proceed to react with unreacted surface areas,
+              resulting in highly conformal deposition. This self-limiting aspect also leads to non-statistical deposition eliminating randomness
+              in precursor flux as a significant factor. Consequently, ALD films remain extremely smooth and conformal to the original substrate,
+              as the reactions are driven to completion during each cycle. Since no surface sites are left unreacted during film growth, the resulting
+              films are continuous and pinhole-free, which is crucial for depositing high-quality dielectric films.
+            </p>
+            <p>
+              ALD is also scalable to very large substrates and suitable for parallel processing of multiple substrates. The gas-phase ALD precursors fill
+              all available space, regardless of substrate geometry, and do not require line-of-sight to the substrate. The process is limited only by the
+              size of the reaction chamber. Dominated by surface reactions, ALD ensures that the two gas-phase reactants do not contact each other in the gas phase,
+              minimizing the formation of particles that could deposit on the surface and produce granular films.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="resource-item" id="xps">
-        <button class="resource-toggle">X Ray Photoelectron Spectroscopy (XPS)</button>
-        <div class="resource-content">
-          <p>XPS is a surface sensitive analytical technique used to determine the elemental 
-            composition and chemical states of the materials. XPS is based on the photoelectric 
-            effect. When a material is irradiated with monochromatic X-rays (commonly Al Kα or Mg Kα), 
-            core-level electrons are ejected from atoms in the sample. The kinetic energy (KE) of these 
-            emitted electrons is measured. The binding energy (BE) of the electrons is then calculated 
-            using the equation, 
-            Binding Energy = hν - KE – Ф,
-            where hν is photon energy of the X ray, KE is the kinetic energy of emitted electrons 
-            and Ф is the work function of spectrometer. Each element has characteristic binding 
-            energies, allowing elemental identification and analysis of oxidation states. 
-</p>
+        <div class="resource-item" id="xps">
+          <button class="resource-toggle">X Ray Photoelectron Spectroscopy (XPS)</button>
+          <div class="resource-content">
+            <p>
+              XPS is a surface sensitive analytical technique used to determine the elemental
+              composition and chemical states of the materials. XPS is based on the photoelectric
+              effect. When a material is irradiated with monochromatic X-rays (commonly Al Kα or Mg Kα),
+              core-level electrons are ejected from atoms in the sample. The kinetic energy (KE) of these
+              emitted electrons is measured. The binding energy (BE) of the electrons is then calculated
+              using the equation, Binding Energy = hν - KE – Ф, where hν is photon energy of the X ray,
+              KE is the kinetic energy of emitted electrons and Ф is the work function of spectrometer.
+              Each element has characteristic binding energies, allowing elemental identification and analysis of oxidation states.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="resource-item" id="xrd">
-        <button class="resource-toggle">X Ray Diffraction (XRD)</button>
-        <div class="resource-content">
-          <p>X-ray Diffraction (XRD) was employed to investigate the crystallographic structure, 
-            phase composition, and degree of crystallinity of the deposited thin films. XRD is a 
-            non-destructive analytical technique based on the diffraction of monochromatic X-rays 
-            by the periodic atomic planes within a crystalline material. When X-rays are incident 
-            on a sample, constructive interference occurs at specific angles that satisfy Bragg’s 
-            law which is expressed as, nλ = 2dsinθ, where n is the order of diffraction (usually 1), 
-            λ is wavelength, d is the interplanar spacing and θ is angle of incidence. By measuring 
-            the angles at which these diffraction peaks appear, the spacing between atomic planes is 
-            determined and crystal structure is identified. </p>
+        <div class="resource-item" id="xrd">
+          <button class="resource-toggle">X Ray Diffraction (XRD)</button>
+          <div class="resource-content">
+            <p>
+              X-ray Diffraction (XRD) was employed to investigate the crystallographic structure,
+              phase composition, and degree of crystallinity of the deposited thin films. XRD is a
+              non-destructive analytical technique based on the diffraction of monochromatic X-rays
+              by the periodic atomic planes within a crystalline material. When X-rays are incident
+              on a sample, constructive interference occurs at specific angles that satisfy Bragg’s
+              law which is expressed as, nλ = 2dsinθ, where n is the order of diffraction (usually 1),
+              λ is wavelength, d is the interplanar spacing and θ is angle of incidence. By measuring
+              the angles at which these diffraction peaks appear, the spacing between atomic planes is
+              determined and crystal structure is identified.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="resource-item" id="ellipsometry">
-        <button class="resource-toggle">Spectroscopic Ellipsometry</button>
-        <div class="resource-content">
-          <p>Spectroscopic ellipsometry is a non-destructive and highly sensitive optical technique 
-            used to determine the thickness and complex refractive index (n and k) of thin films. 
-            The method is based on analyzing the change in polarization state of linearly polarized 
-            light upon reflection from the sample surface. It measures two parameters—Ψ, the amplitude 
-            ratio, and Δ, the phase difference—between the p- and s-polarized components of reflected 
-            light. In this study, measurements were performed on J. A Woollam iSE ellipsometer over a 
-            spectral range of 300–1000 nm at incident angle of 65 ° to obtain the wavelength-dependent 
-            optical response. To extract the optical constants and film thickness, the experimental Ψ 
-            and Δ spectra were modeled using a combination of the B-spline approach and the 
-            Kramers-Kronig (K-K) consistent model. The B-spline method provides a flexible, 
-            model-independent way to fit the dispersion of n and k, while enforcing Kramers-Kronig 
-            relations ensures the derived optical constants obey causality and physical consistency. 
-            This hybrid modeling approach enables accurate characterization of materials with complex
-            or unknown optical behavior, making spectroscopic ellipsometry a powerful tool for thin film
-            and nanomaterial analysis.</p>
+        <div class="resource-item" id="ellipsometry">
+          <button class="resource-toggle">Spectroscopic Ellipsometry</button>
+          <div class="resource-content">
+            <p>
+              Spectroscopic ellipsometry is a non-destructive and highly sensitive optical technique
+              used to determine the thickness and complex refractive index (n and k) of thin films.
+              The method is based on analyzing the change in polarization state of linearly polarized
+              light upon reflection from the sample surface. It measures two parameters—Ψ, the amplitude
+              ratio, and Δ, the phase difference—between the p- and s-polarized components of reflected
+              light. In this study, measurements were performed on J. A Woollam iSE ellipsometer over a
+              spectral range of 300–1000 nm at incident angle of 65 ° to obtain the wavelength-dependent
+              optical response. To extract the optical constants and film thickness, the experimental Ψ
+              and Δ spectra were modeled using a combination of the B-spline approach and the
+              Kramers-Kronig (K-K) consistent model. The B-spline method provides a flexible,
+              model-independent way to fit the dispersion of n and k, while enforcing Kramers-Kronig
+              relations ensures the derived optical constants obey causality and physical consistency.
+              This hybrid modeling approach enables accurate characterization of materials with complex
+              or unknown optical behavior, making spectroscopic ellipsometry a powerful tool for thin film
+              and nanomaterial analysis.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
   <section id="achievements">
     <div class="container">
       <h3>Achievements</h3>
-      
-        <div class="card">
-  
-  <ul>
-    <li>PhD in Nanoengineering with expertise in thin-film deposition and advanced materials characterization</li>
-    <li>Published peer-reviewed research in thin films, electrocatalysis, and functional oxide materials</li>
-    <li>Restored and maintained deposition yield > 90% by correlating metrology signals with chamber conditions and resolving process excursions</li>
-    <li>Developed a Python-based web platform for automated XPS spectral analysis, enabling rapid data processing for chemical states </li>
-    <li>Hands-on experience with cleanroom nanofabrication and semiconductor process development</li>
-    <li>Participated in Advanced Light Source (ALS) beamline at LBNL, Berkeley for AP-XPS and tender X-ray studies on RuO2 to resolve depth-dependent O1s and Ru3d chemistry and surface–bulk oxygen speciation under H₂O vapor </li>
-    <li>Presented research at conferences and collaborated with national labs and multidisciplinary teams</li>
-    <li>Lean Six Sigma Certified</li>
-  </ul>
-</div>
+      <div class="card">
+        <ul>
+          <li>PhD in Nanoengineering with expertise in thin-film deposition and advanced materials characterization</li>
+          <li>Published peer-reviewed research in thin films, electrocatalysis, and functional oxide materials</li>
+          <li>Restored and maintained deposition yield > 90% by correlating metrology signals with chamber conditions and resolving process excursions</li>
+          <li>Developed a Python-based web platform for automated XPS spectral analysis, enabling rapid data processing for chemical states</li>
+          <li>Hands-on experience with cleanroom nanofabrication and semiconductor process development</li>
+          <li>Participated in Advanced Light Source (ALS) beamline at LBNL, Berkeley for AP-XPS and tender X-ray studies on RuO2 to resolve depth-dependent O1s and Ru3d chemistry and surface–bulk oxygen speciation under H₂O vapor</li>
+          <li>Presented research at conferences and collaborated with national labs and multidisciplinary teams</li>
+          <li>Lean Six Sigma Certified</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -828,147 +810,125 @@
     </div>
   </footer>
 
-<script>
-  (function () {
-    const svgNS = "http://www.w3.org/2000/svg";
-    const floatingGroup = document.getElementById("floatingAtoms");
-    const settledGroup = document.getElementById("settledAtoms");
-    const gridGroup = document.getElementById("circuitGrid");
-    const chipGroup = document.getElementById("chipBlocks");
-
-    const centerX = 110;
-    const centerY = 110;
-    const waferRadius = 82;
-
-    function insideWafer(x, y, margin = 0) {
-      const dx = x - centerX;
-      const dy = y - centerY;
-      return (dx * dx + dy * dy) <= Math.pow(waferRadius - margin, 2);
-    }
-
-    /* =========================
-       1. DEPOSITED ATOMS
-       fill from bottom to top
-    ========================== */
-    const rowYs = [164, 152, 140, 128, 116, 104, 92, 80, 68, 56];
-    const xSpacing = 14;
-
-    rowYs.forEach((y, rowIndex) => {
-      for (let x = 42; x <= 178; x += xSpacing) {
-        if (!insideWafer(x, y, 6)) continue;
-
-        const circle = document.createElementNS(svgNS, "circle");
-        circle.setAttribute("cx", x);
-        circle.setAttribute("cy", y);
-        circle.setAttribute("r", 3.4);
-
-        const xProgress = (x - 42) / (178 - 42);
-        const rowProgress = rowIndex / (rowYs.length - 1);
-        const delay = 2 + rowProgress * 10 + xProgress * 0.35;
-
-        circle.style.animation = `settleAtom 15s linear infinite ${delay - 10}s`;
-        settledGroup.appendChild(circle);
-      }
-    });
-
-    /* =========================
-       2. RANDOM INCOMING ATOMS
-    ========================== */
-    const floatingCount = 42;
-
-    for (let i = 0; i < floatingCount; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const radius = Math.sqrt(Math.random()) * 62;
-      const x = centerX + Math.cos(angle) * radius;
-      const y = centerY + Math.sin(angle) * radius;
-
-      if (!insideWafer(x, y, 10)) continue;
-
-      const circle = document.createElementNS(svgNS, "circle");
-      circle.setAttribute("cx", x.toFixed(2));
-      circle.setAttribute("cy", y.toFixed(2));
-      circle.setAttribute("r", (2.0 + Math.random() * 0.9).toFixed(2));
-
-      const atomDelay = 2 + Math.random() * 6.2;
-      circle.style.animation = `incomingAtom 10s linear infinite ${atomDelay - 10}s`;
-
-      floatingGroup.appendChild(circle);
-    }
-
-    /* =========================
-       3. IC GRID
-    ========================== */
-    const gridPositions = [50, 66, 82, 98, 114, 130, 146, 162, 178];
-
-    gridPositions.forEach((x) => {
-      const line = document.createElementNS(svgNS, "line");
-      line.setAttribute("x1", x);
-      line.setAttribute("y1", 42);
-      line.setAttribute("x2", x);
-      line.setAttribute("y2", 178);
-      gridGroup.appendChild(line);
-    });
-
-    gridPositions.forEach((y) => {
-      const line = document.createElementNS(svgNS, "line");
-      line.setAttribute("x1", 42);
-      line.setAttribute("y1", y);
-      line.setAttribute("x2", 178);
-      line.setAttribute("y2", y);
-      gridGroup.appendChild(line);
-    });
-
-    /* =========================
-       4. CHIP BLOCKS + TRACES
-       make them bigger and brighter
-    ========================== */
-    const chipRows = [56, 76, 96, 116, 136, 156];
-    const chipCols = [56, 76, 96, 116, 136, 156];
-
-    chipRows.forEach((y) => {
-      chipCols.forEach((x) => {
-        if (!insideWafer(x + 8, y + 7, 10)) return;
-
-        const rect = document.createElementNS(svgNS, "rect");
-        rect.setAttribute("x", x);
-        rect.setAttribute("y", y);
-        rect.setAttribute("width", 16);
-        rect.setAttribute("height", 13);
-        rect.setAttribute("class", "chip-block");
-        chipGroup.appendChild(rect);
-
-        const trace1 = document.createElementNS(svgNS, "path");
-        trace1.setAttribute("class", "chip-trace");
-        trace1.setAttribute("d", `M ${x + 3} ${y + 4} L ${x + 13} ${y + 4}`);
-        chipGroup.appendChild(trace1);
-
-        const trace2 = document.createElementNS(svgNS, "path");
-        trace2.setAttribute("class", "chip-trace");
-        trace2.setAttribute("d", `M ${x + 4} ${y + 7} L ${x + 11} ${y + 7}`);
-        chipGroup.appendChild(trace2);
-
-        const trace3 = document.createElementNS(svgNS, "path");
-        trace3.setAttribute("class", "chip-trace");
-        trace3.setAttribute("d", `M ${x + 8} ${y + 2} L ${x + 8} ${y + 11}`);
-        chipGroup.appendChild(trace3);
-      });
-    });
-  })();
-</script>
   <script>
-  document.querySelectorAll(".resource-toggle").forEach((button) => {
-    button.addEventListener("click", function () {
-      const item = this.parentElement;
+    (function () {
+      const svgNS = "http://www.w3.org/2000/svg";
+      const settledGroup = document.getElementById("settledAtoms");
+      const gridGroup = document.getElementById("circuitGrid");
+      const chipGroup = document.getElementById("chipBlocks");
 
-      document.querySelectorAll(".resource-item").forEach((section) => {
-        if (section !== item) {
-          section.classList.remove("active");
+      const centerX = 110;
+      const centerY = 110;
+      const waferRadius = 82;
+      const totalCycle = 22;
+
+      function insideWafer(x, y, margin = 0) {
+        const dx = x - centerX;
+        const dy = y - centerY;
+        return (dx * dx + dy * dy) <= Math.pow(waferRadius - margin, 2);
+      }
+
+      /* =========================
+         1. DEPOSITED ATOMS
+         5s bare wafer
+         5s-15s bottom to top deposition
+      ========================== */
+      const rowYs = [166, 154, 142, 130, 118, 106, 94, 82, 70, 58];
+      const xSpacing = 14;
+
+      rowYs.forEach((y, rowIndex) => {
+        for (let x = 42; x <= 178; x += xSpacing) {
+          if (!insideWafer(x, y, 6)) continue;
+
+          const circle = document.createElementNS(svgNS, "circle");
+          circle.setAttribute("cx", x);
+          circle.setAttribute("cy", y);
+          circle.setAttribute("r", 3.4);
+
+          const xProgress = (x - 42) / (178 - 42);
+          const rowProgress = rowIndex / (rowYs.length - 1);
+          const delay = 5 + rowProgress * 10 + xProgress * 0.45;
+
+          circle.style.animation = `settleAtom ${totalCycle}s linear infinite ${delay - totalCycle}s`;
+          settledGroup.appendChild(circle);
         }
       });
 
-      item.classList.toggle("active");
+      /* =========================
+         2. IC GRID
+         starts after atoms vanish
+      ========================== */
+      const gridPositions = [50, 66, 82, 98, 114, 130, 146, 162, 178];
+
+      gridPositions.forEach((x) => {
+        const line = document.createElementNS(svgNS, "line");
+        line.setAttribute("x1", x);
+        line.setAttribute("y1", 42);
+        line.setAttribute("x2", x);
+        line.setAttribute("y2", 178);
+        gridGroup.appendChild(line);
+      });
+
+      gridPositions.forEach((y) => {
+        const line = document.createElementNS(svgNS, "line");
+        line.setAttribute("x1", 42);
+        line.setAttribute("y1", y);
+        line.setAttribute("x2", 178);
+        line.setAttribute("y2", y);
+        gridGroup.appendChild(line);
+      });
+
+      /* =========================
+         3. CHIP BLOCKS + TRACES
+      ========================== */
+      const chipRows = [56, 76, 96, 116, 136, 156];
+      const chipCols = [56, 76, 96, 116, 136, 156];
+
+      chipRows.forEach((y) => {
+        chipCols.forEach((x) => {
+          if (!insideWafer(x + 8, y + 7, 10)) return;
+
+          const rect = document.createElementNS(svgNS, "rect");
+          rect.setAttribute("x", x);
+          rect.setAttribute("y", y);
+          rect.setAttribute("width", 16);
+          rect.setAttribute("height", 13);
+          rect.setAttribute("class", "chip-block");
+          chipGroup.appendChild(rect);
+
+          const trace1 = document.createElementNS(svgNS, "path");
+          trace1.setAttribute("class", "chip-trace");
+          trace1.setAttribute("d", `M ${x + 3} ${y + 4} L ${x + 13} ${y + 4}`);
+          chipGroup.appendChild(trace1);
+
+          const trace2 = document.createElementNS(svgNS, "path");
+          trace2.setAttribute("class", "chip-trace");
+          trace2.setAttribute("d", `M ${x + 4} ${y + 7} L ${x + 11} ${y + 7}`);
+          chipGroup.appendChild(trace2);
+
+          const trace3 = document.createElementNS(svgNS, "path");
+          trace3.setAttribute("class", "chip-trace");
+          trace3.setAttribute("d", `M ${x + 8} ${y + 2} L ${x + 8} ${y + 11}`);
+          chipGroup.appendChild(trace3);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    document.querySelectorAll(".resource-toggle").forEach((button) => {
+      button.addEventListener("click", function () {
+        const item = this.parentElement;
+
+        document.querySelectorAll(".resource-item").forEach((section) => {
+          if (section !== item) {
+            section.classList.remove("active");
+          }
+        });
+
+        item.classList.toggle("active");
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
