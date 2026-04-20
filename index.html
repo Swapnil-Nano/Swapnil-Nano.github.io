@@ -4,9 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Swapnil Nalawade (PhD) | Materials Scientist</title>
+
   <style>
     html {
       scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -17,163 +22,213 @@
       line-height: 1.6;
     }
 
-    header {
-      background-color: #0f172a;
-      color: white;
-      padding: 18px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
-    }
-
     .container {
       width: 90%;
       max-width: 1150px;
       margin: auto;
     }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
+    /* =========================
+       FLOATING TOP MENU
+    ========================= */
+    .top-bar {
+      position: fixed;
+      top: 22px;
+      right: 24px;
+      z-index: 3000;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+    .menu-wrapper {
+      position: relative;
     }
 
-    .logo-wrap {
-      width: 92px;
-      height: 92px;
+    .menu-btn {
+      width: 52px;
+      height: 52px;
+      border: none;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      background: rgba(30, 58, 138, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .menu-dots {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .menu-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffffff;
+      display: block;
+    }
+
+    .menu-panel {
+      position: absolute;
+      top: 62px;
+      right: 0;
+      width: 280px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+      padding: 10px 0;
+      display: none;
+      overflow: hidden;
+    }
+
+    .menu-panel.show {
+      display: block;
+    }
+
+    .menu-section-title {
+      padding: 10px 18px 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .menu-panel a {
+      display: block;
+      padding: 12px 18px;
+      text-decoration: none;
+      color: #0f172a;
+      font-size: 0.96rem;
+      border-left: 3px solid transparent;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .menu-panel a:hover {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-left-color: #1d4ed8;
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 8px 0;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #2563eb 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 24%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08), transparent 22%),
+        radial-gradient(circle at 50% 85%, rgba(255,255,255,0.06), transparent 28%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo-wrap {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
     }
 
     .wafer-logo {
-      width: 92px;
-      height: 92px;
+      width: 150px;
+      height: 150px;
       overflow: visible;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.25));
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 0.95;
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 3rem;
+      line-height: 1.15;
+      letter-spacing: 0.2px;
     }
 
-    .brand-text span:first-child {
-      font-size: 1.55rem;
-      font-weight: bold;
-      color: white;
-      letter-spacing: 0.3px;
-    }
-
-    .brand-text span:last-child {
-      font-size: 1.55rem;
-      font-weight: bold;
-      color: #93c5fd;
-      letter-spacing: 0.3px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0;
-    }
-
-    .nav-links > a,
-    .dropbtn {
-      color: white;
-      text-decoration: none;
-      margin-left: 16px;
-      font-size: 0.95rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      font-family: inherit;
-    }
-
-    .nav-links > a:hover,
-    .dropbtn:hover {
-      opacity: 0.8;
-    }
-
-    .dropdown {
-      position: relative;
-      display: inline-block;
-      margin-left: 16px;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 24px;
-      left: 0;
-      min-width: 220px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
-      overflow: hidden;
-      z-index: 2000;
-    }
-
-    .dropdown-content a {
-      display: block;
-      color: #0f172a;
-      text-decoration: none;
-      padding: 12px 16px;
+    .hero-subtitle {
       margin: 0;
-      font-size: 0.95rem;
-      border-bottom: 1px solid #e5e7eb;
+      font-size: 1.2rem;
+      color: #dbeafe;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
-    .dropdown-content a:last-child {
-      border-bottom: none;
+    .hero-subtitle + .hero-subtitle {
+      margin-top: 6px;
     }
 
-    .dropdown-content a:hover {
-      background: #eff6ff;
-      color: #1d4ed8;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .hero {
-      background: linear-gradient(to right, #0f172a, #1e3a8a);
+    .hero-scroll {
+      margin-top: 28px;
+      display: inline-block;
       color: white;
-      padding: 80px 0 72px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .hero h2 {
-      font-size: 2.7rem;
-      margin-bottom: 10px;
-      line-height: 1.2;
+    .hero-scroll:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-1px);
     }
 
-    .hero p {
-      font-size: 1.08rem;
-      max-width: 760px;
-      margin-bottom: 0;
+    /* =========================
+       MAIN CONTENT
+    ========================= */
+    main {
+      background: #f5f7fb;
     }
 
     section {
-      padding: 64px 0;
+      padding: 72px 0;
+      scroll-margin-top: 30px;
     }
 
-    h3 {
+    h2 {
       font-size: 2rem;
-      margin-bottom: 15px;
+      margin: 0 0 16px;
       color: #0f172a;
     }
 
@@ -202,10 +257,13 @@
     .publication-card {
       background: white;
       padding: 22px;
-      border-radius: 14px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
     }
 
+    .card h3,
+    .resource-box h3,
+    .education-box h3,
     .card h4,
     .resource-box h4,
     .education-box h4 {
@@ -240,14 +298,15 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .journal-link:hover,
     .download-btn:hover {
       background: #16327a;
+      transform: translateY(-1px);
     }
 
-    .resource-list,
     .education-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -258,35 +317,39 @@
     .resource-links {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
+      gap: 14px;
+      margin-top: 25px;
     }
 
     .resource-item {
       display: block;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      padding: 18px 22px;
     }
 
     .resource-toggle {
+      width: 100%;
       background: none;
       border: none;
       padding: 0;
       margin: 0;
       color: #0f172a;
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 700;
       cursor: pointer;
       font-family: inherit;
       text-align: left;
     }
 
     .resource-toggle:hover {
-      opacity: 0.8;
+      opacity: 0.82;
     }
 
     .resource-content {
       display: none;
-      margin-top: 10px;
-      padding-left: 0;
+      margin-top: 14px;
       text-align: justify;
       text-justify: inter-word;
       max-width: 100%;
@@ -320,13 +383,17 @@
       color: white;
       text-align: center;
       padding: 22px 0;
-      margin-top: 40px;
+      margin-top: 30px;
+    }
+
+    footer p {
+      text-align: center;
+      margin: 0;
     }
 
     /* =========================
        LOGO ANIMATION
     ========================= */
-
     .wafer-base {
       fill: url(#siliconGlow);
     }
@@ -422,388 +489,387 @@
       }
     }
 
-    @media (max-width: 900px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        width: 100%;
-      }
-
-      .nav-links > a,
-      .dropbtn,
-      .dropdown {
-        margin-left: 0;
-        margin-right: 14px;
-        margin-top: 6px;
-      }
-
-      .hero h2 {
-        font-size: 2.1rem;
-      }
-    }
-
+    /* =========================
+       RESPONSIVE
+    ========================= */
     @media (max-width: 768px) {
-      .brand-text span:first-child,
-      .brand-text span:last-child {
-        font-size: 1.25rem;
+      .top-bar {
+        top: 16px;
+        right: 16px;
       }
 
-      .logo-wrap {
-        width: 78px;
-        height: 78px;
+      .menu-panel {
+        width: 250px;
+      }
+
+      .hero-logo-wrap {
+        width: 120px;
+        height: 120px;
       }
 
       .wafer-logo {
-        width: 78px;
-        height: 78px;
+        width: 120px;
+        height: 120px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
       }
 
       section {
-        padding: 54px 0;
+        padding: 56px 0;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="brand">
-          <div class="logo-wrap">
-            <svg class="wafer-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Swapnil Nano logo">
-              <defs>
-                <clipPath id="waferClip">
-                  <circle cx="110" cy="110" r="82"></circle>
-                </clipPath>
 
-                <radialGradient id="siliconGlow" cx="50%" cy="42%" r="74%">
-                  <stop offset="0%" stop-color="#d6dee8"></stop>
-                  <stop offset="58%" stop-color="#a2afbf"></stop>
-                  <stop offset="100%" stop-color="#718196"></stop>
-                </radialGradient>
+  <!-- 3 DOT MENU -->
+  <div class="top-bar">
+    <div class="menu-wrapper">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <div class="menu-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
 
-                <radialGradient id="waferShine" cx="38%" cy="32%" r="62%">
-                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"></stop>
-                  <stop offset="32%" stop-color="#ffffff" stop-opacity="0.18"></stop>
-                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
-                </radialGradient>
-              </defs>
+      <div class="menu-panel" id="menuPanel">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
 
-              <circle class="wafer-base" cx="110" cy="110" r="82"></circle>
-              <circle class="wafer-highlight" cx="110" cy="110" r="82"></circle>
-              <circle class="wafer-inner-ring" cx="110" cy="110" r="70"></circle>
+        <div class="menu-divider"></div>
+        <div class="menu-section-title">Resources</div>
+        <a href="#resources">Resources Overview</a>
+        <a href="#ald">Atomic Layer Deposition</a>
+        <a href="#xps">X Ray Photoelectron Spectroscopy</a>
+        <a href="#xrd">X Ray Diffraction</a>
+        <a href="#ellipsometry">Spectroscopic Ellipsometry</a>
 
-              <g class="settled-atoms" clip-path="url(#waferClip)" id="settledAtoms"></g>
+        <div class="menu-divider"></div>
+        <a href="#achievements">Achievements</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
 
-              <g class="circuit-layer" clip-path="url(#waferClip)" id="circuitLayer">
-                <g class="circuit-grid" id="circuitGrid"></g>
-                <g id="chipBlocks"></g>
-              </g>
+  <!-- HERO ONLY ON FIRST OPEN -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-logo-wrap">
+        <svg class="wafer-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Swapnil logo">
+          <defs>
+            <clipPath id="waferClip">
+              <circle cx="110" cy="110" r="82"></circle>
+            </clipPath>
 
-              <circle class="wafer-outline" cx="110" cy="110" r="82"></circle>
-            </svg>
+            <radialGradient id="siliconGlow" cx="50%" cy="42%" r="74%">
+              <stop offset="0%" stop-color="#d6dee8"></stop>
+              <stop offset="58%" stop-color="#a2afbf"></stop>
+              <stop offset="100%" stop-color="#718196"></stop>
+            </radialGradient>
+
+            <radialGradient id="waferShine" cx="38%" cy="32%" r="62%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"></stop>
+              <stop offset="32%" stop-color="#ffffff" stop-opacity="0.18"></stop>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+            </radialGradient>
+          </defs>
+
+          <circle class="wafer-base" cx="110" cy="110" r="82"></circle>
+          <circle class="wafer-highlight" cx="110" cy="110" r="82"></circle>
+          <circle class="wafer-inner-ring" cx="110" cy="110" r="70"></circle>
+
+          <g class="settled-atoms" clip-path="url(#waferClip)" id="settledAtoms"></g>
+
+          <g class="circuit-layer" clip-path="url(#waferClip)" id="circuitLayer">
+            <g class="circuit-grid" id="circuitGrid"></g>
+            <g id="chipBlocks"></g>
+          </g>
+
+          <circle class="wafer-outline" cx="110" cy="110" r="82"></circle>
+        </svg>
+      </div>
+
+      <h1>Swapnil Nalawade (PhD)</h1>
+      <p class="hero-subtitle">Materials Scientist</p>
+      <p class="hero-subtitle">Semiconductor Process Engineer</p>
+
+      <a class="hero-scroll" href="#about">Explore Website</a>
+    </div>
+  </section>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <p class="section-intro">
+          PhD in Nanoengineering, specializing in thin-film deposition, interfacial chemistry, and structure-property
+          correlations with extensive experience in atomic layer deposition (ALD), reactive sputtering, pulsed laser
+          deposition, and advanced X-ray metrologies. Expert in probing electronic structure, surface hydration, and catalytic
+          behavior using X Ray Photoelectron Spectroscopy, Ambient Pressure-XPS, X Ray Diffraction, X Ray Reflectometry,
+          Atomic Force Microscopy, Scanning Electron Microscopy, Raman, and spectroscopic ellipsometry. Demonstrated ability
+          to independently design experiments, troubleshoot deposition tools, and extract mechanistic insights for
+          electrocatalysis and semiconductor thin-film applications. With a strong analytical, resilient, and collaborative
+          mindset, I am passionate about contributing to research in nanofabrication for applications in energy and semiconductor industries
+          and translating materials processing expertise into high-impact scientific discoveries.
+        </p>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <h2>Research</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h4>Atomic Layer Deposition & Magnetron Sputtering Deposition of Transition Metals and Their Oxides</h4>
           </div>
-
-          <div class="brand-text">
-            <span>Swapnil</span>
-            <span>Nano</span>
+          <div class="card">
+            <h4>Annealing-Driven Structure, Surface Chemistry, and Morphology Evolution of Thin Films</h4>
+          </div>
+          <div class="card">
+            <h4>Interfacial Chemistry and Operando / Ambient-Pressure X Ray Photoelectron Spectroscopy</h4>
+          </div>
+          <div class="card">
+            <h4>Thin Films for Electrochemical Water Splitting</h4>
+          </div>
+          <div class="card">
+            <h4>Semiconductor Nanofabrication Process Engineering</h4>
+          </div>
+          <div class="card">
+            <h4>Structure-Property Correlation in Catalytic Activities of Transition Metal Oxides</h4>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#publications">Publications</a>
-          <a href="#education">Education</a>
+    <section id="publications">
+      <div class="container">
+        <h2>Publications</h2>
 
-          <div class="dropdown">
-            <button class="dropbtn">Resources</button>
-            <div class="dropdown-content">
-              <a href="#ald">Atomic Layer Deposition</a>
-              <a href="#xps">X Ray Photoelectron Spectroscopy</a>
-              <a href="#xrd">X Ray Diffraction</a>
-              <a href="#ellipsometry">Spectroscopic Ellipsometry</a>
+        <div class="publication-card">
+          <h4>Phase Transformation and Water Adsorption Behavior of As-Deposited and Annealed Ru Metal Thin Films Prepared by Atomic Layer Deposition</h4>
+          <div class="publication-meta">Advanced Materials Interfaces 13.1 (2026): e00689</div>
+          <a class="journal-link" href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202500689" target="_blank">Find Publication</a>
+        </div>
+
+        <div class="publication-card">
+          <h4>Role of Oxygen Concentration in Reactive Sputtering of RuO₂ Thin Films: Tuning Surface Chemistry for Enhanced Electrocatalytic Performance</h4>
+          <div class="publication-meta">Crystals 15.5 (2025): 417</div>
+          <a class="journal-link" href="https://www.mdpi.com/2073-4352/15/5/417" target="_blank">Find Publication</a>
+        </div>
+
+        <div class="publication-card">
+          <h4>Structural and Electrocatalytic Studies of Pulsed Laser Deposited Epitaxial RuO₂ Thin Films</h4>
+          <div class="publication-meta">ACS Applied Energy Materials (2026)</div>
+          <a class="journal-link" href="https://pubs.acs.org/doi/10.1021/acsaem.5c03420" target="_blank">Find Publication</a>
+        </div>
+
+        <div class="publication-card">
+          <h4>Strained-Induced Morphological Reconstruction of RuO₂ (110) Thin-Film Electrocatalysts</h4>
+          <div class="publication-meta">Journal of the American Chemical Society 147, no. 41 (2025): 37115-37122</div>
+          <a class="journal-link" href="https://pubs.acs.org/doi/10.1021/jacs.5c08607" target="_blank">Find Publication</a>
+        </div>
+
+        <div class="publication-card">
+          <h4>Optical and Plasmonic Properties of High-Electron-Density Epitaxial and Oxidative Controlled Titanium Nitride Thin Films</h4>
+          <div class="publication-meta">The Journal of Physical Chemistry C (2025)</div>
+          <a class="journal-link" href="https://pubs.acs.org/doi/10.1021/acs.jpcc.4c06969" target="_blank">Find Publication</a>
+        </div>
+
+        <div class="publication-card">
+          <h4>Transformation of TiN to TiNO Films via In-Situ Temperature-Dependent Oxygen Diffusion Process and Their Electrochemical Behavior</h4>
+          <div class="publication-meta">Metals 15, no. 5 (2025): 497</div>
+          <a class="journal-link" href="https://www.mdpi.com/2075-4701/15/5/497" target="_blank">Find Publication</a>
+        </div>
+
+        <div class="publication-card">
+          <h4>Effect of Substrate Temperature on the Electrochemical and Supercapacitance Properties of Pulsed Laser-Deposited Titanium Oxynitride Thin Films</h4>
+          <div class="publication-meta">Journal of Electrochemical Energy Conversion and Storage 22, no. 1 (2025): 011010</div>
+          <a class="journal-link" href="https://asmedigitalcollection.asme.org/electrochemical/article/22/1/011010/1200434/Effect-of-Substrate-Temperature-on-the" target="_blank">Find Publication</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="education-list">
+          <div class="education-box">
+            <h4>PhD (Nanoengineering)</h4>
+            <p>North Carolina Agricultural and Technical State University, Greensboro, NC, USA</p>
+            <p>January 2021 - December 2025</p>
+          </div>
+          <div class="education-box">
+            <h4>M.Tech (Electronics & Telecommunication)</h4>
+            <p>Savitribai Phule Pune University, Pune, MH, India</p>
+            <p>August 2011 - December 2013</p>
+          </div>
+          <div class="education-box">
+            <h4>B.E (Electronics & Telecommunication)</h4>
+            <p>Savitribai Phule Pune University, Pune, MH, India</p>
+            <p>June 2006 - June 2010</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="container">
+        <h2>Resources</h2>
+
+        <div class="resource-links">
+          <div class="resource-item" id="ald">
+            <button class="resource-toggle">Atomic Layer Deposition (ALD)</button>
+            <div class="resource-content">
+              <p>
+                In recent years, there has been a tremendous demand for atomically flat thin
+                films across a wide range of industries, including electronics, photonics, energy
+                generation and storage, medical, biomedical, and aerospace. Defect-free, conformal,
+                and uniform thin films are essential for ensuring consistent material performance in
+                these applications, and atomically flat films play a vital role in modern nanofabrication.
+              </p>
+              <p>
+                Atomic layer deposition is one such technique that stands out for several reasons,
+                including precise thickness control, excellent film conformality, low-temperature processing,
+                stoichiometric control, and inherent film quality. The demand for continuous and pinhole-free films
+                in semiconductor devices has further driven developments in ALD. The International Technology Roadmap
+                for Semiconductors (ITRS) has also recognized ALD for applications such as high-dielectric-constant gate
+                oxides in MOSFET structures and copper diffusion barriers for interconnects.
+              </p>
+              <p>
+                The demand for continuous and pinhole-free films in semiconductor devices has driven the development of
+                Atomic Layer Deposition (ALD). ALD enables the precise formation of ultra-thin, conformal passivation or
+                capping layers, ensuring effective protection against environmental degradation and surface contamination.
+                ALD effectively meets the requirements for atomic-level control and conformal deposition through sequential,
+                self-limiting surface reactions.
+              </p>
+              <p>
+                Most ALD methods rely on binary reaction sequences, where two surface reactions occur to deposit a binary compound film.
+                Since there are a limited number of surface sites, the reactions can deposit only a finite number of surface species.
+                When both surface reactions are self-limiting, they proceed sequentially, enabling the deposition of thin films with atomic-level precision.
+                The primary advantages of ALD include precise thickness control at the Angstrom or monolayer level.
+              </p>
+              <p>
+                The self-limiting nature of ALD ensures excellent step coverage and conformal deposition on high aspect ratio structures.
+                Initially, some surface areas react before others due to varying precursor gas fluxes.
+                However, the precursors adsorb and subsequently desorb from fully reacted areas, then proceed to react with unreacted surface areas,
+                resulting in highly conformal deposition. This self-limiting aspect also leads to non-statistical deposition eliminating randomness
+                in precursor flux as a significant factor. Consequently, ALD films remain extremely smooth and conformal to the original substrate,
+                as the reactions are driven to completion during each cycle. Since no surface sites are left unreacted during film growth, the resulting
+                films are continuous and pinhole-free, which is crucial for depositing high-quality dielectric films.
+              </p>
+              <p>
+                ALD is also scalable to very large substrates and suitable for parallel processing of multiple substrates. The gas-phase ALD precursors fill
+                all available space, regardless of substrate geometry, and do not require line-of-sight to the substrate. The process is limited only by the
+                size of the reaction chamber. Dominated by surface reactions, ALD ensures that the two gas-phase reactants do not contact each other in the gas phase,
+                minimizing the formation of particles that could deposit on the surface and produce granular films.
+              </p>
             </div>
           </div>
 
-          <a href="#achievements">Achievements</a>
-          <a href="#cv">CV</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <h2>Materials Scientist | Semiconductor Process Engineer</h2>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="container">
-      <h3>About Me</h3>
-      <p class="section-intro">
-        PhD in Nanoengineering, specializing in thin-film deposition, interfacial chemistry, and structure-property
-        correlations with extensive experience in atomic layer deposition (ALD), reactive sputtering, pulsed laser
-        deposition, and advanced X-ray metrologies. Expert in probing electronic structure, surface hydration, and catalytic
-        behavior using X Ray Photoelectron Spectroscopy, Ambient Pressure-XPS, X Ray Diffraction, X Ray Reflectometry,
-        Atomic Force Microscopy, Scanning Electron Microscopy, Raman, and spectroscopic ellipsometry. Demonstrated ability
-        to independently design experiments, troubleshoot deposition tools, and extract mechanistic insights for
-        electrocatalysis and semiconductor thin-film applications. With a strong analytical, resilient, and collaborative
-        mindset, I am passionate about contributing to research in nanofabrication for applications in energy and semiconductor industries
-        and translating
-        materials processing expertise into high-impact scientific discoveries.
-      </p>
-    </div>
-  </section>
-
-  <section id="research">
-    <div class="container">
-      <h3>Research</h3>
-      <div class="card-grid">
-        <div class="card">
-          <h4>Atomic Layer Deposition & Magnetron Sputtering Deposition of Transition Metals and Their Oxides</h4>
-        </div>
-        <div class="card">
-          <h4>Annealing-Driven Structure, Surface Chemistry, and Morphology Evolution of Thin Films</h4>
-        </div>
-        <div class="card">
-          <h4>Interfacial Chemistry and Operando / Ambient-Pressure X Ray Photoelectron Spectroscopy</h4>
-        </div>
-        <div class="card">
-          <h4>Thin Films for Electrochemical Water Splitting</h4>
-        </div>
-        <div class="card">
-          <h4>Semiconductor Nanofabrication Process Engineering</h4>
-        </div>
-        <div class="card">
-          <h4>Structure-Property Correlation in Catalytic Activities of Transition Metal Oxides</h4>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="publications">
-    <div class="container">
-      <h3>Publications</h3>
-
-      <div class="publication-card">
-        <h4>Phase Transformation and Water Adsorption Behavior of As-Deposited and Annealed Ru Metal Thin Films Prepared by Atomic Layer Deposition</h4>
-        <div class="publication-meta">Advanced Materials Interfaces 13.1 (2026): e00689</div>
-        <a class="journal-link" href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202500689" target="_blank">Find Publication</a>
-      </div>
-
-      <div class="publication-card">
-        <h4>Role of Oxygen Concentration in Reactive Sputtering of RuO₂ Thin Films: Tuning Surface Chemistry for Enhanced Electrocatalytic Performance</h4>
-        <div class="publication-meta">Crystals 15.5 (2025): 417</div>
-        <a class="journal-link" href="https://www.mdpi.com/2073-4352/15/5/417" target="_blank">Find Publication</a>
-      </div>
-
-      <div class="publication-card">
-        <h4>Structural and Electrocatalytic Studies of Pulsed Laser Deposited Epitaxial RuO₂ Thin Films</h4>
-        <div class="publication-meta">ACS Applied Energy Materials (2026)</div>
-        <a class="journal-link" href="https://pubs.acs.org/doi/10.1021/acsaem.5c03420" target="_blank">Find Publication</a>
-      </div>
-
-      <div class="publication-card">
-        <h4>Strained-Induced Morphological Reconstruction of RuO₂ (110) Thin-Film Electrocatalysts</h4>
-        <div class="publication-meta">Journal of the American Chemical Society 147, no. 41 (2025): 37115-37122</div>
-        <a class="journal-link" href="https://pubs.acs.org/doi/10.1021/jacs.5c08607" target="_blank">Find Publication</a>
-      </div>
-
-      <div class="publication-card">
-        <h4>Optical and Plasmonic Properties of High-Electron-Density Epitaxial and Oxidative Controlled Titanium Nitride Thin Films</h4>
-        <div class="publication-meta">The Journal of Physical Chemistry C (2025)</div>
-        <a class="journal-link" href="https://pubs.acs.org/doi/10.1021/acs.jpcc.4c06969" target="_blank">Find Publication</a>
-      </div>
-
-      <div class="publication-card">
-        <h4>Transformation of TiN to TiNO Films via In-Situ Temperature-Dependent Oxygen Diffusion Process and Their Electrochemical Behavior</h4>
-        <div class="publication-meta">Metals 15, no. 5 (2025): 497</div>
-        <a class="journal-link" href="https://www.mdpi.com/2075-4701/15/5/497" target="_blank">Find Publication</a>
-      </div>
-
-      <div class="publication-card">
-        <h4>Effect of Substrate Temperature on the Electrochemical and Supercapacitance Properties of Pulsed Laser-Deposited Titanium Oxynitride Thin Films</h4>
-        <div class="publication-meta">Journal of Electrochemical Energy Conversion and Storage 22, no. 1 (2025): 011010</div>
-        <a class="journal-link" href="https://asmedigitalcollection.asme.org/electrochemical/article/22/1/011010/1200434/Effect-of-Substrate-Temperature-on-the" target="_blank">Find Publication</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="container">
-      <h3>Education</h3>
-      <div class="education-list">
-        <div class="education-box">
-          <h4>PhD (Nanoengineering)</h4>
-          <p>North Carolina Agricultural and Technical State University, Greensboro, NC, USA</p>
-          <p>January 2021 - December 2025</p>
-        </div>
-        <div class="education-box">
-          <h4>M.Tech (Electronics & Telecommunication)</h4>
-          <p>Savitribai Phule Pune University, Pune, MH, India</p>
-          <p>August 2011 - December 2013</p>
-        </div>
-        <div class="education-box">
-          <h4>B.E (Electronics & Telecommunication)</h4>
-          <p>Savitribai Phule Pune University, Pune, MH, India</p>
-          <p>June 2006 - June 2010</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="resources">
-    <div class="container">
-      <h3>Resources</h3>
-
-      <div class="resource-links">
-        <div class="resource-item" id="ald">
-          <button class="resource-toggle">Atomic Layer Deposition (ALD)</button>
-          <div class="resource-content">
-            <p>
-              In recent years, there has been a tremendous demand for atomically flat thin
-              films across a wide range of industries, including electronics, photonics, energy
-              generation and storage, medical, biomedical, and aerospace. Defect-free, conformal,
-              and uniform thin films are essential for ensuring consistent material performance in
-              these applications, and atomically flat films play a vital role in modern nanofabrication.
-            </p>
-            <p>
-              Atomic layer deposition is one such technique that stands out for several reasons,
-              including precise thickness control, excellent film conformality, low-temperature processing,
-              stoichiometric control, and inherent film quality. The demand for continuous and pinhole-free films
-              in semiconductor devices has further driven developments in ALD. The International Technology Roadmap
-              for Semiconductors (ITRS) has also recognized ALD for applications such as high-dielectric-constant gate
-              oxides in MOSFET structures and copper diffusion barriers for interconnects.
-            </p>
-            <p>
-              The demand for continuous and pinhole-free films in semiconductor devices has driven the development of
-              Atomic Layer Deposition (ALD). ALD enables the precise formation of ultra-thin, conformal passivation or
-              capping layers, ensuring effective protection against environmental degradation and surface contamination.
-              ALD effectively meets the requirements for atomic-level control and conformal deposition through sequential,
-              self-limiting surface reactions.
-            </p>
-            <p>
-              Most ALD methods rely on binary reaction sequences, where two surface reactions occur to deposit a binary compound film.
-              Since there are a limited number of surface sites, the reactions can deposit only a finite number of surface species.
-              When both surface reactions are self-limiting, they proceed sequentially, enabling the deposition of thin films with atomic-level precision.
-              The primary advantages of ALD include precise thickness control at the Angstrom or monolayer level.
-            </p>
-            <p>
-              The self-limiting nature of ALD ensures excellent step coverage and conformal deposition on high aspect ratio structures.
-              Initially, some surface areas react before others due to varying precursor gas fluxes.
-              However, the precursors adsorb and subsequently desorb from fully reacted areas, then proceed to react with unreacted surface areas,
-              resulting in highly conformal deposition. This self-limiting aspect also leads to non-statistical deposition eliminating randomness
-              in precursor flux as a significant factor. Consequently, ALD films remain extremely smooth and conformal to the original substrate,
-              as the reactions are driven to completion during each cycle. Since no surface sites are left unreacted during film growth, the resulting
-              films are continuous and pinhole-free, which is crucial for depositing high-quality dielectric films.
-            </p>
-            <p>
-              ALD is also scalable to very large substrates and suitable for parallel processing of multiple substrates. The gas-phase ALD precursors fill
-              all available space, regardless of substrate geometry, and do not require line-of-sight to the substrate. The process is limited only by the
-              size of the reaction chamber. Dominated by surface reactions, ALD ensures that the two gas-phase reactants do not contact each other in the gas phase,
-              minimizing the formation of particles that could deposit on the surface and produce granular films.
-            </p>
+          <div class="resource-item" id="xps">
+            <button class="resource-toggle">X Ray Photoelectron Spectroscopy (XPS)</button>
+            <div class="resource-content">
+              <p>
+                XPS is a surface sensitive analytical technique used to determine the elemental
+                composition and chemical states of the materials. XPS is based on the photoelectric
+                effect. When a material is irradiated with monochromatic X-rays (commonly Al Kα or Mg Kα),
+                core-level electrons are ejected from atoms in the sample. The kinetic energy (KE) of these
+                emitted electrons is measured. The binding energy (BE) of the electrons is then calculated
+                using the equation, Binding Energy = hν - KE – Ф, where hν is photon energy of the X ray,
+                KE is the kinetic energy of emitted electrons and Ф is the work function of spectrometer.
+                Each element has characteristic binding energies, allowing elemental identification and analysis of oxidation states.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="resource-item" id="xps">
-          <button class="resource-toggle">X Ray Photoelectron Spectroscopy (XPS)</button>
-          <div class="resource-content">
-            <p>
-              XPS is a surface sensitive analytical technique used to determine the elemental
-              composition and chemical states of the materials. XPS is based on the photoelectric
-              effect. When a material is irradiated with monochromatic X-rays (commonly Al Kα or Mg Kα),
-              core-level electrons are ejected from atoms in the sample. The kinetic energy (KE) of these
-              emitted electrons is measured. The binding energy (BE) of the electrons is then calculated
-              using the equation, Binding Energy = hν - KE – Ф, where hν is photon energy of the X ray,
-              KE is the kinetic energy of emitted electrons and Ф is the work function of spectrometer.
-              Each element has characteristic binding energies, allowing elemental identification and analysis of oxidation states.
-            </p>
+          <div class="resource-item" id="xrd">
+            <button class="resource-toggle">X Ray Diffraction (XRD)</button>
+            <div class="resource-content">
+              <p>
+                X-ray Diffraction (XRD) was employed to investigate the crystallographic structure,
+                phase composition, and degree of crystallinity of the deposited thin films. XRD is a
+                non-destructive analytical technique based on the diffraction of monochromatic X-rays
+                by the periodic atomic planes within a crystalline material. When X-rays are incident
+                on a sample, constructive interference occurs at specific angles that satisfy Bragg’s
+                law which is expressed as, nλ = 2dsinθ, where n is the order of diffraction (usually 1),
+                λ is wavelength, d is the interplanar spacing and θ is angle of incidence. By measuring
+                the angles at which these diffraction peaks appear, the spacing between atomic planes is
+                determined and crystal structure is identified.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="resource-item" id="xrd">
-          <button class="resource-toggle">X Ray Diffraction (XRD)</button>
-          <div class="resource-content">
-            <p>
-              X-ray Diffraction (XRD) was employed to investigate the crystallographic structure,
-              phase composition, and degree of crystallinity of the deposited thin films. XRD is a
-              non-destructive analytical technique based on the diffraction of monochromatic X-rays
-              by the periodic atomic planes within a crystalline material. When X-rays are incident
-              on a sample, constructive interference occurs at specific angles that satisfy Bragg’s
-              law which is expressed as, nλ = 2dsinθ, where n is the order of diffraction (usually 1),
-              λ is wavelength, d is the interplanar spacing and θ is angle of incidence. By measuring
-              the angles at which these diffraction peaks appear, the spacing between atomic planes is
-              determined and crystal structure is identified.
-            </p>
-          </div>
-        </div>
-
-        <div class="resource-item" id="ellipsometry">
-          <button class="resource-toggle">Spectroscopic Ellipsometry</button>
-          <div class="resource-content">
-            <p>
-              Spectroscopic ellipsometry is a non-destructive and highly sensitive optical technique
-              used to determine the thickness and complex refractive index (n and k) of thin films.
-              The method is based on analyzing the change in polarization state of linearly polarized
-              light upon reflection from the sample surface. It measures two parameters—Ψ, the amplitude
-              ratio, and Δ, the phase difference—between the p- and s-polarized components of reflected
-              light. In this study, measurements were performed on J. A Woollam iSE ellipsometer over a
-              spectral range of 300–1000 nm at incident angle of 65 ° to obtain the wavelength-dependent
-              optical response. To extract the optical constants and film thickness, the experimental Ψ
-              and Δ spectra were modeled using a combination of the B-spline approach and the
-              Kramers-Kronig (K-K) consistent model. The B-spline method provides a flexible,
-              model-independent way to fit the dispersion of n and k, while enforcing Kramers-Kronig
-              relations ensures the derived optical constants obey causality and physical consistency.
-              This hybrid modeling approach enables accurate characterization of materials with complex
-              or unknown optical behavior, making spectroscopic ellipsometry a powerful tool for thin film
-              and nanomaterial analysis.
-            </p>
+          <div class="resource-item" id="ellipsometry">
+            <button class="resource-toggle">Spectroscopic Ellipsometry</button>
+            <div class="resource-content">
+              <p>
+                Spectroscopic ellipsometry is a non-destructive and highly sensitive optical technique
+                used to determine the thickness and complex refractive index (n and k) of thin films.
+                The method is based on analyzing the change in polarization state of linearly polarized
+                light upon reflection from the sample surface. It measures two parameters—Ψ, the amplitude
+                ratio, and Δ, the phase difference—between the p- and s-polarized components of reflected
+                light. In this study, measurements were performed on J. A Woollam iSE ellipsometer over a
+                spectral range of 300–1000 nm at incident angle of 65 ° to obtain the wavelength-dependent
+                optical response. To extract the optical constants and film thickness, the experimental Ψ
+                and Δ spectra were modeled using a combination of the B-spline approach and the
+                Kramers-Kronig (K-K) consistent model. The B-spline method provides a flexible,
+                model-independent way to fit the dispersion of n and k, while enforcing Kramers-Kronig
+                relations ensures the derived optical constants obey causality and physical consistency.
+                This hybrid modeling approach enables accurate characterization of materials with complex
+                or unknown optical behavior, making spectroscopic ellipsometry a powerful tool for thin film
+                and nanomaterial analysis.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="achievements">
-    <div class="container">
-      <h3>Achievements</h3>
-      <div class="card">
-        <ul>
-          <li>PhD in Nanoengineering with expertise in thin-film deposition and advanced materials characterization</li>
-          <li>Published peer-reviewed research in thin films, electrocatalysis, and functional oxide materials</li>
-          <li>Restored and maintained deposition yield > 90% by correlating metrology signals with chamber conditions and resolving process excursions</li>
-          <li>Developed a Python-based web platform for automated XPS spectral analysis, enabling rapid data processing for chemical states</li>
-          <li>Hands-on experience with cleanroom nanofabrication and semiconductor process development</li>
-          <li>Participated in Advanced Light Source (ALS) beamline at LBNL, Berkeley for AP-XPS and tender X-ray studies on RuO2 to resolve depth-dependent O1s and Ru3d chemistry and surface–bulk oxygen speciation under H₂O vapor</li>
-          <li>Presented research at conferences and collaborated with national labs and multidisciplinary teams</li>
-          <li>Lean Six Sigma Certified</li>
-        </ul>
+    <section id="achievements">
+      <div class="container">
+        <h2>Achievements</h2>
+        <div class="card">
+          <ul>
+            <li>PhD in Nanoengineering with expertise in thin-film deposition and advanced materials characterization</li>
+            <li>Published peer-reviewed research in thin films, electrocatalysis, and functional oxide materials</li>
+            <li>Restored and maintained deposition yield &gt; 90% by correlating metrology signals with chamber conditions and resolving process excursions</li>
+            <li>Developed a Python-based web platform for automated XPS spectral analysis, enabling rapid data processing for chemical states</li>
+            <li>Hands-on experience with cleanroom nanofabrication and semiconductor process development</li>
+            <li>Participated in Advanced Light Source (ALS) beamline at LBNL, Berkeley for AP-XPS and tender X-ray studies on RuO2 to resolve depth-dependent O1s and Ru3d chemistry and surface–bulk oxygen speciation under H₂O vapor</li>
+            <li>Presented research at conferences and collaborated with national labs and multidisciplinary teams</li>
+            <li>Lean Six Sigma Certified</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="cv">
-    <div class="container cv-link">
-      <h3>CV</h3>
-      <p><a href="CV.pdf" download class="download-btn">Download CV</a></p>
-    </div>
-  </section>
+    <section id="cv">
+      <div class="container cv-link">
+        <h2>CV</h2>
+        <p><a href="CV.pdf" download class="download-btn">Download CV</a></p>
+      </div>
+    </section>
 
-  <section id="contact" class="contact">
-    <div class="container">
-      <h3>Contact</h3>
-      <p><strong>Email:</strong> <a href="mailto:ssnalawade88@gmail.com">ssnalawade88@gmail.com</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/Swapnil-Nano" target="_blank">github.com/Swapnil-Nano</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/swapnil-nalawade-31b59265/" target="_blank">linkedin.com/in/swapnil-nalawade-31b59265</a></p>
-    </div>
-  </section>
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p><strong>Email:</strong> <a href="mailto:ssnalawade88@gmail.com">ssnalawade88@gmail.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/Swapnil-Nano" target="_blank">github.com/Swapnil-Nano</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/swapnil-nalawade-31b59265/" target="_blank">linkedin.com/in/swapnil-nalawade-31b59265</a></p>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="container">
@@ -829,11 +895,6 @@
         return (dx * dx + dy * dy) <= Math.pow(waferRadius - margin, 2);
       }
 
-      /* =========================
-         1. DEPOSITED ATOMS
-         5s bare wafer
-         5s-15s bottom to top deposition
-      ========================== */
       const rowYs = [166, 154, 142, 130, 118, 106, 94, 82, 70, 58];
       const xSpacing = 14;
 
@@ -855,10 +916,6 @@
         }
       });
 
-      /* =========================
-         2. IC GRID
-         starts after atoms vanish
-      ========================== */
       const gridPositions = [50, 66, 82, 98, 114, 130, 146, 162, 178];
 
       gridPositions.forEach((x) => {
@@ -879,9 +936,6 @@
         gridGroup.appendChild(line);
       });
 
-      /* =========================
-         3. CHIP BLOCKS + TRACES
-      ========================== */
       const chipRows = [56, 76, 96, 116, 136, 156];
       const chipCols = [56, 76, 96, 116, 136, 156];
 
@@ -931,5 +985,32 @@
       });
     });
   </script>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const menuPanel = document.getElementById("menuPanel");
+
+    menuBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      menuPanel.classList.toggle("show");
+      const expanded = menuPanel.classList.contains("show");
+      menuBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) {
+        menuPanel.classList.remove("show");
+        menuBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.querySelectorAll(".menu-panel a").forEach((link) => {
+      link.addEventListener("click", function () {
+        menuPanel.classList.remove("show");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+
 </body>
 </html>
