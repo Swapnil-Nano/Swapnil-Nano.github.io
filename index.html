@@ -8,8 +8,6 @@
   <style>
     :root {
       --apple-bg: #f5f5f7;
-      --apple-surface: rgba(255, 255, 255, 0.74);
-      --apple-card: rgba(255, 255, 255, 0.88);
       --apple-text: #1d1d1f;
       --apple-muted: #6e6e73;
       --apple-border: rgba(0, 0, 0, 0.08);
@@ -17,9 +15,7 @@
       --apple-blue-hover: #0077ed;
       --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.08);
       --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.06);
-      --radius-xl: 32px;
       --radius-lg: 22px;
-      --radius-md: 16px;
     }
 
     html {
@@ -50,9 +46,6 @@
       margin: 0 auto;
     }
 
-    /* =========================
-       MENU BUTTON
-    ========================= */
     .menu-shell {
       position: fixed;
       top: 22px;
@@ -97,9 +90,6 @@
       display: block;
     }
 
-    /* =========================
-       MENU PANEL
-    ========================= */
     .menu-overlay {
       position: fixed;
       inset: 0;
@@ -123,7 +113,7 @@
       right: 0;
       width: min(360px, 92vw);
       height: 100vh;
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.84);
       backdrop-filter: blur(30px);
       -webkit-backdrop-filter: blur(30px);
       box-shadow: -12px 0 40px rgba(0, 0, 0, 0.12);
@@ -174,9 +164,6 @@
       transform: translateX(4px);
     }
 
-    /* =========================
-       LANDING SCREEN
-    ========================= */
     .landing {
       min-height: 100vh;
       display: flex;
@@ -198,28 +185,31 @@
       width: 700px;
       height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 72%);
+      background: radial-gradient(circle, rgba(255,255,255,0.86) 0%, rgba(255,255,255,0) 72%);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
 
-    .landing-layout {
+    .landing-center {
       position: relative;
       z-index: 1;
-      width: min(1180px, 96%);
+      width: min(760px, 92vw);
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 42px;
+      align-items: center;
     }
 
     .landing-logo-side {
+      position: absolute;
+      right: 100%;
+      margin-right: 38px;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex: 0 0 240px;
     }
 
     .logo-wrap {
@@ -234,12 +224,12 @@
       width: 220px;
       height: 220px;
       overflow: visible;
-      filter: drop-shadow(0 14px 34px rgba(0, 0, 0, 0.10));
+      filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.12));
     }
 
     .landing-card {
-      width: min(760px, 100%);
-      padding: 54px 42px;
+      width: 100%;
+      padding: 56px 42px;
       border-radius: 34px;
       background: rgba(255, 255, 255, 0.56);
       backdrop-filter: blur(18px);
@@ -251,7 +241,7 @@
 
     .landing-name {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 4.2rem);
+      font-size: clamp(2rem, 3.6vw, 4rem);
       line-height: 1.08;
       letter-spacing: -0.03em;
       font-weight: 700;
@@ -261,7 +251,7 @@
 
     .landing-role {
       margin: 14px 0 0;
-      font-size: clamp(1rem, 1.8vw, 1.45rem);
+      font-size: clamp(1rem, 1.7vw, 1.4rem);
       color: var(--apple-muted);
       font-weight: 500;
       letter-spacing: -0.01em;
@@ -279,9 +269,6 @@
       text-align: center;
     }
 
-    /* =========================
-       MAIN CONTENT
-    ========================= */
     main {
       background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
     }
@@ -443,76 +430,43 @@
       font-size: 0.95rem;
     }
 
-    /* =========================
-       LOGO ANIMATION
-    ========================= */
+    /* New wafer animation */
     .wafer-base {
-      fill: url(#siliconGlow);
+      fill: url(#waferGray);
     }
 
     .wafer-highlight {
-      fill: url(#waferShine);
-      opacity: 0.38;
+      fill: url(#waferSoftShine);
+      opacity: 0.26;
     }
 
     .wafer-outline {
       fill: none;
-      stroke: #d1d1d6;
-      stroke-width: 2.4;
+      stroke: #8e8e93;
+      stroke-width: 2.2;
     }
 
     .wafer-inner-ring {
       fill: none;
-      stroke: rgba(255, 255, 255, 0.55);
-      stroke-width: 1.2;
+      stroke: rgba(255, 255, 255, 0.20);
+      stroke-width: 1.1;
     }
 
-    .settled-atoms {
-      animation: settledGroupCycle 20s linear infinite;
-    }
-
-    .settled-atoms circle {
-      fill: rgba(245, 247, 250, 0.96);
+    .deposited-atoms circle {
+      fill: rgba(255, 255, 255, 0.96);
       opacity: 0;
       transform-box: fill-box;
       transform-origin: center;
     }
 
-    .circuit-layer {
-      opacity: 0;
-      animation: circuitReveal 25s linear infinite;
-    }
-
-    .circuit-grid line {
-      stroke: rgba(90, 90, 95, 0.25);
-      stroke-width: 1.2;
-      shape-rendering: crispEdges;
-    }
-
-    .chip-block {
-      fill: rgba(255, 255, 255, 0.28);
-      stroke: rgba(120, 120, 128, 0.52);
-      stroke-width: 1;
-      rx: 2;
-      ry: 2;
-    }
-
-    .chip-trace {
-      stroke: rgba(90, 90, 95, 0.45);
-      stroke-width: 1.05;
-      fill: none;
-      stroke-linecap: round;
-      shape-rendering: crispEdges;
-    }
-
-    @keyframes settleAtom {
+    @keyframes depositAtom {
       0% {
         opacity: 0;
-        transform: translateY(8px) scale(0.55);
+        transform: translateY(10px) scale(0.45);
       }
-      8% {
+      6% {
         opacity: 1;
-        transform: translateY(0) scale(1.05);
+        transform: translateY(0) scale(1.08);
       }
       100% {
         opacity: 1;
@@ -520,48 +474,36 @@
       }
     }
 
-    @keyframes settledGroupCycle {
-      0%, 68.18% {
-        opacity: 1;
-      }
-      77.27% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
-
-    @keyframes circuitReveal {
-      0%, 77.27% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-    @media (max-width: 980px) {
-      .landing-layout {
-        flex-direction: column;
-        gap: 20px;
-      }
-
+    @media (max-width: 1100px) {
       .landing-logo-side {
-        flex: 0 0 auto;
+        right: calc(100% - 20px);
+        margin-right: 10px;
       }
 
       .logo-wrap,
       .wafer-logo {
-        width: 170px;
-        height: 170px;
+        width: 185px;
+        height: 185px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .landing-center {
+        flex-direction: column;
+        width: min(760px, 94vw);
       }
 
-      .landing-card {
-        padding: 42px 24px;
+      .landing-logo-side {
+        position: static;
+        transform: none;
+        margin-right: 0;
+        margin-bottom: 18px;
+      }
+
+      .logo-wrap,
+      .wafer-logo {
+        width: 160px;
+        height: 160px;
       }
 
       .landing-name {
@@ -580,10 +522,8 @@
         padding: 88px 22px 24px;
       }
 
-      .logo-wrap,
-      .wafer-logo {
-        width: 145px;
-        height: 145px;
+      .landing-card {
+        padding: 42px 24px;
       }
 
       section {
@@ -629,24 +569,24 @@
   </aside>
 
   <section class="landing" id="home">
-    <div class="landing-layout">
+    <div class="landing-center">
       <div class="landing-logo-side">
         <div class="logo-wrap">
-          <svg class="wafer-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Swapnil logo">
+          <svg class="wafer-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Animated wafer logo">
             <defs>
               <clipPath id="waferClip">
                 <circle cx="110" cy="110" r="82"></circle>
               </clipPath>
 
-              <radialGradient id="siliconGlow" cx="50%" cy="42%" r="74%">
-                <stop offset="0%" stop-color="#f9fafb"></stop>
-                <stop offset="54%" stop-color="#d9dce1"></stop>
-                <stop offset="100%" stop-color="#aeb4bc"></stop>
+              <radialGradient id="waferGray" cx="45%" cy="40%" r="74%">
+                <stop offset="0%" stop-color="#5a5a5f"></stop>
+                <stop offset="60%" stop-color="#3c3c40"></stop>
+                <stop offset="100%" stop-color="#2c2c2e"></stop>
               </radialGradient>
 
-              <radialGradient id="waferShine" cx="38%" cy="32%" r="62%">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"></stop>
-                <stop offset="32%" stop-color="#ffffff" stop-opacity="0.24"></stop>
+              <radialGradient id="waferSoftShine" cx="36%" cy="30%" r="60%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.30"></stop>
+                <stop offset="35%" stop-color="#ffffff" stop-opacity="0.10"></stop>
                 <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
               </radialGradient>
             </defs>
@@ -655,12 +595,7 @@
             <circle class="wafer-highlight" cx="110" cy="110" r="82"></circle>
             <circle class="wafer-inner-ring" cx="110" cy="110" r="70"></circle>
 
-            <g class="settled-atoms" clip-path="url(#waferClip)" id="settledAtoms"></g>
-
-            <g class="circuit-layer" clip-path="url(#waferClip)" id="circuitLayer">
-              <g class="circuit-grid" id="circuitGrid"></g>
-              <g id="chipBlocks"></g>
-            </g>
+            <g class="deposited-atoms" id="depositedAtoms" clip-path="url(#waferClip)"></g>
 
             <circle class="wafer-outline" cx="110" cy="110" r="82"></circle>
           </svg>
@@ -669,7 +604,7 @@
 
       <div class="landing-card">
         <h1 class="landing-name">Swapnil Nalawade (PhD)</h1>
-        <p class="landing-role">Materials Scientist | Process Engineer </p>
+        <p class="landing-role">Materials Engineer | Process Engineer </p>
         
       </div>
     </div>
@@ -681,14 +616,14 @@
         <h2>About Me</h2>
         <p class="section-intro">
           PhD in Nanoengineering, specializing in thin-film deposition, interfacial chemistry, and structure-property
-          correlations with extensive experience in atomic layer deposition (ALD), reactive PVD sputtering, pulsed laser
+          correlations with extensive experience in atomic layer deposition (ALD), reactive sputtering, pulsed laser
           deposition, and advanced X-ray metrologies. Expert in probing electronic structure, surface hydration, and catalytic
           behavior using X Ray Photoelectron Spectroscopy, Ambient Pressure-XPS, X Ray Diffraction, X Ray Reflectometry,
           Atomic Force Microscopy, Scanning Electron Microscopy, Raman, and spectroscopic ellipsometry. Demonstrated ability
-          to independently design experiments, process and tool ownership, troubleshoot deposition tools, and extract mechanistic insights for
-          electrocatalysis and semiconductor thin-film applications. With a strong analytical, resilient, and collaborative mindset, I am passionate about leveraging advanced 
-metrology and process engineering expertise to push the boundaries of materials science and engineering to create next 
-generation technology.
+          to independently design experiments, troubleshoot deposition tools, and extract mechanistic insights for
+          electrocatalysis and semiconductor thin-film applications. With a strong analytical, resilient, and collaborative
+          mindset, I am passionate about contributing to research in nanofabrication for applications in energy and semiconductor industries
+          and translating materials processing expertise into high-impact scientific discoveries.
         </p>
       </div>
     </section>
@@ -996,14 +931,13 @@ generation technology.
 
     (function () {
       const svgNS = "http://www.w3.org/2000/svg";
-      const settledGroup = document.getElementById("settledAtoms");
-      const gridGroup = document.getElementById("circuitGrid");
-      const chipGroup = document.getElementById("chipBlocks");
+      const depositedGroup = document.getElementById("depositedAtoms");
 
       const centerX = 110;
       const centerY = 110;
       const waferRadius = 82;
-      const totalCycle = 22;
+      const totalCycle = 15;   // full restart every 15 seconds
+      const depositDuration = 11; // atoms deposit during first 11 seconds, then hold
 
       function insideWafer(x, y, margin = 0) {
         const dx = x - centerX;
@@ -1018,70 +952,18 @@ generation technology.
         for (let x = 42; x <= 178; x += xSpacing) {
           if (!insideWafer(x, y, 6)) continue;
 
-          const circle = document.createElementNS(svgNS, "circle");
-          circle.setAttribute("cx", x);
-          circle.setAttribute("cy", y);
-          circle.setAttribute("r", 3.4);
+          const atom = document.createElementNS(svgNS, "circle");
+          atom.setAttribute("cx", x);
+          atom.setAttribute("cy", y);
+          atom.setAttribute("r", 3.3);
 
           const xProgress = (x - 42) / (178 - 42);
           const rowProgress = rowIndex / (rowYs.length - 1);
-          const delay = 5 + rowProgress * 10 + xProgress * 0.45;
+          const delay = rowProgress * depositDuration + xProgress * 0.35;
 
-          circle.style.animation = `settleAtom ${totalCycle}s linear infinite ${delay - totalCycle}s`;
-          settledGroup.appendChild(circle);
+          atom.style.animation = `depositAtom ${totalCycle}s linear infinite ${delay - totalCycle}s`;
+          depositedGroup.appendChild(atom);
         }
-      });
-
-      const gridPositions = [50, 66, 82, 98, 114, 130, 146, 162, 178];
-
-      gridPositions.forEach((x) => {
-        const line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", x);
-        line.setAttribute("y1", 42);
-        line.setAttribute("x2", x);
-        line.setAttribute("y2", 178);
-        gridGroup.appendChild(line);
-      });
-
-      gridPositions.forEach((y) => {
-        const line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", 42);
-        line.setAttribute("y1", y);
-        line.setAttribute("x2", 178);
-        line.setAttribute("y2", y);
-        gridGroup.appendChild(line);
-      });
-
-      const chipRows = [56, 76, 96, 116, 136, 156];
-      const chipCols = [56, 76, 96, 116, 136, 156];
-
-      chipRows.forEach((y) => {
-        chipCols.forEach((x) => {
-          if (!insideWafer(x + 8, y + 7, 10)) return;
-
-          const rect = document.createElementNS(svgNS, "rect");
-          rect.setAttribute("x", x);
-          rect.setAttribute("y", y);
-          rect.setAttribute("width", 16);
-          rect.setAttribute("height", 13);
-          rect.setAttribute("class", "chip-block");
-          chipGroup.appendChild(rect);
-
-          const trace1 = document.createElementNS(svgNS, "path");
-          trace1.setAttribute("class", "chip-trace");
-          trace1.setAttribute("d", `M ${x + 3} ${y + 4} L ${x + 13} ${y + 4}`);
-          chipGroup.appendChild(trace1);
-
-          const trace2 = document.createElementNS(svgNS, "path");
-          trace2.setAttribute("class", "chip-trace");
-          trace2.setAttribute("d", `M ${x + 4} ${y + 7} L ${x + 11} ${y + 7}`);
-          chipGroup.appendChild(trace2);
-
-          const trace3 = document.createElementNS(svgNS, "path");
-          trace3.setAttribute("class", "chip-trace");
-          trace3.setAttribute("d", `M ${x + 8} ${y + 2} L ${x + 8} ${y + 11}`);
-          chipGroup.appendChild(trace3);
-        });
       });
     })();
   </script>
