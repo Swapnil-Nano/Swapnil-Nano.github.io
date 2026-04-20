@@ -179,10 +179,6 @@
       overflow: hidden;
     }
 
-    .landing.hidden {
-      display: none;
-    }
-
     .landing::before {
       content: "";
       position: absolute;
@@ -275,8 +271,9 @@
 
     main {
       display: none;
-      min-height: 100vh;
       background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+      padding-top: 24px;
+      min-height: 40vh;
     }
 
     main.show {
@@ -285,7 +282,7 @@
 
     .content-section {
       display: none;
-      padding: 80px 0;
+      padding: 64px 0 80px;
     }
 
     .content-section.active {
@@ -545,7 +542,7 @@
       }
 
       .content-section {
-        padding: 62px 0;
+        padding: 48px 0 64px;
       }
     }
   </style>
@@ -622,8 +619,9 @@
 
       <div class="landing-card">
         <h1 class="landing-name">Swapnil Nalawade (PhD)</h1>
-        <p class="landing-role">Materials Engineer | Process Engineer </p>
-        
+        <p class="landing-role">Materials Scientist</p>
+        <p class="landing-role">Semiconductor Process Engineer</p>
+        <div class="menu-hint">Click the 3-dot menu to explore</div>
       </div>
     </div>
   </section>
@@ -650,12 +648,24 @@
       <div class="container">
         <h2>Research</h2>
         <div class="card-grid">
-          <div class="card"><h4>Atomic Layer Deposition & Magnetron Sputtering Deposition of Transition Metals and Their Oxides</h4></div>
-          <div class="card"><h4>Annealing-Driven Structure, Surface Chemistry, and Morphology Evolution of Thin Films</h4></div>
-          <div class="card"><h4>Interfacial Chemistry and Operando / Ambient-Pressure X Ray Photoelectron Spectroscopy</h4></div>
-          <div class="card"><h4>Thin Films for Electrochemical Water Splitting</h4></div>
-          <div class="card"><h4>Semiconductor Nanofabrication Process Engineering</h4></div>
-          <div class="card"><h4>Structure-Property Correlation in Catalytic Activities of Transition Metal Oxides</h4></div>
+          <div class="card">
+            <h4>Atomic Layer Deposition & Magnetron Sputtering Deposition of Transition Metals and Their Oxides</h4>
+          </div>
+          <div class="card">
+            <h4>Annealing-Driven Structure, Surface Chemistry, and Morphology Evolution of Thin Films</h4>
+          </div>
+          <div class="card">
+            <h4>Interfacial Chemistry and Operando / Ambient-Pressure X Ray Photoelectron Spectroscopy</h4>
+          </div>
+          <div class="card">
+            <h4>Thin Films for Electrochemical Water Splitting</h4>
+          </div>
+          <div class="card">
+            <h4>Semiconductor Nanofabrication Process Engineering</h4>
+          </div>
+          <div class="card">
+            <h4>Structure-Property Correlation in Catalytic Activities of Transition Metal Oxides</h4>
+          </div>
         </div>
       </div>
     </section>
@@ -739,29 +749,57 @@
           <div class="resource-item" id="ald">
             <button class="resource-toggle">Atomic Layer Deposition (ALD)</button>
             <div class="resource-content">
-              <p>In recent years, there has been a tremendous demand for atomically flat thin films across a wide range of industries, including electronics, photonics, energy generation and storage, medical, biomedical, and aerospace. Defect-free, conformal, and uniform thin films are essential for ensuring consistent material performance in these applications, and atomically flat films play a vital role in modern nanofabrication.</p>
-              <p>Atomic layer deposition is one such technique that stands out for several reasons, including precise thickness control, excellent film conformality, low-temperature processing, stoichiometric control, and inherent film quality. The demand for continuous and pinhole-free films in semiconductor devices has further driven developments in ALD.</p>
+              <p>
+                In recent years, there has been a tremendous demand for atomically flat thin films across a wide range
+                of industries, including electronics, photonics, energy generation and storage, medical, biomedical,
+                and aerospace. Defect-free, conformal, and uniform thin films are essential for ensuring consistent
+                material performance in these applications, and atomically flat films play a vital role in modern nanofabrication.
+              </p>
+              <p>
+                Atomic layer deposition is one such technique that stands out for several reasons, including precise
+                thickness control, excellent film conformality, low-temperature processing, stoichiometric control,
+                and inherent film quality. The demand for continuous and pinhole-free films in semiconductor devices has
+                further driven developments in ALD.
+              </p>
+              <p>
+                ALD effectively meets the requirements for atomic-level control and conformal deposition through sequential,
+                self-limiting surface reactions. The primary advantages of ALD include precise thickness control at the
+                Angstrom or monolayer level and excellent step coverage on high aspect ratio structures.
+              </p>
             </div>
           </div>
 
           <div class="resource-item" id="xps">
             <button class="resource-toggle">X Ray Photoelectron Spectroscopy (XPS)</button>
             <div class="resource-content">
-              <p>XPS is a surface sensitive analytical technique used to determine the elemental composition and chemical states of the materials. XPS is based on the photoelectric effect. When a material is irradiated with monochromatic X-rays, core-level electrons are ejected from atoms in the sample and their kinetic energy is measured to determine binding energy and oxidation state.</p>
+              <p>
+                XPS is a surface sensitive analytical technique used to determine elemental composition and chemical states.
+                When a material is irradiated with monochromatic X-rays, core-level electrons are emitted and their kinetic
+                energy is measured. The binding energy is calculated from this measurement, enabling elemental identification
+                and oxidation-state analysis.
+              </p>
             </div>
           </div>
 
           <div class="resource-item" id="xrd">
             <button class="resource-toggle">X Ray Diffraction (XRD)</button>
             <div class="resource-content">
-              <p>X-ray Diffraction (XRD) is used to investigate crystallographic structure, phase composition, and crystallinity of deposited thin films. By measuring diffraction peaks that satisfy Bragg’s law, interplanar spacing and crystal orientation can be determined.</p>
+              <p>
+                X-ray Diffraction is used to investigate crystallographic structure, phase composition, and degree of
+                crystallinity in thin films. By measuring diffraction peaks that satisfy Bragg’s law, interplanar spacing
+                and crystal structure can be identified.
+              </p>
             </div>
           </div>
 
           <div class="resource-item" id="ellipsometry">
             <button class="resource-toggle">Spectroscopic Ellipsometry</button>
             <div class="resource-content">
-              <p>Spectroscopic ellipsometry is a non-destructive optical technique used to determine thin film thickness and optical constants. It analyzes the change in polarization of reflected light and is highly effective for thin film and nanomaterial characterization.</p>
+              <p>
+                Spectroscopic ellipsometry is a non-destructive optical technique used to determine thin film thickness
+                and optical constants. It analyzes the change in polarization state of reflected light and is highly
+                effective for thin film and nanomaterial characterization.
+              </p>
             </div>
           </div>
         </div>
@@ -778,7 +816,7 @@
             <li>Restored and maintained deposition yield &gt; 90% by correlating metrology signals with chamber conditions and resolving process excursions</li>
             <li>Developed a Python-based web platform for automated XPS spectral analysis, enabling rapid data processing for chemical states</li>
             <li>Hands-on experience with cleanroom nanofabrication and semiconductor process development</li>
-            <li>Participated in Advanced Light Source (ALS) beamline at LBNL, Berkeley for AP-XPS and tender X-ray studies on RuO2</li>
+            <li>Participated in Advanced Light Source (ALS) beamline at LBNL, Berkeley for AP-XPS and tender X-ray studies on RuO₂</li>
             <li>Presented research at conferences and collaborated with national labs and multidisciplinary teams</li>
             <li>Lean Six Sigma Certified</li>
           </ul>
@@ -811,7 +849,6 @@
 
   <script>
     const body = document.body;
-    const landingScreen = document.getElementById("landingScreen");
     const menuBtn = document.getElementById("menuBtn");
     const menuPanel = document.getElementById("menuPanel");
     const menuOverlay = document.getElementById("menuOverlay");
@@ -842,9 +879,7 @@
     }
 
     function showSection(sectionId, resourceId = null) {
-      landingScreen.classList.add("hidden");
       body.classList.remove("landing-mode");
-
       siteContent.classList.add("show");
       siteFooter.classList.add("show");
 
@@ -864,7 +899,7 @@
         }
       }
 
-      window.scrollTo(0, 0);
+      siteContent.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     menuBtn.addEventListener("click", () => {
