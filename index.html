@@ -8,16 +8,16 @@
   <style>
     :root {
       --apple-bg: #f5f5f7;
-      --apple-surface: rgba(255, 255, 255, 0.78);
-      --apple-card: #ffffff;
+      --apple-surface: rgba(255, 255, 255, 0.74);
+      --apple-card: rgba(255, 255, 255, 0.88);
       --apple-text: #1d1d1f;
       --apple-muted: #6e6e73;
       --apple-border: rgba(0, 0, 0, 0.08);
       --apple-blue: #0071e3;
       --apple-blue-hover: #0077ed;
-      --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.08);
-      --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.06);
-      --radius-xl: 28px;
+      --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.08);
+      --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.06);
+      --radius-xl: 32px;
       --radius-lg: 22px;
       --radius-md: 16px;
     }
@@ -63,7 +63,7 @@
     .menu-btn {
       width: 52px;
       height: 52px;
-      border: 1px solid rgba(255, 255, 255, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.34);
       background: rgba(255, 255, 255, 0.60);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
@@ -182,11 +182,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       padding: 32px 20px;
       background:
-        radial-gradient(circle at 18% 20%, rgba(0, 113, 227, 0.06), transparent 24%),
-        radial-gradient(circle at 82% 24%, rgba(0, 113, 227, 0.05), transparent 22%),
+        radial-gradient(circle at 18% 20%, rgba(0, 113, 227, 0.05), transparent 24%),
+        radial-gradient(circle at 82% 24%, rgba(0, 113, 227, 0.04), transparent 22%),
         radial-gradient(circle at 50% 90%, rgba(0, 0, 0, 0.03), transparent 28%),
         linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 58%, #eeeeef 100%);
       position: relative;
@@ -196,8 +195,8 @@
     .landing::before {
       content: "";
       position: absolute;
-      width: 620px;
-      height: 620px;
+      width: 700px;
+      height: 700px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 72%);
       top: 50%;
@@ -206,34 +205,67 @@
       pointer-events: none;
     }
 
-    .landing-card {
+    .landing-layout {
       position: relative;
       z-index: 1;
-      max-width: 820px;
-      padding: 56px 34px;
+      width: min(1180px, 96%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 42px;
+    }
+
+    .landing-logo-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 240px;
+    }
+
+    .logo-wrap {
+      width: 220px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wafer-logo {
+      width: 220px;
+      height: 220px;
+      overflow: visible;
+      filter: drop-shadow(0 14px 34px rgba(0, 0, 0, 0.10));
+    }
+
+    .landing-card {
+      width: min(760px, 100%);
+      padding: 54px 42px;
       border-radius: 34px;
-      background: rgba(255, 255, 255, 0.58);
+      background: rgba(255, 255, 255, 0.56);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.58);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      text-align: center;
     }
 
     .landing-name {
       margin: 0;
-      font-size: clamp(2.35rem, 6vw, 4.9rem);
-      line-height: 1.05;
+      font-size: clamp(2rem, 4vw, 4.2rem);
+      line-height: 1.08;
       letter-spacing: -0.03em;
       font-weight: 700;
       color: #111111;
+      white-space: nowrap;
     }
 
     .landing-role {
       margin: 14px 0 0;
-      font-size: clamp(1.02rem, 2vw, 1.45rem);
+      font-size: clamp(1rem, 1.8vw, 1.45rem);
       color: var(--apple-muted);
       font-weight: 500;
       letter-spacing: -0.01em;
+      text-align: center;
     }
 
     .landing-role + .landing-role {
@@ -241,9 +273,10 @@
     }
 
     .menu-hint {
-      margin-top: 26px;
+      margin-top: 24px;
       font-size: 0.96rem;
       color: var(--apple-muted);
+      text-align: center;
     }
 
     /* =========================
@@ -411,8 +444,131 @@
     }
 
     /* =========================
+       LOGO ANIMATION
+    ========================= */
+    .wafer-base {
+      fill: url(#siliconGlow);
+    }
+
+    .wafer-highlight {
+      fill: url(#waferShine);
+      opacity: 0.38;
+    }
+
+    .wafer-outline {
+      fill: none;
+      stroke: #d1d1d6;
+      stroke-width: 2.4;
+    }
+
+    .wafer-inner-ring {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.55);
+      stroke-width: 1.2;
+    }
+
+    .settled-atoms {
+      animation: settledGroupCycle 20s linear infinite;
+    }
+
+    .settled-atoms circle {
+      fill: rgba(245, 247, 250, 0.96);
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .circuit-layer {
+      opacity: 0;
+      animation: circuitReveal 25s linear infinite;
+    }
+
+    .circuit-grid line {
+      stroke: rgba(90, 90, 95, 0.25);
+      stroke-width: 1.2;
+      shape-rendering: crispEdges;
+    }
+
+    .chip-block {
+      fill: rgba(255, 255, 255, 0.28);
+      stroke: rgba(120, 120, 128, 0.52);
+      stroke-width: 1;
+      rx: 2;
+      ry: 2;
+    }
+
+    .chip-trace {
+      stroke: rgba(90, 90, 95, 0.45);
+      stroke-width: 1.05;
+      fill: none;
+      stroke-linecap: round;
+      shape-rendering: crispEdges;
+    }
+
+    @keyframes settleAtom {
+      0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.55);
+      }
+      8% {
+        opacity: 1;
+        transform: translateY(0) scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes settledGroupCycle {
+      0%, 68.18% {
+        opacity: 1;
+      }
+      77.27% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes circuitReveal {
+      0%, 77.27% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* =========================
        RESPONSIVE
     ========================= */
+    @media (max-width: 980px) {
+      .landing-layout {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .landing-logo-side {
+        flex: 0 0 auto;
+      }
+
+      .logo-wrap,
+      .wafer-logo {
+        width: 170px;
+        height: 170px;
+      }
+
+      .landing-card {
+        padding: 42px 24px;
+      }
+
+      .landing-name {
+        white-space: normal;
+      }
+    }
+
     @media (max-width: 768px) {
       .menu-shell {
         top: 16px;
@@ -424,9 +580,10 @@
         padding: 88px 22px 24px;
       }
 
-      .landing-card {
-        padding: 44px 24px;
-        border-radius: 28px;
+      .logo-wrap,
+      .wafer-logo {
+        width: 145px;
+        height: 145px;
       }
 
       section {
@@ -437,7 +594,6 @@
 </head>
 
 <body class="landing-mode">
-  <!-- 3 DOT MENU -->
   <div class="menu-shell">
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
       <div class="menu-dots">
@@ -472,30 +628,67 @@
     </div>
   </aside>
 
-  <!-- LANDING ONLY -->
   <section class="landing" id="home">
-    <div class="landing-card">
-      <h1 class="landing-name">Swapnil Nalawade (PhD) </h1>
-      <p class="landing-role">Materials Scientist | Process Engineer </p>
-      
+    <div class="landing-layout">
+      <div class="landing-logo-side">
+        <div class="logo-wrap">
+          <svg class="wafer-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Swapnil logo">
+            <defs>
+              <clipPath id="waferClip">
+                <circle cx="110" cy="110" r="82"></circle>
+              </clipPath>
+
+              <radialGradient id="siliconGlow" cx="50%" cy="42%" r="74%">
+                <stop offset="0%" stop-color="#f9fafb"></stop>
+                <stop offset="54%" stop-color="#d9dce1"></stop>
+                <stop offset="100%" stop-color="#aeb4bc"></stop>
+              </radialGradient>
+
+              <radialGradient id="waferShine" cx="38%" cy="32%" r="62%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"></stop>
+                <stop offset="32%" stop-color="#ffffff" stop-opacity="0.24"></stop>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+              </radialGradient>
+            </defs>
+
+            <circle class="wafer-base" cx="110" cy="110" r="82"></circle>
+            <circle class="wafer-highlight" cx="110" cy="110" r="82"></circle>
+            <circle class="wafer-inner-ring" cx="110" cy="110" r="70"></circle>
+
+            <g class="settled-atoms" clip-path="url(#waferClip)" id="settledAtoms"></g>
+
+            <g class="circuit-layer" clip-path="url(#waferClip)" id="circuitLayer">
+              <g class="circuit-grid" id="circuitGrid"></g>
+              <g id="chipBlocks"></g>
+            </g>
+
+            <circle class="wafer-outline" cx="110" cy="110" r="82"></circle>
+          </svg>
+        </div>
+      </div>
+
+      <div class="landing-card">
+        <h1 class="landing-name">Swapnil Nalawade (PhD)</h1>
+        <p class="landing-role">Materials Scientist | Process Engineer </p>
+        
+      </div>
     </div>
   </section>
 
-  <!-- FULL WEBSITE CONTENT -->
   <main id="siteContent">
     <section id="about">
       <div class="container">
         <h2>About Me</h2>
         <p class="section-intro">
           PhD in Nanoengineering, specializing in thin-film deposition, interfacial chemistry, and structure-property
-          correlations with extensive experience in atomic layer deposition (ALD), reactive sputtering, pulsed laser
+          correlations with extensive experience in atomic layer deposition (ALD), reactive PVD sputtering, pulsed laser
           deposition, and advanced X-ray metrologies. Expert in probing electronic structure, surface hydration, and catalytic
           behavior using X Ray Photoelectron Spectroscopy, Ambient Pressure-XPS, X Ray Diffraction, X Ray Reflectometry,
           Atomic Force Microscopy, Scanning Electron Microscopy, Raman, and spectroscopic ellipsometry. Demonstrated ability
-          to independently design experiments, troubleshoot deposition tools, and extract mechanistic insights for
-          electrocatalysis and semiconductor thin-film applications. With a strong analytical, resilient, and collaborative
-          mindset, I am passionate about contributing to research in nanofabrication for applications in energy and semiconductor industries
-          and translating materials processing expertise into high-impact scientific discoveries.
+          to independently design experiments, process and tool ownership, troubleshoot deposition tools, and extract mechanistic insights for
+          electrocatalysis and semiconductor thin-film applications. With a strong analytical, resilient, and collaborative mindset, I am passionate about leveraging advanced 
+metrology and process engineering expertise to push the boundaries of materials science and engineering to create next 
+generation technology.
         </p>
       </div>
     </section>
@@ -787,9 +980,6 @@
       });
     });
 
-    /* =========================
-       RESOURCES TOGGLE
-    ========================= */
     document.querySelectorAll(".resource-toggle").forEach((button) => {
       button.addEventListener("click", function () {
         const item = this.parentElement;
@@ -803,6 +993,97 @@
         item.classList.toggle("active");
       });
     });
+
+    (function () {
+      const svgNS = "http://www.w3.org/2000/svg";
+      const settledGroup = document.getElementById("settledAtoms");
+      const gridGroup = document.getElementById("circuitGrid");
+      const chipGroup = document.getElementById("chipBlocks");
+
+      const centerX = 110;
+      const centerY = 110;
+      const waferRadius = 82;
+      const totalCycle = 22;
+
+      function insideWafer(x, y, margin = 0) {
+        const dx = x - centerX;
+        const dy = y - centerY;
+        return (dx * dx + dy * dy) <= Math.pow(waferRadius - margin, 2);
+      }
+
+      const rowYs = [166, 154, 142, 130, 118, 106, 94, 82, 70, 58];
+      const xSpacing = 14;
+
+      rowYs.forEach((y, rowIndex) => {
+        for (let x = 42; x <= 178; x += xSpacing) {
+          if (!insideWafer(x, y, 6)) continue;
+
+          const circle = document.createElementNS(svgNS, "circle");
+          circle.setAttribute("cx", x);
+          circle.setAttribute("cy", y);
+          circle.setAttribute("r", 3.4);
+
+          const xProgress = (x - 42) / (178 - 42);
+          const rowProgress = rowIndex / (rowYs.length - 1);
+          const delay = 5 + rowProgress * 10 + xProgress * 0.45;
+
+          circle.style.animation = `settleAtom ${totalCycle}s linear infinite ${delay - totalCycle}s`;
+          settledGroup.appendChild(circle);
+        }
+      });
+
+      const gridPositions = [50, 66, 82, 98, 114, 130, 146, 162, 178];
+
+      gridPositions.forEach((x) => {
+        const line = document.createElementNS(svgNS, "line");
+        line.setAttribute("x1", x);
+        line.setAttribute("y1", 42);
+        line.setAttribute("x2", x);
+        line.setAttribute("y2", 178);
+        gridGroup.appendChild(line);
+      });
+
+      gridPositions.forEach((y) => {
+        const line = document.createElementNS(svgNS, "line");
+        line.setAttribute("x1", 42);
+        line.setAttribute("y1", y);
+        line.setAttribute("x2", 178);
+        line.setAttribute("y2", y);
+        gridGroup.appendChild(line);
+      });
+
+      const chipRows = [56, 76, 96, 116, 136, 156];
+      const chipCols = [56, 76, 96, 116, 136, 156];
+
+      chipRows.forEach((y) => {
+        chipCols.forEach((x) => {
+          if (!insideWafer(x + 8, y + 7, 10)) return;
+
+          const rect = document.createElementNS(svgNS, "rect");
+          rect.setAttribute("x", x);
+          rect.setAttribute("y", y);
+          rect.setAttribute("width", 16);
+          rect.setAttribute("height", 13);
+          rect.setAttribute("class", "chip-block");
+          chipGroup.appendChild(rect);
+
+          const trace1 = document.createElementNS(svgNS, "path");
+          trace1.setAttribute("class", "chip-trace");
+          trace1.setAttribute("d", `M ${x + 3} ${y + 4} L ${x + 13} ${y + 4}`);
+          chipGroup.appendChild(trace1);
+
+          const trace2 = document.createElementNS(svgNS, "path");
+          trace2.setAttribute("class", "chip-trace");
+          trace2.setAttribute("d", `M ${x + 4} ${y + 7} L ${x + 11} ${y + 7}`);
+          chipGroup.appendChild(trace2);
+
+          const trace3 = document.createElementNS(svgNS, "path");
+          trace3.setAttribute("class", "chip-trace");
+          trace3.setAttribute("d", `M ${x + 8} ${y + 2} L ${x + 8} ${y + 11}`);
+          chipGroup.appendChild(trace3);
+        });
+      });
+    })();
   </script>
 </body>
 </html>
