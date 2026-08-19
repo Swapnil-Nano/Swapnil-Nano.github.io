@@ -1,0 +1,168 @@
+.career-ai {
+  max-width: 860px;
+  margin: 48px auto;
+  padding: 28px;
+  border: 1px solid rgba(127, 127, 127, 0.25);
+  border-radius: 18px;
+  background: rgba(127, 127, 127, 0.05);
+  font-family: inherit;
+}
+
+.career-ai__header h2 {
+  margin: 4px 0 8px;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+.career-ai__header p {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.82;
+}
+
+.career-ai__eyebrow {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+}
+
+.career-ai__quick-questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.career-ai__quick-questions button,
+.career-ai__reset,
+.career-ai__send {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.career-ai__quick-questions button {
+  padding: 8px 12px;
+  border: 1px solid rgba(127, 127, 127, 0.32);
+  background: transparent;
+  color: inherit;
+}
+
+.career-ai__messages {
+  min-height: 220px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid rgba(127, 127, 127, 0.22);
+  border-radius: 14px;
+  background: rgba(127, 127, 127, 0.04);
+}
+
+.career-ai__message {
+  width: fit-content;
+  max-width: 84%;
+  margin-bottom: 12px;
+  padding: 11px 14px;
+  border-radius: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.career-ai__message--assistant {
+  background: rgba(127, 127, 127, 0.14);
+}
+
+.career-ai__message--user {
+  margin-left: auto;
+  background: rgba(127, 127, 127, 0.28);
+}
+
+.career-ai__message--status {
+  font-size: 0.9rem;
+  opacity: 0.65;
+}
+
+.career-ai__form {
+  margin-top: 14px;
+}
+
+.career-ai__form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  resize: vertical;
+  min-height: 88px;
+  padding: 13px 14px;
+  border: 1px solid rgba(127, 127, 127, 0.3);
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.career-ai__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.career-ai__reset,
+.career-ai__send {
+  padding: 10px 16px;
+}
+
+.career-ai__reset {
+  border: 1px solid rgba(127, 127, 127, 0.3);
+  background: transparent;
+  color: inherit;
+}
+
+.career-ai__send {
+  border: 0;
+  background: currentColor;
+}
+
+.career-ai__send span {
+  color: initial;
+}
+
+.career-ai__send:disabled,
+.career-ai__reset:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.career-ai__note {
+  margin: 10px 2px 0;
+  font-size: 0.78rem;
+  opacity: 0.6;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .career-ai {
+    margin: 24px auto;
+    padding: 18px;
+  }
+
+  .career-ai__message {
+    max-width: 94%;
+  }
+
+  .career-ai__actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+}
