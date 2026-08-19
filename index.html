@@ -980,11 +980,11 @@
   
 
 <!-- Complete Floating AI Agent Widget -->
-<div id="ai-agent-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+<div id="ai-agent-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999 !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
     
-    <!-- 1. The Launcher Button -->
-    <button id="ai-launcher" style="width: 60px; height: 60px; border-radius: 50%; background-color: #f0f0f0; border: 2px solid #1a73e8; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; overflow: hidden; padding: 0;">
-        <img src="avtar.png" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <!-- 1. The Launcher Button (Layer forced to the front with pointer cursor) -->
+    <button id="ai-launcher" style="width: 60px; height: 60px; border-radius: 50%; background-color: #f0f0f0; border: 2px solid #1a73e8; cursor: pointer !important; box-shadow: 0 4px 16px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; overflow: hidden; padding: 0; pointer-events: auto !important;">
+        <img src="avtar.png" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
     </button>
 
     <!-- 2. The Chat Window -->
@@ -1041,14 +1041,13 @@
     }
 </style>
 
-<!-- Load official browser-optimized Google Generative AI components via CDN -->
+<!-- Standard script script tag for immediate execution and click event bindings -->
 <script type="module">
-    import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+    import { GoogleGenerativeAI } from "https://esm.run";
 
-    // ⚠️ CRITICAL: REPLACE THIS VALUE WITH YOUR ACTUAL GOOGLE AI STUDIO KEY
+    // ⚠️ CRITICAL: REPLACE THIS VALUE WITH YOUR ACTIVE API KEY
     const API_KEY = "AIzaSyAQ.Ab8RN6LaRtDqWB3uQL3G2seS5A_LXtSmatiPce2OBRg0daUTgw"; 
     
-    // Core system tuning instruction context
     const SYSTEM_INSTRUCTIONS = `You are a professional, highly precise AI Portfolio Assistant representing Swapnil Nalawade, PhD.
 Your primary audience consists of technical recruiters, engineering managers, and scientific collaborators.
 Answer all queries factually and accurately using ONLY the official profile data provided below.
@@ -1104,32 +1103,37 @@ PhD trained process engineer specializing in semiconductor thin-film process dev
     const chipExp = document.getElementById("chip-exp");
     const chipPub = document.getElementById("chip-pub");
 
+    // Connect backup standard native listeners directly to elements
+    if (launcher && chatWindow && minimizeBtn) {
+        launcher.onclick = () => {
+            launcher.style.display = "none";
+            chatWindow.style.display = "flex";
+            if (userInput) userInput.focus();
+        };
+
+        minimizeBtn.onclick = () => {
+            chatWindow.style.display = "none";
+            launcher.style.display = "flex";
+        };
+    }
+
     // Initialize Google API Client Engine
-    const ai = new GoogleGenerativeAI(API_KEY);
-    
-    const model = ai.getGenerativeModel({ 
-        model: "gemini-1.5-flash",
-        systemInstruction: SYSTEM_INSTRUCTIONS
-    });
-    
-    const chatSession = model.startChat({
-        generationConfig: {
-            temperature: 0.1,
-            maxOutputTokens: 400,
-        }
-    });
-
-    // --- UI Toggle Controls ---
-    launcher.addEventListener("click", () => {
-        launcher.style.display = "none";
-        chatWindow.style.display = "flex";
-        userInput.focus();
-    });
-
-    minimizeBtn.addEventListener("click", () => {
-        chatWindow.style.display = "none";
-        launcher.style.display = "flex";
-    });
+    let ai, model, chatSession;
+    try {
+        ai = new GoogleGenerativeAI(API_KEY);
+        model = ai.getGenerativeModel({ 
+            model: "gemini-1.5-flash",
+            systemInstruction: SYSTEM_INSTRUCTIONS
+        });
+        chatSession = model.startChat({
+            generationConfig: {
+                temperature: 0.1,
+                maxOutputTokens: 400,
+            }
+        });
+    } catch(e) {
+        console.error("Initialization error:", e);
+    }
 
     async function handleSubmission() {
         const text = userInput.value.trim();
@@ -1146,17 +1150,11 @@ PhD trained process engineer specializing in semiconductor thin-film process dev
             loadingDiv.innerText = responseText;
         } catch (error) {
             loadingDiv.innerText = "The portfolio assistant ran into an issue processing this request. Please contact Dr. Nalawade via email.";
-            console.error("Gemini Engine Connection Failure:", error);
+            console.error(error);
         }
     }
 
     function appendMessage(text, sender) {
-        const msgDiv = document.createElement("div");
-        msgDiv.innerText = text;
-        msgDiv.style.padding = "10px 12px";
-        msgDiv.style.borderRadius = "8px";
-        msgDiv.style.maxWidth = "85%";
-        msgDiv.style.fontSize = "13px";
 
 </body>
 </html>
