@@ -975,6 +975,61 @@
       });
     })();
   </script>
+<section class="career-ai" id="career-ai">
+  <div class="career-ai__header">
+    <p class="career-ai__eyebrow">AI CAREER ASSISTANT</p>
+    <h2>Ask about my experience</h2>
+    <p>
+      Explore my semiconductor process experience, technical skills,
+      accomplishments, publications, and alignment with your role.
+    </p>
+  </div>
 
+  <div class="career-ai__quick-questions" aria-label="Suggested questions">
+    <button type="button" data-question="What experience does Swapnil have with ALD?">
+      ALD experience
+    </button>
+    <button type="button" data-question="What are Swapnil's strongest process-engineering accomplishments?">
+      Key accomplishments
+    </button>
+    <button type="button" data-question="Tell me about a time Swapnil escalated an equipment issue.">
+      Troubleshooting example
+    </button>
+    <button type="button" data-question="How does Swapnil's background translate to semiconductor manufacturing?">
+      Industry alignment
+    </button>
+  </div>
+
+  <div class="career-ai__messages" id="careerAiMessages" aria-live="polite">
+    <div class="career-ai__message career-ai__message--assistant">
+      Hi — I’m an AI assistant grounded in Swapnil Nalawade’s verified professional
+      portfolio. Ask me about his experience, skills, projects, publications, or
+      fit for a role.
+    </div>
+  </div>
+
+  <form class="career-ai__form" id="careerAiForm">
+    <label class="sr-only" for="careerAiInput">Ask a recruiter question</label>
+    <textarea
+      id="careerAiInput"
+      rows="3"
+      maxlength="6000"
+      placeholder="Ask a question or paste a job description..."
+      required
+    ></textarea>
+
+    <div class="career-ai__actions">
+      <button type="button" id="careerAiReset" class="career-ai__reset">
+        New conversation
+      </button>
+      <button type="submit" id="careerAiSend" class="career-ai__send">
+        Ask assistant
+      </button>
+    </div>
+  </form>
+
+  <p class="career-ai__note">
+    AI-generated answers are based on a curated professional knowledge base.
+  </p>
 </body>
 </html>
