@@ -983,18 +983,18 @@
 <div id="ai-agent-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
     
     <!-- 1. The Launcher Button -->
-    <button id="ai-launcher" style="width: 60px; height: 60px; border-radius: 50%; background-color: #1a73e8; border: none; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; overflow: hidden; padding: 0;">
-        <img src="avtar.png" alt="Dr. Nalawade Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+    <button id="ai-launcher" style="width: 60px; height: 60px; border-radius: 50%; background-color: #f0f0f0; border: 2px solid #1a73e8; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; overflow: hidden; padding: 0;">
+        <img src="avatar.png" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </button>
 
     <!-- 2. The Chat Window -->
     <div id="ai-chat-window" style="display: none; width: 380px; background: white; border: 1px solid #e1e4e8; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.15); flex-direction: column;">
         
-        <!-- Header with Mini Avatar and Minimize Button -->
+        <!-- Header with Mini Avatar -->
         <div style="background-color: #1a73e8; color: white; padding: 12px 16px; font-weight: bold; font-size: 15px; display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center; gap: 10px;">
-                <img src="avtar.png" style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1.5px solid white;">
-                <span> Swapnil Nalawade's Assistant</span>
+                <img src="avatar.png" style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1.5px solid white; background-color: #f0f0f0;">
+                <span>Dr. Nalawade's Assistant</span>
             </div>
             <button id="ai-minimize" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 0 5px; line-height: 1;">&times;</button>
         </div>
@@ -1002,15 +1002,15 @@
         <!-- Chat Log Window -->
         <div id="chat-box" style="height: 320px; overflow-y: auto; padding: 16px; background: #f8f9fa; display: flex; flex-direction: column; gap: 12px;">
             <div style="background: #e8f0fe; color: #1967d2; padding: 12px; border-radius: 8px; align-self: flex-start; max-width: 85%; font-size: 13px; line-height: 1.5;">
-                Welcome! I am an AI assistant representing Swapnil Nalawade. Ask me about his thin films, cleanroom fabrication expertise, technical skillset or publications
+                Welcome! I am an AI assistant representing Dr. Swapnil Nalawade. Ask me about his cleanroom fabrication expertise, publications, or technical skillset.
             </div>
         </div>
         
         <!-- Quick Action Chips for Recruiters -->
         <div style="padding: 8px 16px; background: #f8f9fa; display: flex; gap: 6px; flex-wrap: wrap; border-top: 1px solid #f1f3f4;">
-            <button class="chip-btn" onclick="sendQuickPrompt('What are your main fabrication and metrology skills?')">🛠️ Core Skills</button>
-            <button class="chip-btn" onclick="sendQuickPrompt('Tell me about your research roles and work history.')">💼 Experience</button>
-            <button class="chip-btn" onclick="sendQuickPrompt('List your journal publications.')">📖 Publications</button>
+            <button class="chip-btn" id="chip-skills">🛠️ Core Skills</button>
+            <button class="chip-btn" id="chip-exp">💼 Experience</button>
+            <button class="chip-btn" id="chip-pub">📖 Publications</button>
         </div>
         
         <!-- User Input Panel -->
@@ -1041,7 +1041,7 @@
     }
 </style>
 
-<!-- Load Google Gen AI SDK from standard web CDN -->
+<!-- Import Map to securely load Google API Packages completely in-browser -->
 <script type="importmap">
   {
     "imports": {
@@ -1053,7 +1053,7 @@
 <script type="module">
     import { GoogleGenAI } from "@google/generative-ai";
 
-    // ⚠️ PASTE YOUR COPIED GEMINI API KEY HERE
+    // ⚠️ CRITICAL: PASTE YOUR REAL GOOGLE AI STUDIO KEY HERE 
     const API_KEY = "AIzaSyYourActualGeminiAPIKeyHere"; 
     
     const ai = new GoogleGenAI({ apiKey: API_KEY });
@@ -1109,6 +1109,11 @@ PhD trained process engineer specializing in semiconductor thin-film process dev
     const chatWindow = document.getElementById("ai-chat-window");
     const minimizeBtn = document.getElementById("ai-minimize");
 
+    // UI Buttons
+    const chipSkills = document.getElementById("chip-skills");
+    const chipExp = document.getElementById("chip-exp");
+    const chipPub = document.getElementById("chip-pub");
+
     // --- UI Toggle Controls ---
     launcher.addEventListener("click", () => {
         launcher.style.display = "none";
@@ -1154,11 +1159,6 @@ PhD trained process engineer specializing in semiconductor thin-film process dev
     }
 
     function appendMessage(text, sender) {
-        const msgDiv = document.createElement("div");
-        msgDiv.innerText = text;
-        msgDiv.style.padding = "10px 12px";
-        msgDiv.style.borderRadius = "8px";
-        msgDiv.style.maxWidth = "85%";
 
 </body>
 </html>
