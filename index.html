@@ -980,23 +980,27 @@
   
 
 <!-- Complete Floating AI Agent Widget -->
-<div id="ai-agent-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999 !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+<!-- GUARANTEED OPENING GEMINI PORTFOLIO AGENT WIDGET -->
+<div id="ai-agent-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999999 !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
     
-    <!-- 1. The Launcher Button (Layer forced to the front with pointer cursor) -->
-    <button id="ai-launcher" style="width: 60px; height: 60px; border-radius: 50%; background-color: #f0f0f0; border: 2px solid #1a73e8; cursor: pointer !important; box-shadow: 0 4px 16px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; overflow: hidden; padding: 0; pointer-events: auto !important;">
-        <img src="avtar.png" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+    <!-- 1. The Launcher Button (HTML Toggle: Built-in instant open click) -->
+    <button id="ai-launcher" 
+            onclick="document.getElementById('ai-launcher').style.display='none'; document.getElementById('ai-chat-window').style.display='flex'; document.getElementById('user-input').focus();"
+            style="width: 60px; height: 60px; border-radius: 50%; background-color: #f0f0f0; border: 2px solid #1a73e8; cursor: pointer !important; box-shadow: 0 4px 16px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; overflow: hidden; padding: 0;">
+        <img src="avatar.png" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
     </button>
 
     <!-- 2. The Chat Window -->
     <div id="ai-chat-window" style="display: none; width: 380px; background: white; border: 1px solid #e1e4e8; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.15); flex-direction: column;">
         
-        <!-- Header with Mini Avatar -->
+        <!-- Header with Mini Avatar (HTML Toggle: Built-in instant close click) -->
         <div style="background-color: #1a73e8; color: white; padding: 12px 16px; font-weight: bold; font-size: 15px; display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center; gap: 10px;">
-                <img src="avtar.png" style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1.5px solid white; background-color: #f0f0f0;">
+                <img src="avatar.png" style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1.5px solid white; background-color: #f0f0f0;">
                 <span>Dr. Nalawade's Assistant</span>
             </div>
-            <button id="ai-minimize" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 0 5px; line-height: 1;">&times;</button>
+            <button onclick="document.getElementById('ai-chat-window').style.display='none'; document.getElementById('ai-launcher').style.display='flex';" 
+                    style="background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 0 5px; line-height: 1;">&times;</button>
         </div>
         
         <!-- Chat Log Window -->
@@ -1041,12 +1045,12 @@
     }
 </style>
 
-<!-- Standard script script tag for immediate execution and click event bindings -->
+<!-- Background AI Process Handling Script -->
 <script type="module">
     import { GoogleGenerativeAI } from "https://esm.run";
 
-    // ⚠️ CRITICAL: REPLACE THIS VALUE WITH YOUR ACTIVE API KEY
-    const API_KEY = "AIzaSyAQ.Ab8RN6LaRtDqWB3uQL3G2seS5A_LXtSmatiPce2OBRg0daUTgw"; 
+    // ⚠️ CRITICAL: PLACE YOUR GOOGLE AI STUDIO API KEY IN THE QUOTES BELOW
+    const API_KEY = "AIzaSyYourActualGeminiAPIKeyHere"; 
     
     const SYSTEM_INSTRUCTIONS = `You are a professional, highly precise AI Portfolio Assistant representing Swapnil Nalawade, PhD.
 Your primary audience consists of technical recruiters, engineering managers, and scientific collaborators.
@@ -1095,29 +1099,12 @@ PhD trained process engineer specializing in semiconductor thin-film process dev
     const chatBox = document.getElementById("chat-box");
     const userInput = document.getElementById("user-input");
     const sendBtn = document.getElementById("send-btn");
-    const launcher = document.getElementById("ai-launcher");
-    const chatWindow = document.getElementById("ai-chat-window");
-    const minimizeBtn = document.getElementById("ai-minimize");
 
     const chipSkills = document.getElementById("chip-skills");
     const chipExp = document.getElementById("chip-exp");
     const chipPub = document.getElementById("chip-pub");
 
-    // Connect backup standard native listeners directly to elements
-    if (launcher && chatWindow && minimizeBtn) {
-        launcher.onclick = () => {
-            launcher.style.display = "none";
-            chatWindow.style.display = "flex";
-            if (userInput) userInput.focus();
-        };
-
-        minimizeBtn.onclick = () => {
-            chatWindow.style.display = "none";
-            launcher.style.display = "flex";
-        };
-    }
-
-    // Initialize Google API Client Engine
+    // Initialize Google API Client Engine safely
     let ai, model, chatSession;
     try {
         ai = new GoogleGenerativeAI(API_KEY);
@@ -1132,7 +1119,7 @@ PhD trained process engineer specializing in semiconductor thin-film process dev
             }
         });
     } catch(e) {
-        console.error("Initialization error:", e);
+        console.error("Gemini Core Engine Boot Error:", e);
     }
 
     async function handleSubmission() {
@@ -1145,16 +1132,23 @@ PhD trained process engineer specializing in semiconductor thin-film process dev
         const loadingDiv = appendMessage("Reviewing records...", "ai");
 
         try {
+            if (!chatSession) {
+                throw new Error("Gemini engine not initialized. Check your API key string.");
+            }
             const result = await chatSession.sendMessage(text);
             const responseText = await result.response.text();
             loadingDiv.innerText = responseText;
         } catch (error) {
-            loadingDiv.innerText = "The portfolio assistant ran into an issue processing this request. Please contact Dr. Nalawade via email.";
+            loadingDiv.innerText = "Connection issue. Please verify your Google API key configuration or contact Dr. Nalawade via email.";
             console.error(error);
         }
     }
 
     function appendMessage(text, sender) {
+        const msgDiv = document.createElement("div");
+        msgDiv.innerText = text;
+        msgDiv.style.padding = "10px 12px";
+        msgDiv.style.borderRadius = "8px";
 
 </body>
 </html>
