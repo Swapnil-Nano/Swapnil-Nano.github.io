@@ -1,32 +1,33 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description"
-    content="Swapnil Nalawade — Materials Scientist and Semiconductor Process Engineer specializing in ALD, PVD, plasma etching, thin films, and advanced metrology.">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Swapnil Nalawade — Materials Scientist and Semiconductor Process Engineer specializing in ALD, PVD, plasma etching, thin films, and advanced metrology." />
   <title>Swapnil Nalawade (PhD) | Materials Scientist</title>
 
-  <!-- Existing chatbot stylesheet -->
-  <link rel="stylesheet" href="recruiter-agent.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-
-    /* =====================================
-       1. GENERAL WEBSITE DESIGN
-    ===================================== */
-
     :root {
-      --background: #ffffff;
-      --text: #222222;
-      --secondary: #666666;
-      --border: #dddddd;
-      --link: #1967a8;
-      --content-width: 820px;
+      --bg-main: #eef3f8;
+      --bg-soft: #f7f9fc;
+      --card: rgba(255, 255, 255, 0.95);
+      --card-2: rgba(255, 255, 255, 0.88);
+      --text: #162235;
+      --muted: #617086;
+      --line: rgba(22, 34, 53, 0.12);
+      --accent: #2b6cb0;
+      --accent-dark: #1e4f84;
+      --shadow: 0 20px 50px rgba(16, 35, 59, 0.10);
+      --shadow-soft: 0 10px 25px rgba(16, 35, 59, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --content-width: 1120px;
     }
 
     * {
@@ -39,16 +40,29 @@
 
     body {
       margin: 0;
-      background: var(--background);
+      font-family: "Inter", Arial, sans-serif;
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 15px;
+      background:
+        radial-gradient(circle at top left, rgba(66, 153, 225, 0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(90, 103, 216, 0.10), transparent 20%),
+        linear-gradient(180deg, #edf3f8 0%, #f6f9fc 45%, #eef3f8 100%);
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     a {
-      color: var(--link);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
     }
 
     button,
@@ -56,199 +70,167 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    button:focus-visible,
-    a:focus-visible,
-    summary:focus-visible {
-      outline: 2px solid var(--link);
-      outline-offset: 3px;
+    .page-shell {
+      width: min(95%, 1380px);
+      margin: 28px auto 0;
     }
 
-
-    /* =====================================
-       2. MOUNTAIN BANNER
-    ===================================== */
-
-    .cover {
+    /* =========================
+       HERO BACKGROUND
+    ========================= */
+    .hero-banner {
+      position: relative;
       width: 100%;
-      height: 205px;
-
-      background-color: #40505a;
-
-      background-image: url("background.PNG")
-
+      min-height: 330px;
+      height: clamp(280px, 33vw, 420px);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background-color: #23364a;
+      background-image:
+        linear-gradient(180deg, rgba(10, 24, 42, 0.16) 0%, rgba(10, 24, 42, 0.32) 100%),
+        url("background.png");
       background-size: cover;
-      background-position: center;
+      background-position: center center;
       background-repeat: no-repeat;
     }
 
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,255,255,0.08));
+      pointer-events: none;
+    }
 
-    /* =====================================
-       3. PROFILE PHOTOGRAPH
-    ===================================== */
-
-    .profile-container {
+    /* =========================
+       HEADER PANEL
+    ========================= */
+    .header-panel {
+      width: min(94%, 1100px);
+      margin: -75px auto 0;
       position: relative;
+      z-index: 2;
+      text-align: center;
+    }
 
-      width: 116px;
-      height: 116px;
-
-      margin: -58px auto 23px;
-
-      background: #eeeeee;
-
-      border: 4px solid white;
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 18px;
       border-radius: 50%;
-
       overflow: hidden;
+      border: 6px solid rgba(255, 255, 255, 0.96);
+      background: #ffffff;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.18);
+    }
 
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
 
+    .intro-card {
+      background: var(--card-2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.65);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      padding: 26px 26px 18px;
+    }
+
+    .site-title {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+      color: #10233b;
+    }
+
+    .site-subtitle {
+      margin: 14px auto 0;
+      max-width: 920px;
+      font-size: 1.12rem;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+    .nav-wrap {
+      width: min(94%, 1100px);
+      margin: 18px auto 0;
+    }
+
+    .navigation {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .profile-container img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-      object-position: center;
-
-      display: block;
-    }
-
-
-    /* =====================================
-       4. NAME AND PROFESSIONAL TITLE
-    ===================================== */
-
-    .profile-header {
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    .profile-header h1 {
-      margin: 0;
-
-      color: #111111;
-
-      font-family: Georgia, "Times New Roman", serif;
-
-      font-size: clamp(32px, 4vw, 48px);
-
-      font-weight: 700;
-      line-height: 1.2;
-
-      letter-spacing: -0.8px;
-    }
-
-    .professional-title {
-      margin: 12px auto 0;
-
-      color: #777777;
-
-      font-size: 13px;
-      font-weight: 400;
-
-      text-align: center;
-
-      max-width: 800px;
-    }
-
-
-    /* =====================================
-       5. HORIZONTAL NAVIGATION MENU
-    ===================================== */
-
-    .navigation {
-      width: min(92%, var(--content-width));
-
-      margin: 32px auto 0;
-
-      display: flex;
-      align-items: stretch;
-      justify-content: space-between;
-
-      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
     }
 
     .nav-link,
     .more-button {
-      flex: 1;
-
-      display: block;
-
-      padding: 13px 10px;
-
-      background: none;
       border: none;
-      border-bottom: 2px solid transparent;
-
-      color: #666666;
-
-      text-align: center;
-      text-decoration: none;
-
-      font-size: 11px;
-      font-family: inherit;
-      font-weight: 600;
-
-      letter-spacing: 1px;
-
+      background: transparent;
+      color: #46566c;
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 12px 18px;
+      border-radius: 999px;
       cursor: pointer;
-
-      transition: color 0.2s ease,
-                  border-color 0.2s ease;
+      transition: all 0.22s ease;
+      text-decoration: none;
     }
 
     .nav-link:hover,
     .more-button:hover {
-      color: #111111;
+      color: #10233b;
+      background: rgba(43, 108, 176, 0.08);
     }
 
     .nav-link.active,
     .more-button.active {
-      color: #111111;
-      border-bottom-color: #555555;
+      color: #ffffff;
+      background: linear-gradient(135deg, #2b6cb0 0%, #3f7cc0 100%);
+      box-shadow: 0 8px 18px rgba(43, 108, 176, 0.25);
     }
-
-
-    /* =====================================
-       6. MORE DROPDOWN MENU
-    ===================================== */
 
     .more-wrapper {
       position: relative;
-
-      flex: 1;
-
-      display: flex;
-    }
-
-    .more-button {
-      width: 100%;
     }
 
     .more-menu {
       position: absolute;
-
-      top: 100%;
+      top: calc(100% + 10px);
       right: 0;
-
-      min-width: 195px;
-
-      background: white;
-
-      border: 1px solid #e5e5e5;
-
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-
-      z-index: 100;
-
-      padding: 6px;
-
-      border-radius: 5px;
+      min-width: 220px;
+      padding: 8px;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(22,34,53,0.08);
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+      z-index: 50;
     }
 
     .more-menu[hidden] {
@@ -257,33 +239,33 @@
 
     .more-menu a {
       display: block;
-
-      padding: 10px 12px;
-
-      color: #333333;
-
-      text-decoration: none;
-
-      font-size: 13px;
-
-      border-radius: 4px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: #354559;
+      font-size: 0.98rem;
+      font-weight: 600;
     }
 
     .more-menu a:hover {
-      background: #f5f5f5;
+      background: rgba(43, 108, 176, 0.08);
+      color: #10233b;
     }
 
-
-    /* =====================================
-       7. MAIN CONTENT AREA
-    ===================================== */
-
+    /* =========================
+       MAIN CONTENT
+    ========================= */
     main {
-      width: min(92%, var(--content-width));
+      width: min(94%, 1100px);
+      margin: 28px auto 70px;
+    }
 
-      margin: 35px auto 80px;
-
-      min-height: 280px;
+    .content-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.78);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: clamp(28px, 4vw, 46px);
+      min-height: 380px;
     }
 
     .content-section {
@@ -292,279 +274,316 @@
 
     .content-section.active {
       display: block;
-
-      animation: fadeIn 0.2s ease;
+      animation: fadeIn 0.24s ease;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
+        transform: translateY(8px);
       }
-
       to {
         opacity: 1;
+        transform: translateY(0);
       }
     }
 
     .section-heading {
-      margin: 0 0 14px;
-
-      color: #333333;
-
-      font-size: 11px;
+      margin: 0 0 10px;
+      font-size: 0.90rem;
       font-weight: 800;
-
-      letter-spacing: 1px;
-
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: var(--accent);
     }
 
     .main-heading {
-      margin: 0 0 23px;
-
-      font-family: Georgia, "Times New Roman", serif;
-
-      font-size: 23px;
-      font-weight: 700;
+      margin: 0 0 18px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      color: #10233b;
     }
 
     p {
-      margin-top: 0;
-      margin-bottom: 14px;
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+      color: #314156;
     }
 
-
-    /* =====================================
-       8. HOME SECTION
-    ===================================== */
+    /* =========================
+       HOME SECTION
+    ========================= */
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
 
     .home-block {
-      margin-bottom: 34px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+      border: 1px solid rgba(22, 34, 53, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(16, 35, 59, 0.05);
+      min-height: 100%;
     }
 
     .home-block p {
-      color: #4c4c4c;
+      font-size: 1.03rem;
+      color: #425166;
     }
 
-
-    /* =====================================
-       9. RESEARCH AND EDUCATION
-    ===================================== */
-
+    /* =========================
+       COMMON ITEM CARD
+    ========================= */
     .item {
-      padding-bottom: 20px;
-      margin-bottom: 22px;
-
-      border-bottom: 1px solid #eeeeee;
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+      border: 1px solid rgba(22, 34, 53, 0.08);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 20px rgba(16, 35, 59, 0.05);
     }
 
     .item:last-child {
-      border-bottom: none;
+      margin-bottom: 0;
     }
 
     .item h3 {
-      margin: 0 0 8px;
-
-      color: #252525;
-
-      font-size: 15px;
-      font-weight: 600;
-
-      line-height: 1.5;
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      line-height: 1.55;
+      color: #162235;
     }
 
     .item p {
-      color: #555555;
-      font-size: 14px;
+      font-size: 1rem;
+      color: #4b5a6f;
+      margin-bottom: 10px;
     }
 
-
-    /* =====================================
-       10. PUBLICATIONS
-    ===================================== */
-
     .publication-meta {
-      margin: 5px 0 10px;
-
-      color: #777777;
-
-      font-size: 13px;
+      color: #6a7b90;
       font-style: italic;
+      font-size: 0.98rem;
+      margin-bottom: 12px;
     }
 
     .publication-link {
-      color: var(--link);
-
-      font-size: 13px;
-      font-weight: 500;
-
-      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
     }
 
     .publication-link:hover {
-      text-decoration: underline;
+      color: var(--accent-dark);
     }
 
-
-    /* =====================================
-       11. RESOURCES
-    ===================================== */
-
+    /* =========================
+       RESOURCES
+    ========================= */
     .resource-item {
-      padding: 15px 0;
-
-      border-top: 1px solid #e5e5e5;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+      border: 1px solid rgba(22, 34, 53, 0.08);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 20px rgba(16, 35, 59, 0.05);
+      overflow: hidden;
     }
 
     .resource-item:last-child {
-      border-bottom: 1px solid #e5e5e5;
+      margin-bottom: 0;
     }
 
     .resource-item summary {
-      font-size: 14px;
-      font-weight: 600;
-
+      list-style: none;
       cursor: pointer;
+      padding: 20px 24px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #162235;
+      position: relative;
+    }
+
+    .resource-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .resource-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .resource-item[open] summary::after {
+      content: "–";
     }
 
     .resource-content {
-      padding-top: 16px;
-
-      font-size: 14px;
-
-      color: #555555;
+      padding: 0 24px 22px;
     }
 
+    .resource-content p {
+      color: #47576d;
+    }
 
-    /* =====================================
-       12. ACHIEVEMENTS
-    ===================================== */
-
+    /* =========================
+       ACHIEVEMENTS / CV / CONTACT
+    ========================= */
     .achievement-list {
+      margin: 0;
       padding-left: 22px;
     }
 
     .achievement-list li {
-      margin-bottom: 13px;
+      margin-bottom: 16px;
+      font-size: 1.04rem;
+      color: #314156;
     }
-
-
-    /* =====================================
-       13. CV
-    ===================================== */
 
     .cv-button {
       display: inline-block;
-
-      margin-top: 12px;
-      padding: 11px 22px;
-
-      background: white;
-
-      border: 1px solid #222222;
-
-      color: #222222;
-
-      font-size: 13px;
-      font-weight: 600;
-
-      text-decoration: none;
-
-      transition: background 0.2s ease;
+      margin-top: 8px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2b6cb0 0%, #3f7cc0 100%);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 0 10px 22px rgba(43, 108, 176, 0.22);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .cv-button:hover {
-      background: #f3f3f3;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px rgba(43, 108, 176, 0.28);
     }
-
-
-    /* =====================================
-       14. CONTACT
-    ===================================== */
 
     .contact-section p {
-      margin-bottom: 14px;
+      font-size: 1.08rem;
+      margin-bottom: 16px;
     }
 
-    .contact-section a {
-      text-decoration: none;
+    .contact-section strong {
+      color: #162235;
     }
 
-    .contact-section a:hover {
-      text-decoration: underline;
-    }
-
-
-    /* =====================================
-       15. FOOTER
-    ===================================== */
-
+    /* =========================
+       FOOTER
+    ========================= */
     footer {
-      padding: 22px 15px;
-
-      border-top: 1px solid #eeeeee;
-
-      color: #999999;
-
-      font-size: 11px;
-
+      width: min(94%, 1100px);
+      margin: 0 auto 30px;
       text-align: center;
+      color: #7d8a9d;
+      font-size: 0.98rem;
+      padding: 22px 14px 0;
     }
 
+    /* =========================
+       RESPONSIVE
+    ========================= */
+    @media (max-width: 900px) {
+      .home-grid {
+        grid-template-columns: 1fr;
+      }
 
-    /* =====================================
-       16. MOBILE RESPONSIVE DESIGN
-    ===================================== */
+      .profile-photo {
+        width: 130px;
+        height: 130px;
+      }
+
+      .intro-card {
+        padding: 22px 18px 16px;
+      }
+    }
 
     @media (max-width: 700px) {
-
-      .cover {
-        height: 165px;
+      .page-shell {
+        width: 96%;
+        margin-top: 18px;
       }
 
-      .profile-container {
-        width: 100px;
-        height: 100px;
-
-        margin-top: -50px;
+      .hero-banner {
+        min-height: 230px;
+        height: 250px;
+        border-radius: 22px;
       }
 
-      .profile-header h1 {
-        font-size: 33px;
+      .header-panel {
+        margin-top: -62px;
       }
 
-      .professional-title {
-        font-size: 12px;
+      .profile-photo {
+        width: 118px;
+        height: 118px;
+        border-width: 5px;
+      }
 
-        line-height: 1.7;
+      .site-title {
+        font-size: 2.4rem;
+      }
+
+      .site-subtitle {
+        font-size: 0.98rem;
       }
 
       .navigation {
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        margin-top: 25px;
-      }
-
-      .nav-link,
-      .more-wrapper {
-        flex: 1 1 30%;
+        gap: 10px;
+        padding: 12px;
       }
 
       .nav-link,
       .more-button {
-        min-width: 95px;
+        width: calc(50% - 6px);
+        text-align: center;
+        font-size: 0.88rem;
+        padding: 11px 14px;
       }
 
-      main {
-        margin-top: 30px;
+      .more-wrapper {
+        width: calc(50% - 6px);
       }
 
+      .more-button {
+        width: 100%;
+      }
+
+      .more-menu {
+        left: 0;
+        right: auto;
+        min-width: 100%;
+      }
+
+      .content-card {
+        padding: 22px 18px;
+      }
+
+      .main-heading {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .item h3 {
+        font-size: 1.08rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-
       html {
         scroll-behavior: auto;
       }
@@ -572,1074 +591,343 @@
       .content-section.active {
         animation: none;
       }
-
     }
-
   </style>
 </head>
-
-
 <body>
 
- 
-  <!-- =====================================
-       PROFILE PHOTO AND NAME
-  ====================================== -->
+  <div class="page-shell">
+    <section class="hero-banner" aria-label="Semiconductor and materials science background image"></section>
+  </div>
 
-  <header class="profile-header">
-
-    <div class="profile-container">
-
-      <img
-        src="Swapnil_photo.JPG"
-        
-      >
-
+  <header class="header-panel">
+    <div class="profile-photo">
+      <img src="Swapnil_photo.JPG" alt="Swapnil Nalawade profile photograph">
     </div>
 
-    <h1>Swapnil Nalawade</h1>
-
-    <p class="professional-title">
-      PhD | Materials Scientist | Semiconductor Process Engineer
-    </p>
-
+    <div class="intro-card">
+      <h1 class="site-title">Swapnil Nalawade</h1>
+      <p class="site-subtitle">PhD | Materials Scientist | Semiconductor Process Engineer</p>
+    </div>
   </header>
 
+  <div class="nav-wrap">
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="#home" class="nav-link active" data-tab="home" aria-current="page">Home</a>
+      <a href="#research" class="nav-link" data-tab="research">Research</a>
+      <a href="#publications" class="nav-link" data-tab="publications">Publications</a>
+      <a href="#cv" class="nav-link" data-tab="cv">CV</a>
+      <a href="#contact" class="nav-link" data-tab="contact">Contact</a>
 
-  <!-- =====================================
-       WEBSITE NAVIGATION
-  ====================================== -->
+      <div class="more-wrapper">
+        <button class="more-button" id="moreButton" type="button" aria-expanded="false" aria-controls="moreMenu">
+          More ▾
+        </button>
 
-  <nav class="navigation" aria-label="Main navigation">
-
-    <a href="#home"
-       class="nav-link active"
-       data-tab="home"
-       aria-current="page">
-      HOME
-    </a>
-
-    <a href="#research"
-       class="nav-link"
-       data-tab="research">
-      RESEARCH
-    </a>
-
-    <a href="#publications"
-       class="nav-link"
-       data-tab="publications">
-      PUBLICATIONS
-    </a>
-
-    <a href="#cv"
-       class="nav-link"
-       data-tab="cv">
-      CV
-    </a>
-
-    <a href="#contact"
-       class="nav-link"
-       data-tab="contact">
-      CONTACT
-    </a>
-
-    <div class="more-wrapper">
-
-      <button
-        class="more-button"
-        id="moreButton"
-        type="button"
-        aria-expanded="false"
-        aria-controls="moreMenu">
-
-        MORE ▾
-
-      </button>
-
-      <div class="more-menu"
-           id="moreMenu"
-           hidden>
-
-        <a href="#education" data-tab="education">
-          Education
-        </a>
-
-        <a href="#resources" data-tab="resources">
-          Resources
-        </a>
-
-        <a href="#achievements" data-tab="achievements">
-          Achievements
-        </a>
-
+        <div class="more-menu" id="moreMenu" hidden>
+          <a href="#education" data-tab="education">Education</a>
+          <a href="#resources" data-tab="resources">Resources</a>
+          <a href="#achievements" data-tab="achievements">Achievements</a>
+        </div>
       </div>
-
-    </div>
-
-  </nav>
-
-
-  <!-- =====================================
-       WEBSITE CONTENT
-  ====================================== -->
+    </nav>
+  </div>
 
   <main id="mainContent">
-
-
-    <!-- =================================
-         HOME
-    ================================== -->
-
-    <section id="home" class="content-section active">
-
-      <div class="home-block">
-
-        <h2 class="section-heading">
-          Biography
-        </h2>
-
-        <p>
-          I am a materials scientist and semiconductor process
-          engineer with expertise in thin-film deposition,
-          photolithography, plasma etching, and advanced metrology.
-
-          My experience spans semiconductor nanofabrication,
-          atomic layer deposition (ALD), magnetron sputtering,
-          process development, equipment troubleshooting,
-          and materials characterization.
-        </p>
-
-      </div>
-
-
-      <div class="home-block">
-
-        <h2 class="section-heading">
-          Research Interests
-        </h2>
-
-        <p>
-          Atomic Layer Deposition, Physical Vapor Deposition,
-          semiconductor process development,
-          thin-film surface chemistry,
-          X-ray Photoelectron Spectroscopy,
-          X-ray Diffraction, and structure-property
-          relationships in functional thin films.
-        </p>
-
-      </div>
-
-
-      <div class="home-block">
-
-        <h2 class="section-heading">
-          Affiliations
-        </h2>
-
-        <p>
-          North Carolina Agricultural and Technical State University,
-          Greensboro, North Carolina, USA.
-
-          Research collaborations have included Advanced Light Source
-          beamline experiments at Lawrence Berkeley National Laboratory.
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================
-         RESEARCH
-    ================================== -->
-
-    <section id="research" class="content-section">
-
-      <h2 class="main-heading">
-        Research
-      </h2>
-
-
-      <div class="item">
-
-        <h3>
-          Atomic Layer Deposition and Magnetron Sputtering
-          of Transition Metals and Their Oxides
-        </h3>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Annealing-Driven Structure, Surface Chemistry,
-          and Morphology Evolution of Thin Films
-        </h3>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Interfacial Chemistry and Ambient-Pressure
-          X-ray Photoelectron Spectroscopy
-        </h3>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Thin Films for Electrochemical Water Splitting
-        </h3>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Semiconductor Nanofabrication Process Engineering
-        </h3>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Structure-Property Correlations in Catalytic
-          Activities of Transition Metal Oxides
-        </h3>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================
-         PUBLICATIONS
-    ================================== -->
-
-    <section id="publications" class="content-section">
-
-      <h2 class="main-heading">
-        Publications
-      </h2>
-
-
-      <div class="item">
-
-        <h3>
-          Phase Transformation and Water Adsorption Behavior
-          of As-Deposited and Annealed Ru Metal Thin Films
-          Prepared by Atomic Layer Deposition
-        </h3>
-
-        <p class="publication-meta">
-          Advanced Materials Interfaces 13.1 (2026): e00689
-        </p>
-
-        <a
-          class="publication-link"
-          href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202500689"
-          target="_blank"
-          rel="noopener noreferrer">
-          View Publication ↗
-        </a>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Role of Oxygen Concentration in Reactive Sputtering
-          of RuO₂ Thin Films: Tuning Surface Chemistry for
-          Enhanced Electrocatalytic Performance
-        </h3>
-
-        <p class="publication-meta">
-          Crystals 15.5 (2025): 417
-        </p>
-
-        <a
-          class="publication-link"
-          href="https://www.mdpi.com/2073-4352/15/5/417"
-          target="_blank"
-          rel="noopener noreferrer">
-          View Publication ↗
-        </a>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Structural and Electrocatalytic Studies of
-          Pulsed Laser Deposited Epitaxial RuO₂ Thin Films
-        </h3>
-
-        <p class="publication-meta">
-          ACS Applied Energy Materials (2026)
-        </p>
-
-        <a
-          class="publication-link"
-          href="https://pubs.acs.org/doi/10.1021/acsaem.5c03420"
-          target="_blank"
-          rel="noopener noreferrer">
-          View Publication ↗
-        </a>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Strained-Induced Morphological Reconstruction
-          of RuO₂ (110) Thin-Film Electrocatalysts
-        </h3>
-
-        <p class="publication-meta">
-          Journal of the American Chemical Society
-          147, no. 41 (2025): 37115-37122
-        </p>
-
-        <a
-          class="publication-link"
-          href="https://pubs.acs.org/doi/10.1021/jacs.5c08607"
-          target="_blank"
-          rel="noopener noreferrer">
-          View Publication ↗
-        </a>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Optical and Plasmonic Properties of
-          High-Electron-Density Epitaxial and
-          Oxidative Controlled Titanium Nitride Thin Films
-        </h3>
-
-        <p class="publication-meta">
-          The Journal of Physical Chemistry C (2025)
-        </p>
-
-        <a
-          class="publication-link"
-          href="https://pubs.acs.org/doi/10.1021/acs.jpcc.4c06969"
-          target="_blank"
-          rel="noopener noreferrer">
-          View Publication ↗
-        </a>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Transformation of TiN to TiNO Films via In-Situ
-          Temperature-Dependent Oxygen Diffusion Process
-          and Their Electrochemical Behavior
-        </h3>
-
-        <p class="publication-meta">
-          Metals 15, no. 5 (2025): 497
-        </p>
-
-        <a
-          class="publication-link"
-          href="https://www.mdpi.com/2075-4701/15/5/497"
-          target="_blank"
-          rel="noopener noreferrer">
-          View Publication ↗
-        </a>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          Effect of Substrate Temperature on the Electrochemical
-          and Supercapacitance Properties of Pulsed Laser-Deposited
-          Titanium Oxynitride Thin Films
-        </h3>
-
-        <p class="publication-meta">
-          Journal of Electrochemical Energy Conversion and Storage
-          22, no. 1 (2025): 011010
-        </p>
-
-        <a
-          class="publication-link"
-          href="https://asmedigitalcollection.asme.org/electrochemical/article/22/1/011010/1200434/Effect-of-Substrate-Temperature-on-the"
-          target="_blank"
-          rel="noopener noreferrer">
-          View Publication ↗
-        </a>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================
-         EDUCATION
-    ================================== -->
-
-    <section id="education" class="content-section">
-
-      <h2 class="main-heading">
-        Education
-      </h2>
-
-
-      <div class="item">
-
-        <h3>
-          PhD — Nanoengineering
-        </h3>
-
-        <p>
-          North Carolina Agricultural and Technical State University
-        </p>
-
-        <p>
-          Greensboro, North Carolina, USA
-        </p>
-
-        <p>
-          January 2021 – December 2025
-        </p>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          M.Tech — Electronics & Telecommunication
-        </h3>
-
-        <p>
-          Savitribai Phule Pune University
-        </p>
-
-        <p>
-          Pune, Maharashtra, India
-        </p>
-
-        <p>
-          August 2011 – December 2013
-        </p>
-
-      </div>
-
-
-      <div class="item">
-
-        <h3>
-          B.E — Electronics & Telecommunication
-        </h3>
-
-        <p>
-          Savitribai Phule Pune University
-        </p>
-
-        <p>
-          Pune, Maharashtra, India
-        </p>
-
-        <p>
-          June 2006 – June 2010
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================
-         RESOURCES
-    ================================== -->
-
-    <section id="resources" class="content-section">
-
-      <h2 class="main-heading">
-        Resources
-      </h2>
-
-
-      <details class="resource-item" id="ald">
-
-        <summary>
-          Atomic Layer Deposition (ALD)
-        </summary>
-
-        <div class="resource-content">
-
-          <p>
-            Atomic layer deposition is a thin-film deposition
-            technique based on sequential, self-limiting
-            surface reactions.
-          </p>
-
-          <p>
-            ALD provides precise thickness control,
-            excellent film conformality,
-            and high-quality deposition on complex
-            three-dimensional structures.
-          </p>
-
-          <p>
-            The process is widely used in semiconductor
-            manufacturing for dielectric films,
-            diffusion barriers, and other functional
-            thin-film materials.
-          </p>
-
+    <div class="content-card">
+
+      <section id="home" class="content-section active">
+        <h2 class="main-heading">Professional Overview</h2>
+
+        <div class="home-grid">
+          <div class="home-block">
+            <h3 class="section-heading">Biography</h3>
+            <p>
+              I am a materials scientist and semiconductor process engineer with expertise in thin-film deposition,
+              photolithography, plasma etching, and advanced metrology. My work combines cleanroom process development,
+              materials characterization, and tool troubleshooting.
+            </p>
+          </div>
+
+          <div class="home-block">
+            <h3 class="section-heading">Research Interests</h3>
+            <p>
+              Atomic Layer Deposition, Physical Vapor Deposition, semiconductor process development, thin-film surface
+              chemistry, X-ray Photoelectron Spectroscopy, X-ray Diffraction, and structure-property relationships in
+              functional thin films.
+            </p>
+          </div>
+
+          <div class="home-block">
+            <h3 class="section-heading">Affiliations</h3>
+            <p>
+              North Carolina Agricultural and Technical State University, Greensboro, North Carolina, USA. Research
+              collaborations have included Advanced Light Source beamline studies at Lawrence Berkeley National Laboratory.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="research" class="content-section">
+        <h2 class="main-heading">Research</h2>
+
+        <div class="item"><h3>Atomic Layer Deposition and Magnetron Sputtering of Transition Metals and Their Oxides</h3></div>
+        <div class="item"><h3>Annealing-Driven Structure, Surface Chemistry, and Morphology Evolution of Thin Films</h3></div>
+        <div class="item"><h3>Interfacial Chemistry and Ambient-Pressure X-ray Photoelectron Spectroscopy</h3></div>
+        <div class="item"><h3>Thin Films for Electrochemical Water Splitting</h3></div>
+        <div class="item"><h3>Semiconductor Nanofabrication Process Engineering</h3></div>
+        <div class="item"><h3>Structure-Property Correlations in Catalytic Activities of Transition Metal Oxides</h3></div>
+      </section>
+
+      <section id="publications" class="content-section">
+        <h2 class="main-heading">Publications</h2>
+
+        <div class="item">
+          <h3>Phase Transformation and Water Adsorption Behavior of As-Deposited and Annealed Ru Metal Thin Films Prepared by Atomic Layer Deposition</h3>
+          <p class="publication-meta">Advanced Materials Interfaces 13.1 (2026): e00689</p>
+          <a class="publication-link" href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/admi.202500689" target="_blank" rel="noopener noreferrer">View Publication ↗</a>
         </div>
 
-      </details>
-
-
-      <details class="resource-item" id="xps">
-
-        <summary>
-          X-ray Photoelectron Spectroscopy (XPS)
-        </summary>
-
-        <div class="resource-content">
-
-          <p>
-            XPS is a surface-sensitive analytical technique
-            used to determine elemental composition,
-            oxidation states, and chemical bonding
-            in materials.
-          </p>
-
-          <p>
-            It measures the kinetic energy of photoelectrons
-            emitted when a material is irradiated with X-rays.
-          </p>
-
+        <div class="item">
+          <h3>Role of Oxygen Concentration in Reactive Sputtering of RuO₂ Thin Films: Tuning Surface Chemistry for Enhanced Electrocatalytic Performance</h3>
+          <p class="publication-meta">Crystals 15.5 (2025): 417</p>
+          <a class="publication-link" href="https://www.mdpi.com/2073-4352/15/5/417" target="_blank" rel="noopener noreferrer">View Publication ↗</a>
         </div>
 
-      </details>
-
-
-      <details class="resource-item" id="xrd">
-
-        <summary>
-          X-ray Diffraction (XRD)
-        </summary>
-
-        <div class="resource-content">
-
-          <p>
-            X-ray diffraction is used to investigate
-            crystallographic structure, phase composition,
-            crystallinity, and preferred orientation
-            in thin-film materials.
-          </p>
-
-          <p>
-            The technique uses constructive interference
-            of X-rays from crystalline planes according
-            to Bragg's law.
-          </p>
-
+        <div class="item">
+          <h3>Structural and Electrocatalytic Studies of Pulsed Laser Deposited Epitaxial RuO₂ Thin Films</h3>
+          <p class="publication-meta">ACS Applied Energy Materials (2026)</p>
+          <a class="publication-link" href="https://pubs.acs.org/doi/10.1021/acsaem.5c03420" target="_blank" rel="noopener noreferrer">View Publication ↗</a>
         </div>
 
-      </details>
-
-
-      <details class="resource-item" id="ellipsometry">
-
-        <summary>
-          Spectroscopic Ellipsometry
-        </summary>
-
-        <div class="resource-content">
-
-          <p>
-            Spectroscopic ellipsometry is a
-            non-destructive optical technique
-            used to determine thin-film thickness,
-            refractive index, and extinction coefficient.
-          </p>
-
-          <p>
-            It analyzes changes in the polarization
-            state of reflected light across a
-            range of wavelengths.
-          </p>
-
+        <div class="item">
+          <h3>Strained-Induced Morphological Reconstruction of RuO₂ (110) Thin-Film Electrocatalysts</h3>
+          <p class="publication-meta">Journal of the American Chemical Society 147, no. 41 (2025): 37115-37122</p>
+          <a class="publication-link" href="https://pubs.acs.org/doi/10.1021/jacs.5c08607" target="_blank" rel="noopener noreferrer">View Publication ↗</a>
         </div>
 
-      </details>
+        <div class="item">
+          <h3>Optical and Plasmonic Properties of High-Electron-Density Epitaxial and Oxidative Controlled Titanium Nitride Thin Films</h3>
+          <p class="publication-meta">The Journal of Physical Chemistry C (2025)</p>
+          <a class="publication-link" href="https://pubs.acs.org/doi/10.1021/acs.jpcc.4c06969" target="_blank" rel="noopener noreferrer">View Publication ↗</a>
+        </div>
 
-    </section>
+        <div class="item">
+          <h3>Transformation of TiN to TiNO Films via In-Situ Temperature-Dependent Oxygen Diffusion Process and Their Electrochemical Behavior</h3>
+          <p class="publication-meta">Metals 15, no. 5 (2025): 497</p>
+          <a class="publication-link" href="https://www.mdpi.com/2075-4701/15/5/497" target="_blank" rel="noopener noreferrer">View Publication ↗</a>
+        </div>
 
+        <div class="item">
+          <h3>Effect of Substrate Temperature on the Electrochemical and Supercapacitance Properties of Pulsed Laser-Deposited Titanium Oxynitride Thin Films</h3>
+          <p class="publication-meta">Journal of Electrochemical Energy Conversion and Storage 22, no. 1 (2025): 011010</p>
+          <a class="publication-link" href="https://asmedigitalcollection.asme.org/electrochemical/article/22/1/011010/1200434/Effect-of-Substrate-Temperature-on-the" target="_blank" rel="noopener noreferrer">View Publication ↗</a>
+        </div>
+      </section>
 
+      <section id="education" class="content-section">
+        <h2 class="main-heading">Education</h2>
 
-    <!-- =================================
-         ACHIEVEMENTS
-    ================================== -->
+        <div class="item">
+          <h3>PhD — Nanoengineering</h3>
+          <p>North Carolina Agricultural and Technical State University</p>
+          <p>Greensboro, North Carolina, USA</p>
+          <p>January 2021 – December 2025</p>
+        </div>
 
-    <section id="achievements" class="content-section">
+        <div class="item">
+          <h3>M.Tech — Electronics & Telecommunication</h3>
+          <p>Savitribai Phule Pune University</p>
+          <p>Pune, Maharashtra, India</p>
+          <p>August 2011 – December 2013</p>
+        </div>
 
-      <h2 class="main-heading">
-        Achievements
-      </h2>
+        <div class="item">
+          <h3>B.E — Electronics & Telecommunication</h3>
+          <p>Savitribai Phule Pune University</p>
+          <p>Pune, Maharashtra, India</p>
+          <p>June 2006 – June 2010</p>
+        </div>
+      </section>
 
-      <ul class="achievement-list">
+      <section id="resources" class="content-section">
+        <h2 class="main-heading">Resources</h2>
 
-        <li>
-          PhD in Nanoengineering with expertise in
-          thin-film deposition and advanced materials characterization.
-        </li>
+        <details class="resource-item" id="ald">
+          <summary>Atomic Layer Deposition (ALD)</summary>
+          <div class="resource-content">
+            <p>Atomic layer deposition is a thin-film deposition technique based on sequential, self-limiting surface reactions.</p>
+            <p>ALD provides precise thickness control, excellent film conformality, and high-quality deposition on complex three-dimensional structures.</p>
+            <p>The process is widely used in semiconductor manufacturing for dielectric films, diffusion barriers, and other functional thin-film materials.</p>
+          </div>
+        </details>
 
-        <li>
-          Published peer-reviewed research in
-          thin films, electrocatalysis,
-          and functional oxide materials.
-        </li>
+        <details class="resource-item" id="xps">
+          <summary>X-ray Photoelectron Spectroscopy (XPS)</summary>
+          <div class="resource-content">
+            <p>XPS is a surface-sensitive analytical technique used to determine elemental composition, oxidation states, and chemical bonding in materials.</p>
+            <p>It measures the kinetic energy of photoelectrons emitted when a material is irradiated with X-rays.</p>
+          </div>
+        </details>
 
-        <li>
-          Restored and maintained deposition yield above 90%
-          through process optimization and troubleshooting.
-        </li>
+        <details class="resource-item" id="xrd">
+          <summary>X-ray Diffraction (XRD)</summary>
+          <div class="resource-content">
+            <p>X-ray diffraction is used to investigate crystallographic structure, phase composition, crystallinity, and preferred orientation in thin-film materials.</p>
+            <p>The technique uses constructive interference of X-rays from crystalline planes according to Bragg's law.</p>
+          </div>
+        </details>
 
-        <li>
-          Developed a Python-based platform
-          for automated XPS spectral analysis.
-        </li>
+        <details class="resource-item" id="ellipsometry">
+          <summary>Spectroscopic Ellipsometry</summary>
+          <div class="resource-content">
+            <p>Spectroscopic ellipsometry is a non-destructive optical technique used to determine thin-film thickness, refractive index, and extinction coefficient.</p>
+            <p>It analyzes changes in the polarization state of reflected light across a range of wavelengths.</p>
+          </div>
+        </details>
+      </section>
 
-        <li>
-          Hands-on experience with semiconductor
-          cleanroom processes and equipment.
-        </li>
+      <section id="achievements" class="content-section">
+        <h2 class="main-heading">Achievements</h2>
+        <ul class="achievement-list">
+          <li>PhD in Nanoengineering with expertise in thin-film deposition and advanced materials characterization.</li>
+          <li>Published peer-reviewed research in thin films, electrocatalysis, and functional oxide materials.</li>
+          <li>Restored and maintained deposition yield above 90% through process optimization and troubleshooting.</li>
+          <li>Developed a Python-based platform for automated XPS spectral analysis.</li>
+          <li>Hands-on experience with semiconductor cleanroom processes and equipment.</li>
+          <li>Participated in Advanced Light Source beamline research at Lawrence Berkeley National Laboratory.</li>
+          <li>Collaborated with national laboratories and multidisciplinary research teams.</li>
+          <li>Lean Six Sigma Certified.</li>
+        </ul>
+      </section>
 
-        <li>
-          Participated in Advanced Light Source beamline
-          research at Lawrence Berkeley National Laboratory.
-        </li>
+      <section id="cv" class="content-section">
+        <h2 class="main-heading">Curriculum Vitae</h2>
+        <p>
+          Download my curriculum vitae for a detailed overview of my education, research experience,
+          semiconductor process engineering skills, and scientific publications.
+        </p>
+        <a href="CV.pdf" download class="cv-button">Download CV (PDF) ↓</a>
+      </section>
 
-        <li>
-          Collaborated with national laboratories
-          and multidisciplinary research teams.
-        </li>
+      <section id="contact" class="content-section contact-section">
+        <h2 class="main-heading">Contact</h2>
+        <p><strong>Email:</strong> <a href="mailto:snswapnil88@gmail.com">snswapnil88@gmail.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/Swapnil-Nano" target="_blank" rel="noopener noreferrer">github.com/Swapnil-Nano</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/swapnil-nalawade-31b59265/" target="_blank" rel="noopener noreferrer">linkedin.com/in/swapnil-nalawade-31b59265</a></p>
+      </section>
 
-        <li>
-          Lean Six Sigma Certified.
-        </li>
-
-      </ul>
-
-    </section>
-
-
-
-    <!-- =================================
-         CURRICULUM VITAE
-    ================================== -->
-
-    <section id="cv" class="content-section">
-
-      <h2 class="main-heading">
-        Curriculum Vitae
-      </h2>
-
-      <p>
-        Download my curriculum vitae for a detailed
-        overview of my education, research experience,
-        semiconductor process engineering skills,
-        and scientific publications.
-      </p>
-
-      <a href="CV.pdf"
-         download
-         class="cv-button">
-
-        Download CV (PDF) ↓
-
-      </a>
-
-    </section>
-
-
-
-    <!-- =================================
-         CONTACT
-    ================================== -->
-
-    <section id="contact" class="content-section contact-section">
-
-      <h2 class="main-heading">
-        Contact
-      </h2>
-
-      <p>
-        <strong>Email:</strong>
-
-        <a href="mailto:snswapnil88@gmail.com">
-          snswapnil88@gmail.com
-        </a>
-      </p>
-
-      <p>
-        <strong>GitHub:</strong>
-
-        <a href="https://github.com/Swapnil-Nano"
-           target="_blank"
-           rel="noopener noreferrer">
-
-          github.com/Swapnil-Nano
-
-        </a>
-      </p>
-
-      <p>
-        <strong>LinkedIn:</strong>
-
-        <a
-          href="https://www.linkedin.com/in/swapnil-nalawade-31b59265/"
-          target="_blank"
-          rel="noopener noreferrer">
-
-          linkedin.com/in/swapnil-nalawade-31b59265
-
-        </a>
-      </p>
-
-    </section>
-
-
+    </div>
   </main>
 
-
-
-  <!-- =====================================
-       FOOTER
-  ====================================== -->
-
   <footer>
-
-    © 2026 Swapnil Nalawade (PhD)
-    |
-    Built with GitHub Pages
-
+    © 2026 Swapnil Nalawade (PhD) | Built with GitHub Pages
   </footer>
 
-
-
-  <!-- =====================================
-       JAVASCRIPT
-       HORIZONTAL TAB NAVIGATION
-  ====================================== -->
-
   <script>
-
     (function () {
-
       const tabs = document.querySelectorAll("[data-tab]");
-
-      const sections = document.querySelectorAll(
-        ".content-section"
-      );
-
-      const moreButton = document.getElementById(
-        "moreButton"
-      );
-
-      const moreMenu = document.getElementById(
-        "moreMenu"
-      );
-
-      const validSections = new Set(
-        Array.from(sections, section => section.id)
-      );
-
-
-      /* ===================================
-         CLOSE MORE MENU
-      =================================== */
+      const sections = document.querySelectorAll(".content-section");
+      const moreButton = document.getElementById("moreButton");
+      const moreMenu = document.getElementById("moreMenu");
+      const validSections = new Set(Array.from(sections, section => section.id));
+      const moreSections = ["education", "resources", "achievements"];
 
       function closeMoreMenu() {
-
         moreMenu.hidden = true;
-
-        moreButton.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
+        moreButton.setAttribute("aria-expanded", "false");
       }
 
+      function updateActiveButtons(tabId) {
+        tabs.forEach(function (tab) {
+          const isActive = tab.dataset.tab === tabId;
+          tab.classList.toggle("active", isActive);
 
-      /* ===================================
-         DISPLAY SELECTED TAB ONLY
-      =================================== */
+          if (isActive) {
+            tab.setAttribute("aria-current", "page");
+          } else {
+            tab.removeAttribute("aria-current");
+          }
+        });
+
+        moreButton.classList.toggle("active", moreSections.includes(tabId));
+      }
 
       function showTab(tabId, updateURL = true) {
-
         if (!validSections.has(tabId)) {
           tabId = "home";
         }
 
-        sections.forEach(function(section) {
-
-          section.classList.toggle(
-            "active",
-            section.id === tabId
-          );
-
+        sections.forEach(function (section) {
+          section.classList.toggle("active", section.id === tabId);
         });
 
-
-        tabs.forEach(function(tab) {
-
-          const isActive =
-            tab.dataset.tab === tabId;
-
-          tab.classList.toggle(
-            "active",
-            isActive
-          );
-
-          if (isActive) {
-            tab.setAttribute(
-              "aria-current",
-              "page"
-            );
-          } else {
-            tab.removeAttribute(
-              "aria-current"
-            );
-          }
-
-        });
-
-
-        const moreSections = [
-          "education",
-          "resources",
-          "achievements"
-        ];
-
-        moreButton.classList.toggle(
-          "active",
-          moreSections.includes(tabId)
-        );
-
-
+        updateActiveButtons(tabId);
         closeMoreMenu();
 
-
         if (updateURL && window.location.hash !== "#" + tabId) {
-
-          window.history.pushState(
-            null,
-            "",
-            "#" + tabId
-          );
-
+          history.pushState(null, "", "#" + tabId);
         }
 
-
-        /* Keep profile header visible
-           while changing the content below */
-
-        window.scrollTo({
-          top: 0,
-          behavior: "instant"
-        });
-
+        const mainContent = document.getElementById("mainContent");
+        if (mainContent) {
+          window.scrollTo({
+            top: mainContent.offsetTop - 18,
+            behavior: "smooth"
+          });
+        }
       }
 
-
-
-      /* ===================================
-         CLICK NAVIGATION
-      =================================== */
-
-      tabs.forEach(function(tab) {
-
-        tab.addEventListener(
-          "click",
-          function(event) {
-
-            event.preventDefault();
-
-            showTab(
-              this.dataset.tab
-            );
-
-          }
-        );
-
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function (event) {
+          event.preventDefault();
+          showTab(this.dataset.tab);
+        });
       });
 
-
-
-      /* ===================================
-         MORE MENU BUTTON
-      =================================== */
-
-      moreButton.addEventListener(
-        "click",
-        function() {
-
-          moreMenu.hidden = !moreMenu.hidden;
-
-          moreButton.setAttribute(
-            "aria-expanded",
-            String(!moreMenu.hidden)
-          );
-
-        }
-      );
-
-
-
-      /* ===================================
-         CLOSE MENU WHEN CLICKING OUTSIDE
-      =================================== */
-
-      document.addEventListener(
-        "click",
-        function(event) {
-
-          if (!event.target.closest(".more-wrapper")) {
-
-            closeMoreMenu();
-
-          }
-
-        }
-      );
-
-
-
-      /* ===================================
-         ESC KEY CLOSES MENU
-      =================================== */
-
-      document.addEventListener(
-        "keydown",
-        function(event) {
-
-          if (event.key === "Escape") {
-
-            closeMoreMenu();
-
-          }
-
-        }
-      );
-
-
-
-      /* ===================================
-         BROWSER BACK / FORWARD SUPPORT
-      =================================== */
-
-      window.addEventListener(
-        "popstate",
-        function() {
-
-          showTab(
-            window.location.hash.substring(1),
-            false
-          );
-
-        }
-      );
-
-
-
-      window.addEventListener(
-        "hashchange",
-        function() {
-
-          showTab(
-            window.location.hash.substring(1),
-            false
-          );
-
-        }
-      );
-
-
-
-      /* ===================================
-         INITIAL PAGE
-      =================================== */
-
-      showTab(
-        window.location.hash.substring(1) || "home",
-        false
-      );
-
-
-
-      /* ===================================
-         RESOURCES
-         ONLY ONE OPEN AT A TIME
-      =================================== */
-
-      document.querySelectorAll(
-        ".resource-item"
-      ).forEach(function(resource) {
-
-        resource.addEventListener(
-          "toggle",
-          function() {
-
-            if (resource.open) {
-
-              document.querySelectorAll(
-                ".resource-item"
-              ).forEach(function(other) {
-
-                if (other !== resource) {
-
-                  other.open = false;
-
-                }
-
-              });
-
-            }
-
-          }
-        );
-
+      moreButton.addEventListener("click", function () {
+        moreMenu.hidden = !moreMenu.hidden;
+        moreButton.setAttribute("aria-expanded", String(!moreMenu.hidden));
       });
 
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".more-wrapper")) {
+          closeMoreMenu();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeMoreMenu();
+        }
+      });
+
+      window.addEventListener("popstate", function () {
+        showTab(window.location.hash.substring(1), false);
+      });
+
+      window.addEventListener("hashchange", function () {
+        showTab(window.location.hash.substring(1), false);
+      });
+
+      showTab(window.location.hash.substring(1) || "home", false);
+
+      document.querySelectorAll(".resource-item").forEach(function (resource) {
+        resource.addEventListener("toggle", function () {
+          if (resource.open) {
+            document.querySelectorAll(".resource-item").forEach(function (other) {
+              if (other !== resource) {
+                other.open = false;
+              }
+            });
+          }
+        });
+      });
     })();
-
   </script>
 
 </body>
 </html>
-
 
 <!-- =================================
          AI CAREER ASSISTANT
