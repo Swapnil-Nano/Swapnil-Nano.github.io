@@ -1507,29 +1507,43 @@
   </script>
 
 
-  <!-- =================================
+<!-- =================================
        AI CAREER ASSISTANT JAVASCRIPT
   ================================== -->
 <!-- ==================================================
      FLOATING AI CAREER ASSISTANT
 ================================================== -->
 
+
+<!-- ==========================================
+     FLOATING AI CAREER ASSISTANT
+========================================== -->
+
 <div class="ai-chatbot" id="aiChatbot">
 
-  <!-- Floating launcher -->
+  <!-- Floating AI launcher -->
   <button
     class="ai-chat-launcher"
     id="aiChatLauncher"
     type="button"
     aria-label="Open AI Career Assistant"
+    aria-controls="aiChatWindow"
     aria-expanded="false"
   >
 
-    <img
-      src="avtar.png"
-      alt=""
-      class="ai-chat-launcher-avatar"
-    >
+    <span class="ai-chat-icon" aria-hidden="true">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/>
+        <path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8L19 17z"/>
+      </svg>
+    </span>
 
     <span class="ai-chat-launcher-text">
       Ask My AI Assistant
@@ -1538,7 +1552,7 @@
   </button>
 
 
-  <!-- Chat window -->
+  <!-- AI chat window -->
   <div
     class="ai-chat-window"
     id="aiChatWindow"
@@ -1547,16 +1561,14 @@
     aria-hidden="true"
   >
 
-    <!-- Header -->
+    <!-- Chat header -->
     <div class="ai-chat-header">
 
       <div class="ai-chat-profile">
 
-        <img
-          src="avtar.png"
-          alt="Swapnil Nalawade"
-          class="ai-chat-avatar"
-        >
+        <div class="ai-chat-badge" aria-hidden="true">
+          AI
+        </div>
 
         <div class="ai-chat-profile-text">
 
@@ -1565,38 +1577,32 @@
           </strong>
 
           <span>
-            Ask about Swapnil's experience
+            Explore Swapnil's professional portfolio
           </span>
 
         </div>
 
       </div>
 
-
       <button
         class="ai-chat-close"
         id="aiChatClose"
         type="button"
-        aria-label="Close AI Career Assistant"
+        aria-label="Close assistant"
       >
-        ×
+        &times;
       </button>
 
     </div>
 
 
-    <!-- Intro -->
+    <!-- Introduction -->
     <div class="ai-chat-intro">
 
       <p>
-        Hi! I'm an AI assistant grounded in
-        Swapnil Nalawade's verified professional portfolio.
-      </p>
-
-      <p>
-        Ask me about his semiconductor experience,
-        technical skills, accomplishments, publications,
-        or alignment with your role.
+        Hello! I can help you explore Swapnil's
+        semiconductor engineering experience,
+        research, technical skills, and publications.
       </p>
 
     </div>
@@ -1607,7 +1613,7 @@
 
       <button
         type="button"
-        data-question="What experience does Swapnil have with ALD?"
+        data-question="What experience does Swapnil have with atomic layer deposition?"
       >
         ALD experience
       </button>
@@ -1616,14 +1622,14 @@
         type="button"
         data-question="What are Swapnil's strongest process-engineering accomplishments?"
       >
-        Key accomplishments
+        Accomplishments
       </button>
 
       <button
         type="button"
-        data-question="Tell me about a time Swapnil escalated an ALD equipment issue."
+        data-question="Tell me about Swapnil's equipment troubleshooting experience."
       >
-        Troubleshooting example
+        Troubleshooting
       </button>
 
       <button
@@ -1636,50 +1642,51 @@
     </div>
 
 
-    <!-- Messages -->
+    <!-- AI conversation -->
     <div
       class="ai-chat-messages"
       id="careerAiMessages"
       aria-live="polite"
+      aria-relevant="additions"
+      role="log"
     ></div>
 
 
-    <!-- Input -->
+    <!-- User input -->
     <form
       class="ai-chat-form"
       id="careerAiForm"
     >
 
       <label
-        class="sr-only"
         for="careerAiInput"
+        class="sr-only"
       >
-        Ask a question
+        Ask a question about Swapnil's experience
       </label>
 
       <textarea
         id="careerAiInput"
         rows="2"
         maxlength="6000"
-        placeholder="Ask a question or paste a job description..."
+        placeholder="Ask about experience, skills or publications..."
         required
       ></textarea>
-
 
       <div class="ai-chat-form-actions">
 
         <button
           type="button"
-          id="careerAiReset"
           class="ai-chat-reset"
+          id="careerAiReset"
         >
           New chat
         </button>
 
         <button
           type="submit"
-          id="careerAiSend"
           class="ai-chat-send"
+          id="careerAiSend"
         >
           Send
         </button>
@@ -1689,18 +1696,17 @@
     </form>
 
 
+    <!-- Disclaimer -->
     <div class="ai-chat-disclaimer">
-      AI-generated answers are based on professional knowledge base.
+      AI responses may contain errors.
+      Verify important details with Swapnil.
     </div>
 
   </div>
 
 </div>
 
-  
-  <script src="recruiter-agent.js"></script>
-
-
-</body>
+<!-- Load existing chatbot functionality once -->
+<script src="recruiter-agent.js"></script>
 
 </html>
