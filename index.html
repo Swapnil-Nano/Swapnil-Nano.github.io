@@ -1507,52 +1507,564 @@
   </script>
 
 
-<!-- =================================
-       AI CAREER ASSISTANT JAVASCRIPT
-  ================================== -->
-<!-- ==================================================
-     FLOATING AI CAREER ASSISTANT
-================================================== -->
-
 
 <!-- ==========================================
      FLOATING AI CAREER ASSISTANT
+     Self-contained HTML + CSS
+     Uses existing recruiter-agent.js
+========================================== -->
+
+<style>
+
+/* Main floating assistant container */
+#aiChatbot {
+  position: fixed !important;
+  bottom: 25px !important;
+  right: 25px !important;
+  left: auto !important;
+  top: auto !important;
+
+  z-index: 99999 !important;
+  width: auto !important;
+  height: auto !important;
+
+  font-family: "Inter", Arial, sans-serif;
+}
+
+#aiChatbot,
+#aiChatbot * {
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   CIRCULAR AI ASSISTANT PHOTO
+========================================== */
+
+#aiChatbot .ai-chat-launcher {
+  position: relative;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  width: 74px !important;
+  height: 74px !important;
+  min-width: 74px !important;
+  min-height: 74px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: 3px solid #ffffff;
+  border-radius: 50% !important;
+
+  background: #e8f1fa;
+  overflow: visible;
+
+  box-shadow:
+    0 0 0 2px #2879bf,
+    0 8px 26px rgba(21, 64, 111, 0.30);
+
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+
+#aiChatbot .ai-chat-launcher:hover {
+  transform: scale(1.07);
+}
+
+#aiChatbot .ai-chat-launcher img {
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  object-position: center;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Small AI label on the photo */
+#aiChatbot .ai-chat-launcher::after {
+  content: "AI";
+
+  position: absolute;
+  bottom: -3px;
+  right: -5px;
+
+  padding: 3px 7px;
+
+  background: #246fb1;
+  color: white;
+
+  border: 2px solid white;
+  border-radius: 12px;
+
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* ==========================================
+   CHAT WINDOW
+========================================== */
+
+#aiChatbot .ai-chat-window {
+  position: absolute !important;
+
+  bottom: calc(100% + 15px) !important;
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+
+  display: flex !important;
+  flex-direction: column;
+
+  width: min(390px, calc(100vw - 32px)) !important;
+  height: min(560px, calc(100dvh - 125px)) !important;
+  min-height: 0;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe5ef;
+  border-radius: 20px;
+
+  box-shadow:
+    0 18px 55px rgba(15, 35, 65, .24);
+
+  overflow: hidden;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(12px);
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease,
+    visibility .2s ease;
+}
+
+/* Show chat only when avatar is clicked */
+#aiChatbot .ai-chat-window.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+
+  transform: translateY(0) !important;
+}
+
+/* ==========================================
+   CHAT HEADER
+========================================== */
+
+#aiChatbot .ai-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  flex-shrink: 0;
+  padding: 15px;
+
+  background: linear-gradient(
+    135deg,
+    #143a62,
+    #286ba5
+  );
+
+  color: white;
+}
+
+#aiChatbot .ai-chat-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+#aiChatbot .ai-chat-avatar {
+  display: block;
+
+  width: 40px !important;
+  height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+
+  flex-shrink: 0;
+
+  border: 2px solid rgba(255,255,255,.8);
+  border-radius: 50%;
+
+  object-fit: cover;
+  margin: 0 !important;
+}
+
+#aiChatbot .ai-chat-profile-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+#aiChatbot .ai-chat-profile-text strong {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: white;
+}
+
+#aiChatbot .ai-chat-profile-text span {
+  font-size: 11px;
+  color: #dceafa;
+  line-height: 1.5;
+}
+
+#aiChatbot .ai-chat-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.14);
+  color: white;
+
+  font-size: 24px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+#aiChatbot .ai-chat-close:hover {
+  background: rgba(255,255,255,.25);
+}
+
+/* ==========================================
+   WELCOME MESSAGE
+========================================== */
+
+#aiChatbot .ai-chat-intro {
+  padding: 15px 16px 8px;
+  flex-shrink: 0;
+  background: white;
+}
+
+#aiChatbot .ai-chat-intro p {
+  margin: 0;
+  padding: 0;
+
+  color: #48586b;
+
+  font-size: 13px;
+  line-height: 1.55;
+  text-align: left;
+}
+
+/* ==========================================
+   SUGGESTED QUESTIONS
+========================================== */
+
+#aiChatbot .ai-chat-suggestions {
+  display: flex;
+  gap: 8px;
+
+  padding: 10px 14px 14px;
+  flex-shrink: 0;
+
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+#aiChatbot .ai-chat-suggestions button {
+  flex: 0 0 auto;
+
+  padding: 8px 12px;
+
+  border: 1px solid #d4e4f3;
+  border-radius: 999px;
+
+  background: #eef5fc;
+  color: #245e94;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+#aiChatbot .ai-chat-suggestions button:hover {
+  background: #dcebf9;
+}
+
+/* ==========================================
+   MESSAGES AREA
+========================================== */
+
+#aiChatbot .ai-chat-messages {
+  display: block;
+  flex: 1;
+  min-height: 0;
+
+  overflow-y: auto;
+
+  padding: 15px;
+
+  background: #f5f8fc;
+
+  font-size: 13px;
+  scroll-behavior: smooth;
+}
+
+#aiChatbot .career-ai__message {
+  display: block;
+
+  width: fit-content;
+  max-width: 88%;
+
+  margin-bottom: 12px;
+  padding: 11px 13px;
+
+  border-radius: 15px;
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+#aiChatbot .career-ai__message--assistant {
+  margin-right: auto;
+
+  color: #24364a;
+  background: white;
+
+  border: 1px solid #e2eaf2;
+  border-bottom-left-radius: 5px;
+}
+
+#aiChatbot .career-ai__message--user {
+  margin-left: auto;
+
+  color: white;
+  background: #256eae;
+
+  border-bottom-right-radius: 5px;
+}
+
+#aiChatbot .career-ai__message--status {
+  margin-right: auto;
+
+  background: transparent;
+  color: #718096;
+
+  padding-left: 0;
+  font-size: 12px;
+}
+
+/* ==========================================
+   QUESTION INPUT
+========================================== */
+
+#aiChatbot .ai-chat-form {
+  display: block;
+
+  margin: 0 !important;
+  padding: 12px 14px 8px;
+
+  flex-shrink: 0;
+
+  background: #ffffff;
+  border-top: 1px solid #e4ebf3;
+}
+
+#aiChatbot .ai-chat-form textarea {
+  display: block;
+
+  width: 100% !important;
+  height: 64px;
+  min-height: 64px;
+  max-height: 120px;
+
+  padding: 11px 12px;
+
+  background: #f9fbfe;
+  color: #26384d;
+
+  border: 1px solid #d5e1ed;
+  border-radius: 12px;
+
+  font: 13px/1.5 "Inter", Arial, sans-serif;
+
+  resize: vertical;
+  outline: none;
+}
+
+#aiChatbot .ai-chat-form textarea:focus {
+  border-color: #327dbb;
+  box-shadow: 0 0 0 3px rgba(43,108,176,.12);
+}
+
+#aiChatbot .ai-chat-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#aiChatbot .ai-chat-reset {
+  padding: 8px 5px;
+
+  background: none;
+  border: none;
+
+  color: #718096;
+
+  font: 500 12px "Inter", Arial, sans-serif;
+  cursor: pointer;
+}
+
+#aiChatbot .ai-chat-send {
+  padding: 10px 22px;
+
+  background: #256eae;
+  color: white;
+
+  border: none;
+  border-radius: 999px;
+
+  font: 700 13px "Inter", Arial, sans-serif;
+  cursor: pointer;
+}
+
+#aiChatbot .ai-chat-send:hover {
+  background: #174e82;
+}
+
+#aiChatbot button:disabled,
+#aiChatbot textarea:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   DISCLAIMER
+========================================== */
+
+#aiChatbot .ai-chat-disclaimer {
+  flex-shrink: 0;
+
+  padding: 4px 12px 10px;
+
+  background: white;
+  color: #8793a3;
+
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Accessibility label */
+
+#aiChatbot .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+
+  border: 0;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+========================================== */
+
+@media (max-width: 600px) {
+
+  #aiChatbot {
+    bottom: 16px !important;
+    right: 16px !important;
+  }
+
+  #aiChatbot .ai-chat-launcher {
+    width: 62px !important;
+    height: 62px !important;
+    min-width: 62px !important;
+    min-height: 62px !important;
+  }
+
+  #aiChatbot .ai-chat-window {
+    width: calc(100vw - 32px) !important;
+    height: min(560px, calc(100dvh - 105px)) !important;
+    bottom: calc(100% + 12px) !important;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #aiChatbot .ai-chat-window,
+  #aiChatbot .ai-chat-launcher {
+    transition: none;
+  }
+}
+
+</style>
+
+
+<!-- ==========================================
+     AI ASSISTANT HTML
 ========================================== -->
 
 <div class="ai-chatbot" id="aiChatbot">
 
-  <!-- Floating AI launcher -->
+  <!-- CIRCULAR FLOATING AI PHOTO -->
+
   <button
     class="ai-chat-launcher"
     id="aiChatLauncher"
     type="button"
-    aria-label="Open AI Career Assistant"
-    aria-controls="aiChatWindow"
+    aria-label="Chat with AI Career Assistant"
     aria-expanded="false"
+    aria-controls="aiChatWindow"
+    title="Ask My AI Assistant"
   >
 
-    <span class="ai-chat-icon" aria-hidden="true">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/>
-        <path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8L19 17z"/>
-      </svg>
-    </span>
-
-    <span class="ai-chat-launcher-text">
-      Ask My AI Assistant
-    </span>
+    <img
+      src="avtar.png"
+      alt=""
+      class="ai-chat-launcher-avatar"
+    >
 
   </button>
 
 
-  <!-- AI chat window -->
+  <!-- CHAT WINDOW -->
+
   <div
     class="ai-chat-window"
     id="aiChatWindow"
@@ -1561,23 +2073,24 @@
     aria-hidden="true"
   >
 
-    <!-- Chat header -->
+    <!-- Header -->
+
     <div class="ai-chat-header">
 
       <div class="ai-chat-profile">
 
-        <div class="ai-chat-badge" aria-hidden="true">
-          AI
-        </div>
+        <img
+          src="avtar.png"
+          alt=""
+          class="ai-chat-avatar"
+        >
 
         <div class="ai-chat-profile-text">
 
-          <strong>
-            AI Career Assistant
-          </strong>
+          <strong>AI Career Assistant</strong>
 
           <span>
-            Explore Swapnil's professional portfolio
+            Ask about Swapnil's experience
           </span>
 
         </div>
@@ -1588,7 +2101,7 @@
         class="ai-chat-close"
         id="aiChatClose"
         type="button"
-        aria-label="Close assistant"
+        aria-label="Close chat"
       >
         &times;
       </button>
@@ -1596,97 +2109,101 @@
     </div>
 
 
-    <!-- Introduction -->
+    <!-- Welcome message -->
+
     <div class="ai-chat-intro">
 
       <p>
-        Hello! I can help you explore Swapnil's
-        semiconductor engineering experience,
-        research, technical skills, and publications.
+        Hi! I'm Swapnil's AI Career Assistant.
+        Ask about his semiconductor engineering
+        experience, research, skills, publications,
+        or professional accomplishments.
       </p>
 
     </div>
 
 
     <!-- Suggested questions -->
+
     <div class="ai-chat-suggestions">
 
       <button
         type="button"
-        data-question="What experience does Swapnil have with atomic layer deposition?"
+        data-question="What experience does Swapnil have with ALD?"
       >
-        ALD experience
+        ALD Experience
       </button>
 
       <button
         type="button"
-        data-question="What are Swapnil's strongest process-engineering accomplishments?"
+        data-question="What are Swapnil's major accomplishments?"
       >
         Accomplishments
       </button>
 
       <button
         type="button"
-        data-question="Tell me about Swapnil's equipment troubleshooting experience."
+        data-question="Describe Swapnil's semiconductor equipment troubleshooting experience."
       >
         Troubleshooting
       </button>
 
       <button
         type="button"
-        data-question="How does Swapnil's background align with a semiconductor process engineer role?"
+        data-question="How does Swapnil's background align with semiconductor process engineering?"
       >
-        Role alignment
+        Role Alignment
       </button>
 
     </div>
 
 
-    <!-- AI conversation -->
+    <!-- Conversation messages -->
+
     <div
       class="ai-chat-messages"
       id="careerAiMessages"
-      aria-live="polite"
-      aria-relevant="additions"
       role="log"
+      aria-live="polite"
     ></div>
 
 
-    <!-- User input -->
+    <!-- Question form -->
+
     <form
       class="ai-chat-form"
       id="careerAiForm"
     >
 
       <label
-        for="careerAiInput"
         class="sr-only"
+        for="careerAiInput"
       >
-        Ask a question about Swapnil's experience
+        Ask a question
       </label>
 
       <textarea
         id="careerAiInput"
         rows="2"
         maxlength="6000"
-        placeholder="Ask about experience, skills or publications..."
+        placeholder="Ask about ALD, PVD, skills, research..."
         required
       ></textarea>
 
       <div class="ai-chat-form-actions">
 
         <button
-          type="button"
           class="ai-chat-reset"
           id="careerAiReset"
+          type="button"
         >
           New chat
         </button>
 
         <button
-          type="submit"
           class="ai-chat-send"
           id="careerAiSend"
+          type="submit"
         >
           Send
         </button>
@@ -1697,16 +2214,19 @@
 
 
     <!-- Disclaimer -->
+
     <div class="ai-chat-disclaimer">
-      AI responses may contain errors.
-      Verify important details with Swapnil.
+      AI-generated responses may contain errors.
+      Verify important details.
     </div>
 
   </div>
 
 </div>
 
-<!-- Load existing chatbot functionality once -->
+
+<!-- EXISTING AI BACKEND CONNECTION -->
+
 <script src="recruiter-agent.js"></script>
 
-</html>
+<!-- END AI ASSISTANT -->
